@@ -60,6 +60,7 @@ export class RegisterComponent implements OnInit {
             title: 'oops...',
             text: 'Cet Email existe déja !'
           });
+          this.router.navigate(['/register']);
         }else{
           Swal.fire(
             'Votre demande a été envoyée avec succés!',
