@@ -1,16 +1,15 @@
-import { TestBed } from '@angular/core/testing';
+import { of } from 'rxjs';
 
 import { LoginService } from './login.service';
 
 describe('LoginService', () => {
   let service: LoginService;
-
+  const http = jest.fn();
+  let data :any;
   beforeEach(() => {
-    TestBed.configureTestingModule({});
-    service = TestBed.inject(LoginService);
+		service = new LoginService(http as any);
+
   });
 
-  it('should be created', () => {
-    expect(service).toBeTruthy();
-  });
+ 
 });

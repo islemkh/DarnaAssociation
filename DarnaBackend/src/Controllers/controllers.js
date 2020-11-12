@@ -5,31 +5,32 @@ const jwt = require('jsonwebtoken');
 const Demand = mongoose.model('Demande', DemandeSchema)
 const User=mongoose.model('User',usershema)
 export const addNewDemand = (req, res) => {
- let user =  Demand.findOne({ Email:req.body.Email },(err,user) =>{
-    if(user){ 
-     res.json({
-       "code": "505","msg":"email already exist"
-     });
-    }else{
-    let newDemand= new Demand(req.body);
-    var password=bcrypt.hashSync(req.body.Password,10);
-    newDemand.Password=password;
-    newDemand.save((err, demand) => {
-       if (err){
-res.send(err);
-       }else{
-       res.json({
-        "code": "200","msg":"demand added successfuly"
-      })
-      
-      }
-
-    })}
+  let user =  Demand.findOne({ Email:req.body.Email },(err,user) =>{
+     if(user){ 
+      res.json({
+        "code": "505","msg":"email already exist"
+      });
+     }else{
+     let newDemand= new Demand(req.body);
+     var password=bcrypt.hashSync(req.body.Password,10);
+     newDemand.Password=password;
+     newDemand.save((err, demand) => {
+        if (err){
+ res.send(err);
+        }else{
+        res.json({
+         "code": "200","msg":"demand added successfuly"
+       })
+       
+       }
  
-    })
+     })}
+  
+     })
+ 
+ 
+ };
 
-
-};
 export const getAllDemands = (req, res) => {
     Demand.find({},(err, demand) => {
        if (err){

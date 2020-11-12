@@ -1,16 +1,13 @@
-import { TestBed } from '@angular/core/testing';
 
 import { RegisterService } from './register.service';
 
 describe('RegisterService', () => {
   let service: RegisterService;
+  const http = jest.fn();
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
-    service = TestBed.inject(RegisterService);
+    service = new RegisterService(http as any);
+
   });
 
-  it('should be created', () => {
-    expect(service).toBeTruthy();
-  });
 });

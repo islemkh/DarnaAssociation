@@ -1,25 +1,72 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import {FormBuilder } from '@angular/forms';
 import { LoginComponent } from './login.component';
 
 describe('LoginComponent', () => {
-  let component: LoginComponent;
-  let fixture: ComponentFixture<LoginComponent>;
-
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ LoginComponent ]
-    })
-    .compileComponents();
-  }));
-
+  let CompLogin: LoginComponent;
+	let authServiceMock: any;
+	let formBuilderMock: FormBuilder;
+  let routerMock: any;
+  
   beforeEach(() => {
-    fixture = TestBed.createComponent(LoginComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+		authServiceMock = {
+			login: jest.fn()
+		};
+		formBuilderMock = new FormBuilder();
+		routerMock = jest.fn();
+		CompLogin = new LoginComponent(
+			formBuilderMock,
+			authServiceMock,
+			routerMock
+		);
+		CompLogin.ngOnInit();
   });
+  describe('Test: ngOnInit', () => {
+		it('initialisation  du form', () => {
+			const loginForm = {
+				Email: '',
+				Password:'',
+			};
+			expect(CompLogin.loginForm.value).toEqual(loginForm);
+		});
+  });
+  describe('Test: Login Form', () => {
+	/*  	it('should invalidate the form', () => {
+			CompLogin.loginForm.controls.Email.setValue(null);
+			CompLogin.loginForm.controls.Password.setValue(null);
+			expect(CompLogin.loginForm.valid).toBeFalsy();
+		});  */
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+		it('Form valid', () => {
+			CompLogin.loginForm.controls.Email.setValue('testadmin@gmail.com');
+			CompLogin.loginForm.controls.Password.setValue('testadmin123');
+			expect(CompLogin.loginForm.valid).toBeTruthy();
+		});
   });
+  
+
+  /* describe('Test: Form invalid', () => {
+		it('should not call Login user', () => {
+			const formData = {
+				Email: '',
+				Password: ''
+			};
+			CompLogin.login();
+			expect(authServiceMock.login).not.toHaveBeenCalled();
+		});
+	}); */
+
+	describe('Test: Form valid', () => {
+		it('should call loginUser', () => {
+			const formData = {
+				Email: 'testadmin@gmail.com',
+				Password: 'testadmin123'
+			};
+			const expected = jest.spyOn(authServiceMock, 'login').mockReturnValue(true);
+			expect(authServiceMock.login(formData)).toBe(true);
+			expect(expected).toHaveBeenCalledWith(formData);
+		});
+  });
+ 
+
 });
+
