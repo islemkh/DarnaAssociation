@@ -76,7 +76,9 @@ export class LoginComponent implements OnInit {
               this.router.navigate(['/listmember']);
             }
             if (this.role === 'member'){
-            this.router.navigate(['/listaction']); }
+            this.router.navigate(['/']); 
+            console.log("hello member , you're connected")
+          }
           }
         }
 
