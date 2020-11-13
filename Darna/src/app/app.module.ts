@@ -11,6 +11,7 @@ import {LoginComponent} from './front/login/login.component';
 import {RegisterComponent} from './front/register/register.component'
 import { ReactiveFormsModule ,FormsModule } from '@angular/forms';
 import { ListmemberComponent } from './back/listmember/listmember.component';
+import { ListeDemandeComponent } from './back/liste-demande/liste-demande.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,7 +21,8 @@ import { ListmemberComponent } from './back/listmember/listmember.component';
     ContainerComponent,
     LoginComponent,
     RegisterComponent,
-    ListmemberComponent
+    ListmemberComponent,
+    ListeDemandeComponent
 
   ],
   imports: [

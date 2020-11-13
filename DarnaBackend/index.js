@@ -14,6 +14,7 @@ mongoose.connect('mongodb://localhost/DarnaDB',{
 });
 //bodyparser :midlleware pour passer les informations à la base de données
 app.use(bodyParser.urlencoded({ extended: true}));
+app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(function (req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
