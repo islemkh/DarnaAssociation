@@ -6,6 +6,7 @@ describe('RegisterComponent', () => {
 	let authServiceMock: any;
 	let formBuilderMock: FormBuilder;
   let routerMock: any;
+  let photo : any;
   beforeEach(() => {
 		authServiceMock = {
 			postdemand : jest.fn()
@@ -15,7 +16,8 @@ describe('RegisterComponent', () => {
 		CompReg = new RegisterComponent(
 			formBuilderMock,
 			authServiceMock,
-			routerMock
+      routerMock, 
+      photo
 		);
 		CompReg.ngOnInit();
   });

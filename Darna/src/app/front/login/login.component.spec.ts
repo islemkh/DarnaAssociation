@@ -13,8 +13,8 @@ describe('LoginComponent', () => {
 		};
 		formBuilderMock = new FormBuilder();
 		routerMock = jest.fn();
-		CompLogin = new LoginComponent(
-			formBuilderMock,
+		CompLogin = new LoginComponent(    
+			formBuilderMock  ,
 			authServiceMock,
 			routerMock
 		);
