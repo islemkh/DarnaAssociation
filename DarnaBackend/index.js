@@ -32,11 +32,18 @@ app.use(serveStatic(path.join(__dirname, 'Darna'), {
 app.use(bodyParser.urlencoded({ extended: true}));
 app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+var corsOptions = {
+  origin: '*',
+  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204 
+}
+app.use(cors(corsOptions));
 app.use( (req, res, next) => {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    next();
-  });
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:4200');
+  next();
+});  
+
 
   //app.use(express.static(__dirname + '../../views'));
   global.__basedir = __dirname;
