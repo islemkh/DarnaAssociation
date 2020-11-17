@@ -13,4 +13,14 @@ export class RegisterService {
 
      return this.http.post(host +'/api/register',data);
   }
+  isLoggedIn()
+  {
+  let token= sessionStorage.getItem('token')
+  console.log(token)
+  if(token){
+    return true;
+  }else{
+    return false;
+  }
+}
 }

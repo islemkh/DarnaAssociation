@@ -26,6 +26,9 @@ const Schema = mongoose.Schema;
         type: Date,
         default:Date.now
     },
+    photo: {
+        type:String
+    }
  }
 
  )
@@ -60,5 +63,8 @@ const Schema = mongoose.Schema;
    },
    statut:{
     type:String
-   }
+   },
+   photo: {
+    type:String
+}
 })

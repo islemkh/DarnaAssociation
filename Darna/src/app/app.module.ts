@@ -10,8 +10,14 @@ import {ContainerComponent} from './shared/home/container/container.component';
 import {LoginComponent} from './front/login/login.component';
 import {RegisterComponent} from './front/register/register.component'
 import { ReactiveFormsModule ,FormsModule } from '@angular/forms';
-import { ListmemberComponent } from './back/listmember/listmember.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ListeDemandeComponent } from './back/liste-demande/liste-demande.component';
+import { ListmembersComponent } from './back/listmembers/listmembers.component';
+import {ModalModule} from 'ngx-bootstrap/modal';
+import { DetailsmembreComponent } from './back/listmembers/detailsmembre/detailsmembre.component';
+import { NgxSpinnerModule } from "ngx-spinner";
+import {NgxPaginationModule} from 'ngx-pagination';
+import {SearchMemberPipe} from './back/pipes/search-member.pipe';
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,13 +27,23 @@ import { ListeDemandeComponent } from './back/liste-demande/liste-demande.compon
     ContainerComponent,
     LoginComponent,
     RegisterComponent,
-    ListmemberComponent,
-    ListeDemandeComponent
+
+    ListeDemandeComponent,
+
+    ListmembersComponent,
+
+    DetailsmembreComponent,
+
+    SearchMemberPipe
 
   ],
   imports: [
     BrowserModule,ReactiveFormsModule,FormsModule ,
-    AppRoutingModule,HttpClientModule
+    AppRoutingModule,HttpClientModule,
+    BrowserAnimationsModule,
+    ModalModule.forRoot(),
+    NgxSpinnerModule,
+    NgxPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -25,3 +25,9 @@
 {
   background-color: Tomato;
 }
+.icon_form i {
+  position: absolute;
+  top: 17px;
+  right: 22px;
+  color: tomato;
+}

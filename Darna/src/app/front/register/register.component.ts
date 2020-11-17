@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup,FormBuilder, FormControl, Validators,ValidatorFn, NgModel } from '@angular/forms';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
-import {RegisterService} from '../services/register.service'
+import {RegisterService} from '../services/register.service';
+import {ImageService} from '../services/image.service';
 
 @Component({
   selector: 'app-register',
@@ -13,9 +14,10 @@ export class RegisterComponent implements OnInit {
 
   InscriptionForm : FormGroup ;
   submitted = false;
+  photo;
+  filesToUpload: Array<File>;
 
-
-  constructor(private formBuilder: FormBuilder , private router: Router , private registerservice: RegisterService) { }
+  constructor(private formBuilder: FormBuilder , private router: Router , private registerservice: RegisterService, private imageservice: ImageService) { }
 
   ngOnInit(): void {
     this.InscriptionForm= this.formBuilder.group({
@@ -29,9 +31,18 @@ export class RegisterComponent implements OnInit {
     },{
       validator: this.MustMatch('Password', 'ConfirmPassword')
     })
+    let isLoggedIn= this.registerservice.isLoggedIn();
+
+    if (isLoggedIn) {
+      this.router.navigate(['/listmembers']);
+    }
   }
   get f() {
     return this.InscriptionForm.controls;
+  }
+  recuperFile(file){
+    this.filesToUpload = (file.target.files as Array<File>);
+    this.photo = file.target.files[0].photo;
   }
   Inscrit(){
     const data = {
@@ -42,6 +53,7 @@ export class RegisterComponent implements OnInit {
       Job: this.InscriptionForm.value.Job,
       Password: this.InscriptionForm.value.Password,
       ConfirmPassword: this.InscriptionForm.value.ConfirmPassword,
+      photo: this.filesToUpload[0].name
     };
     this.submitted = true;
 
@@ -54,6 +66,9 @@ export class RegisterComponent implements OnInit {
     console.log(this.InscriptionForm.value);
     this.registerservice.postdemand(data).subscribe(res => {
       console.log(res);
+      this.imageservice.pushFileToStorage(this.filesToUpload[0]).subscribe(rest => {
+        console.log(rest);
+      });
          if (res["code"]==505){
           Swal.fire({
             icon: 'error',

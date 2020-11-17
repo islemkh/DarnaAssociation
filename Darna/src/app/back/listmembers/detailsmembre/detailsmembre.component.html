@@ -1,0 +1,54 @@
+
+
+<div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+<div class="slider_small_shape44 jp_blog_single_client_img ">
+
+  <img class="img-responsive imageDetails " src="http://localhost:8080/api/getfile/{{currentMember?.photo}}" alt="member picture" />
+</div>
+</div>
+<div class="jb_cover">
+
+  <div class="jp_blog_single_client_cont marginLeftDetailsMember">
+
+      <h1> {{currentMember?.NomPrenom}}
+
+          <i *ngIf="currentMember?.statut==='actif'" class="fa fa-ban fa-sm IconToBannirMember" (click)="bannirMember(currentMember._id)" title="bannir ce membre" >
+          </i>
+
+      </h1>
+      <div class="detailsMember">
+
+    <div class="icondetails ">
+      <i class="fas fa-envelope iconDMclass"></i>
+      <h5> {{currentMember?.Email}}</h5>
+    </div>
+
+
+    <div class="icondetails ">
+      <i class="flaticon-telephone iconDMclass"></i>
+      <h5>  {{currentMember?.Tel}}</h5>
+    </div>
+
+    <div class="icondetails ">
+      <i class="far fa-calendar iconDMclass"></i>
+      <h5>   {{currentMember?.DateNaissance}}</h5>
+    </div>
+    <div class="icondetails ">
+      <i class="fas fa-suitcase iconDMclass"></i>
+      <h5>   {{currentMember?.Job}}</h5>
+    </div>
+  </div>
+  <a  style="color: tomato;" (click)="open()"> <i class="fa fa-chevron-circle-left" >
+    Retour à la liste </i></a>
+
+  </div>
+
+  <div class="counter_jbbb2 jb_cover">
+
+    <img src="../../../../assets/images/line3.png" class="img-responsive" alt="img">
+</div>
+
+</div>
+  <ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="default" type="ball-spin-clockwise">
+    <p style="color: white">Please Wait. </p>
+    </ngx-spinner>

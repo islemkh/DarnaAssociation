@@ -34,11 +34,14 @@
                 </li>
 
                 <li class="btn_hover">
-                     <a routerLink="/login">Login</a>
-                </li>
-                <li class="btn_hover">
-                  <a routerLink="/register">Register</a>
+                  <a *ngIf="!isLoggedIn" routerLink="/login">Login</a>
              </li>
+             <li class="btn_hover">
+               <a *ngIf="!isLoggedIn" routerLink="/register">Register</a>
+          </li>
+              <li class="btn_hover">
+                <a  *ngIf="isLoggedIn" (click)="logout()">Logout</a>
+           </li>
             </ul>
         </div>
 
@@ -47,10 +50,10 @@
                 <li class="has-mega gc_main_navigation"><a routerLink="/" class="gc_main_navigation active_class active_class2 active_class3">Accueil</a>
 
                 </li>
-                <li class="has-mega gc_main_navigation"><a href="#" class="gc_main_navigation">Qui Somme Nous ?</a>
+                <li *ngIf="!isLoggedIn|| role==='member'"class="has-mega gc_main_navigation"><a href="#" class="gc_main_navigation">Qui Somme Nous ?</a>
 
                 </li>
-                <li class="has-mega gc_main_navigation kv_sub_menu green_sub_menu blue_sub_menu">
+                <li *ngIf="!isLoggedIn || role==='member'" class="has-mega gc_main_navigation kv_sub_menu green_sub_menu blue_sub_menu">
                     <a href="#" class="gc_main_navigation">  Nous aider</a>
 
                 </li>
@@ -59,6 +62,14 @@
                 </li>
 
                <li><a href="contact_us.html" class="gc_main_navigation">contact</a></li>
+               <li *ngIf="role==='admin'"class="has-mega gc_main_navigation kv_sub_menu green_sub_menu blue_sub_menu">
+                <a routerLink="/listmembers" class="gc_main_navigation">  Membres</a>
+
+            </li>
+            <li  *ngIf="role==='admin'" class="has-mega gc_main_navigation kv_sub_menu green_sub_menu blue_sub_menu">
+              <a routerLink="/listeDemandes" class="gc_main_navigation">  Demandes</a>
+
+          </li>
 
             </ul>
         </div>
