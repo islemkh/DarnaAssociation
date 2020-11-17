@@ -9,29 +9,31 @@ const User=mongoose.model('User',usershema)
 
 //ajouter demande apres registring
 export const addNewDemand = (req, res) => {
-  let user =  Demand.findOne({ Email:req.body.Email },(err,user) =>{
-     if(user){ 
-      res.json({
-        "code": "505","msg":"email already exist"
-      });
-     }else{
-     let newDemand= new Demand(req.body);
-     var password=bcrypt.hashSync(req.body.Password,10);
-     newDemand.Password=password;
-     newDemand.save((err, demand) => {
-        if (err){
- res.send(err);
-        }else{
-        res.json({
-         "code": "200","msg":"demand added successfuly"
-       })
-       
-       }
+ let user =  User.findOne({ Email:req.body.Email },(err,user) =>{
+    if(user){ 
+     res.json({
+       "code": "505","msg":"member with this email already exist"
+     });
+    }else{
+    let newDemand= new Demand(req.body);
+    var password=bcrypt.hashSync(req.body.Password,10);
+    newDemand.Password=password;
+    newDemand.save((err, demand) => {
+       if (err){
+res.send(err);
+       }else{
+        res.status(200).json({
+          //"code": "200",
+          message:"demand added successfuly"
+        });
+      
+      }
+
+    })}
  
      })}
   
-     })
- };
+ 
  export const AccepterDemande = (req, res) => {
   var today = Date.now();
       req.body["_id"]=new ObjectID()
