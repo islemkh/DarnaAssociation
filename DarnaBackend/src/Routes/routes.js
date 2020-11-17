@@ -26,6 +26,5 @@ const routes = (app) => {
 
     app.route('/api/login')
     .post(loginmember)
-  
 }
 export default routes;

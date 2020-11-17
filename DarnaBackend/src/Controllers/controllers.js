@@ -22,9 +22,10 @@ export const addNewDemand = (req, res) => {
        if (err){
 res.send(err);
        }else{
-       res.json({
-        "code": "200","msg":"demand added successfuly"
-      })
+        res.status(200).json({
+          //"code": "200",
+          message:"demand added successfuly"
+        });
       
       }
 
