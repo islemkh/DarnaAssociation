@@ -1,39 +1,45 @@
 import { RegisterComponent } from './register.component';
 import {FormBuilder } from '@angular/forms';
+import { ImageService } from '../services/image.service';
 
 describe('RegisterComponent', () => {
   let CompReg: RegisterComponent;
 	let authServiceMock: any;
 	let formBuilderMock: FormBuilder;
   let routerMock: any;
-  let photo : any;
+  let registerservice:any;
   beforeEach(() => {
 		authServiceMock = {
 			postdemand : jest.fn()
-		};
+    };
+    registerservice = {
+			isLoggedIn : jest.fn()
+    };
+    
 		formBuilderMock = new FormBuilder();
-		routerMock = jest.fn();
+    routerMock = jest.fn();
 		CompReg = new RegisterComponent(
 			formBuilderMock,
 			authServiceMock,
       routerMock, 
-      photo
+      registerservice
 		);
 		CompReg.ngOnInit();
   });
   describe('Test: ngOnInit', () => {
 		it('initialisation  du form Inscription', () => {
-			const RegForm = {
+      const RegForm = {
 				NomPrenom: null,
         Email: null,
         Tel: null,
         DateNaissance: null,
         Job: null,
         Password: null,
-        ConfirmPassword: null,        
-			};
-			expect(CompReg.InscriptionForm.value).toEqual(RegForm);
-		});
+        ConfirmPassword: null,    
+      };
+      expect(CompReg.InscriptionForm.value).toEqual(RegForm);
+
+    });
   });
   describe('Test: Regstre Form', () => {
      	it('should invalidate the form', () => {

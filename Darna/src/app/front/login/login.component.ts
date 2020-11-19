@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
     let isLoggedIn= this.loginservice.isLoggedIn();
 
     if (isLoggedIn) {
-      this.router.navigate(['/listmembers']);
+      this.router.navigate(['/listeDemandes']);
     }
 
   }
@@ -78,7 +78,7 @@ export class LoginComponent implements OnInit {
             this.router.navigate['/login']
           }else{
             if (this.role === 'admin'){
-              this.router.navigate(['/listmembers']);
+              this.router.navigate(['/listeDemandes']);
             }
             if (this.role === 'member'){
             this.router.navigate(['/']);

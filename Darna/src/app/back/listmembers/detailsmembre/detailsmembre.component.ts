@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import {ListMemberService} from '../../service/list-Member.service'
-import { Member } from '../listmembers.component';
+import { Member } from '../../models/member';
 import Swal from 'sweetalert2';
 import { NgxSpinnerService } from "ngx-spinner";
 import { Router } from '@angular/router';
