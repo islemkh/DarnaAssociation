@@ -10,24 +10,24 @@ import {
 } from '../Controllers/member_controller'
 
 const routes_member = (app) => {
-    app.route('/AddMember')
+    app.route('/api/AddMember')
         .post(addNewMember)
 
-    app.route('/detailsMember/:id')
+    app.route('/api/detailsMember/:id')
         .get(getMember)
 
-    app.route('/ListMember')
+    app.route('/api/ListMember')
         .get(getAllMember)
 
-    app.route('/deleteMember/:id')
+    app.route('/api/deleteMember/:id')
         .delete(deleteMember)
 
-    app.route('/UpdateMember/:id')
+    app.route('/api/UpdateMember/:id')
         .put(UpdateMember)
-    app.route('/bannirmember/:id')
+    app.route('/api/bannirmember/:id')
         .put(BannirMember)
     //public routes
-    app.route('/login')
+    app.route('/api/login')
         .post(loginmember)
 
 

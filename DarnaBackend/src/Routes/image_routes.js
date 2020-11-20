@@ -5,9 +5,9 @@ import {
 } from '../Controllers/image_controller'
 
 const routes_image = (app) => {
-    app.route('/uploadFile')
+    app.route('/api/uploadFile')
         .post(addimage)
-    app.route('/getfile/:name')
+    app.route('/api/getfile/:name')
         .get(download)
 }
 export default routes_image;
