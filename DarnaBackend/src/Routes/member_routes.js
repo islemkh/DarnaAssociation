@@ -4,32 +4,32 @@ import {
     getMember,
     getAllMember,
     deleteMember,
-    UpdateMember,    
+    UpdateMember,
     BannirMember
 
 } from '../Controllers/member_controller'
 
 const routes_member = (app) => {
-     app.route('/AddMember')
-    .post(addNewMember)
+    app.route('/AddMember')
+        .post(addNewMember)
 
     app.route('/detailsMember/:id')
-    .get(getMember)
-    
+        .get(getMember)
+
     app.route('/ListMember')
-    .get(getAllMember)
+        .get(getAllMember)
 
     app.route('/deleteMember/:id')
-    .delete(deleteMember)
+        .delete(deleteMember)
 
     app.route('/UpdateMember/:id')
-    .put(UpdateMember)
+        .put(UpdateMember)
     app.route('/bannirmember/:id')
-    .put(BannirMember)  
+        .put(BannirMember)
     //public routes
     app.route('/login')
-    .post(loginmember)
-  
-  
+        .post(loginmember)
+
+
 }
 export default routes_member;

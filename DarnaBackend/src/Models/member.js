@@ -3,37 +3,37 @@ const Schema = mongoose.Schema;
 
 export const usershema = new Schema({
     NomPrenom: {
-        type:String,
+        type: String,
         required: true
     },
-   Email: {
-       type:String,
-       required: true
-   },
-   Tel: {
-       type:Number
-   },
-   DateNaissance: {
-       type:Date
-   },
-   Job: {
-       type:String
-   },
-   Password: {
-       type:String,
-       required: true
-   },
-   Create_date: {
-       type: Date,
-       default:Date.now
-   },
-   role:{
-    type:String
-   },
-   statut:{
-    type:String
-   },
-   photo: {
-    type:String
-}
+    Email: {
+        type: String,
+        required: true
+    },
+    Tel: {
+        type: Number
+    },
+    DateNaissance: {
+        type: Date
+    },
+    Job: {
+        type: String
+    },
+    Password: {
+        type: String,
+        required: true
+    },
+    Create_date: {
+        type: Date,
+        default: Date.now
+    },
+    role: {
+        type: String
+    },
+    statut: {
+        type: String
+    },
+    photo: {
+        type: String
+    }
 })

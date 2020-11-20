@@ -1,34 +1,37 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {Router} from '@angular/router';
-import {LoginService} from '../services/login.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { LoginService } from '../services/login.service';
 import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   submitted = false;
   role;
-  token:string;
-  jwt:string;
-  statut:string;
-  constructor(private formBuilder: FormBuilder, private router: Router, private loginservice: LoginService) { }
+  token: string;
+  jwt: string;
+  statut: string;
+  constructor(
+    private formBuilder: FormBuilder,
+    private router: Router,
+    private loginservice: LoginService
+  ) {}
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
       Email: [''],
-      Password: ['']
+      Password: [''],
     });
-    let isLoggedIn= this.loginservice.isLoggedIn();
+    let isLoggedIn = this.loginservice.isLoggedIn();
 
     if (isLoggedIn) {
       this.router.navigate(['/listeDemandes']);
     }
-
   }
   get f() {
     return this.loginForm.controls;
@@ -52,43 +55,39 @@ export class LoginComponent implements OnInit {
       return;
     }
     this.loginservice.login(this.loginForm.value).subscribe((res: any) => {
-        console.log(res);
-        console.log(res.body.code);
+      console.log(res);
+      console.log(res.body.code);
 
-        if(res.body.code==204){
+      if (res.body.code == 204) {
+        Swal.fire({
+          icon: 'error',
+          title: 'oops...',
+          text: 'nom utilisateur ou mot de passe incorrecte !',
+        });
+      } else {
+        this.token = res.body.token;
+        console.log(this.token);
+        this.role = res.body.user.role;
+        console.log(this.role);
+        this.loginservice.saveToken(this.token, this.role);
+        this.statut = res.body.user.statut;
+        if (this.statut === 'banni') {
           Swal.fire({
             icon: 'error',
             title: 'oops...',
-            text: 'nom utilisateur ou mot de passe incorrecte !'
+            text: 'user banni',
           });
-        }else{
-          this.token=res.body.token
-          console.log( this.token);
-          this.role =res.body.user.role;
-          console.log(  this.role);
-          this.loginservice.saveToken(this.token,this.role);
-
-          this.statut=res.body.user.statut
-          if(this.statut==="banni"){
-            Swal.fire({
-              icon: 'error',
-              title: 'oops...',
-              text: 'user banni'
-            });
-            this.router.navigate['/login']
-          }else{
-            if (this.role === 'admin'){
-              this.router.navigate(['/listeDemandes']);
-            }
-            if (this.role === 'member'){
-            this.router.navigate(['/']);
-            console.log("hello member , you're connected")
+          this.router.navigate['/login'];
+        } else {
+          if (this.role === 'admin') {
+            this.router.navigate(['/listeDemandes']);
           }
+          if (this.role === 'member') {
+            this.router.navigate(['/']);
+            console.log("hello member , you're connected");
           }
         }
-
-
       }
-    );
+    });
   }
 }

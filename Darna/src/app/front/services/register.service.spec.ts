@@ -1,4 +1,3 @@
-
 import { RegisterService } from './register.service';
 
 describe('RegisterService', () => {
@@ -7,7 +6,5 @@ describe('RegisterService', () => {
 
   beforeEach(() => {
     service = new RegisterService(http as any);
-
   });
-
 });

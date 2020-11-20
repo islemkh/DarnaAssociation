@@ -4,7 +4,6 @@
   color: #fff;
   line-height: 1.2;
   text-transform: uppercase;
-
   display: -webkit-box;
   display: -webkit-flex;
   display: -moz-box;
@@ -21,8 +20,7 @@
   border: 0px;
   cursor: pointer;
 }
-.color
-{
+.color {
   background-color: Tomato;
 }
 .icon_form i {

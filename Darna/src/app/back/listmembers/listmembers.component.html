@@ -1,234 +1,423 @@
-<div class="pricing_table_3 recent_resume_wrapper  coverbody">
-
+<div class="pricing_table_3 recent_resume_wrapper coverbody">
   <div class="slider_small_shape44">
-      <img src="../../../../assets/images/p2.png" class="img-responsive " alt="img">
+    <img
+      src="../../../../assets/images/p2.png"
+      class="img-responsive"
+      alt="img"
+    />
   </div>
-
-<div class="jb_heading_wraper">
-
-  <h1>Liste des membres</h1>
-
-
-</div>
-<div class="pricing_table_3 recent_resume_wrapper  coverbody">
-
-  <div class="slider_small_shape44">
-      <img src="../../../../assets/images/p2.png" class="img-responsive " alt="img">
+  <div class="jb_heading_wraper">
+    <h1>Liste des membres</h1>
   </div>
-   <div class ="container">
+  <div class="pricing_table_3 recent_resume_wrapper coverbody">
+    <div class="slider_small_shape44">
+      <img
+        src="../../../../assets/images/p2.png"
+        class="img-responsive"
+        alt="img"
+      />
+    </div>
+    <div class="container">
       <div class="AddSearch">
         <div class="filter-area jb_cover">
           <!-- Search form -->
-<form class="form-inline"  >
-<i class="fas fa-search" aria-hidden="true"></i>
-<input class="form-control form-control-sm ml-3 w-75" type="text" placeholder="Search"
-aria-label="Search" [(ngModel)]="memberValue"
-name ="memberValue">
-</form>
-
-
-    <!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary addbtn"   (click)="openModal(AddMember)">
-      <i class="fas fa-plus">
-
-      </i> Nouveau Member
-                  </button>
-
-    </div>
+          <form class="form-inline">
+            <i class="fas fa-search" aria-hidden="true"></i>
+            <input
+              class="form-control form-control-sm ml-3 w-75"
+              type="text"
+              placeholder="Search"
+              aria-label="Search"
+              [(ngModel)]="memberValue"
+              name="memberValue"
+            />
+          </form>
+          <!-- Button trigger modal -->
+          <button
+            type="button"
+            class="btn btn-primary addbtn"
+            (click)="openModal(AddMember)"
+          >
+            <i class="fas fa-plus"> </i> Nouveau Member
+          </button>
+        </div>
       </div>
-    <!-- top header wrapper end -->
-    <!--companies wrapper start -->
-    <div class="companies_wrapper  classbottom">
+      <!-- top header wrapper end -->
+      <!--companies wrapper start -->
+      <div class="companies_wrapper classbottom">
         <div class="container">
-
-            <div class="row">
-
-                <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12" *ngFor="let member of members| searchMember : memberValue | paginate: { itemsPerPage: 8, currentPage: pm };">
-
-<div class="card">
-
-                  <div class="company_main_wrapper">
-                    <div class="company_img_wrapper ">
-
-                      <div class="image ">
-                            <img class="img-fluid " src="http://localhost:8080/api/getfile/{{member?.photo}}"  alt="image member">
-                          </div>
-                            <div class="btc_team_social_wrapper" *ngIf="member.statut==='actif'">
-                                <h1>actif</h1>
-                            </div>
-                            <div class="btc_team_social_wrapper" *ngIf="member.statut==='banni'">
-                              <h1>Banni</h1>
-                          </div>
-                        </div>
-
-
-                        <div class="opening_job classFlexNameEdittools ">
-
-                            <h1><a routerLink="/detailsMember/{{member._id}}"> {{member.NomPrenom}}</a></h1>
-                            <div style="float:right;margin-left: 6%;">
-                              <i class="fa fa-edit IconToEditMember"  aria-hidden="true" (click)="openModal(updateMember);getMemberByid(member._id);"> </i>
-                              <i class="fa fa-trash IconToDeleteMember" (click)="DeleteMember(member._id)"></i>
-                            </div>
-
-                          </div>
-                          <div class="company_img_cont_wrapper">
-
-                          </div>
-
-
+          <div class="row">
+            <div
+              class="col-lg-3 col-md-4 col-sm-6 col-xs-12"
+              *ngFor="let member of members| searchMember: memberValue | paginate: { itemsPerPage: 8, currentPage: pm } " >
+              <div class="card">
+                <div class="company_main_wrapper">
+                  <div class="company_img_wrapper">
+                    <div class="image">
+                      <img
+                        class="img-fluid"
+                        src="http://localhost:8080/api/getfile/{{
+                          member?.photo
+                        }}"
+                        alt="image member"
+                      />
                     </div>
+                    <div
+                      class="btc_team_social_wrapper"
+                      *ngIf="member.statut === 'actif'"
+                    >
+                      <h1>actif</h1>
+                    </div>
+                    <div
+                      class="btc_team_social_wrapper"
+                      *ngIf="member.statut === 'banni'"
+                    >
+                      <h1>Banni</h1>
+                    </div>
+                  </div>
+
+                  <div class="opening_job classFlexNameEdittools">
+                    <h1>
+                      <a routerLink="/detailsMember/{{ member._id }}">
+                        {{ member.NomPrenom }}</a
+                      >
+                    </h1>
+                    <div style="float: right; margin-left: 6%">
+                      <i class="fa fa-edit IconToEditMember" aria-hidden="true"
+                        (click)="openModal(updateMember); getMemberByid(member._id)">
+                      </i>
+                      <i class="fa fa-trash IconToDeleteMember" (click)="DeleteMember(member._id)" ></i>
+                    </div>
+                  </div>
+                  <div class="company_img_cont_wrapper"></div>
                 </div>
               </div>
             </div>
-            <div class="counter_jbbb2 jb_cover">
-
-              <img src="../../../../assets/images/line3.png" class="img-responsive" alt="img">
+          </div>
+          <div class="counter_jbbb2 jb_cover">
+            <img
+              src="../../../../assets/images/line3.png"
+              class="img-responsive"
+              alt="img"
+            />
           </div>
         </div>
-    </div>
+      </div>
 
-    <div style="float: right;">
-      <pagination-controls (pageChange)="pm = $event"></pagination-controls></div>
-    <ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="default" type="ball-spin-clockwise">
-      <p style="color: white">Please Wait. </p>
+      <div style="float: right">
+        <pagination-controls (pageChange)="pm = $event"></pagination-controls>
+      </div>
+      <ngx-spinner
+        bdColor="rgba(51, 51, 51, 0.8)"
+        size="default"
+        type="ball-spin-clockwise"
+      >
+        <p style="color: white">Please Wait.</p>
       </ngx-spinner>
-   <ng-template #AddMember>
-    <div class="modal-body text-center">
-      <h3>Ajouter membre</h3>
-      <form [formGroup]="addForm" (ngSubmit)="AjouterMember()">
-
-        <div class="login_form_wrapper signup_wrapper">
-
-          <div class="form-group icon_form comments_form">
-            <input type="text" class="form-control require" formControlName="NomPrenom" placeholder="Nom et prénom*" [ngClass]="{ 'is-invalid': submitted && f.NomPrenom.errors }" required>
-            <i class="fas fa-user"></i>
-            <div *ngIf="submitted && f.NomPrenom.errors" class="invalid-feedback">
-             <div *ngIf="f.NomPrenom.errors.required">* ce champ obligatoire</div>
-           </div>
-          </div>
-
-
-          <div class="form-group icon_form comments_form">
-            <input type="date" class="form-control require" formControlName="DateNaissance" title="Date de naissance" [ngClass]="{ 'is-invalid': submitted && f.DateNaissance.errors }" required>
-            <div *ngIf="submitted && f.DateNaissance.errors" class="invalid-feedback">
-                <div *ngIf="f.DateNaissance.errors.required">* ce champ obligatoire</div>
-            </div>
-          </div>
-
-            <div class="form-group icon_form comments_form">
-                <input type="text" class="form-control require" formControlName="Email" placeholder="Email*" [ngClass]="{ 'is-invalid': submitted && f.Email.errors }" required>
+      <ng-template #AddMember>
+        <div class="modal-body text-center">
+          <h3>Ajouter membre</h3>
+          <form [formGroup]="addForm" (ngSubmit)="AjouterMember()">
+            <div class="login_form_wrapper signup_wrapper">
+              <div class="form-group icon_form comments_form">
+                <input
+                  type="text"
+                  class="form-control require"
+                  formControlName="NomPrenom"
+                  placeholder="Nom et prénom*"
+                  [ngClass]="{ 'is-invalid': submitted && f.NomPrenom.errors }"
+                  required
+                />
+                <i class="fas fa-user"></i>
+                <div *ngIf="submitted && f.NomPrenom.errors" class="invalid-feedback" >
+                  <div *ngIf="f.NomPrenom.errors.required">* ce champ obligatoire</div>
+                </div>
+              </div>
+              <div class="form-group icon_form comments_form">
+                <input
+                  type="date"
+                  class="form-control require"
+                  formControlName="DateNaissance"
+                  title="Date de naissance"
+                  [ngClass]="{'is-invalid': submitted && f.DateNaissance.errors }" required/>
+                <div
+                  *ngIf="submitted && f.DateNaissance.errors"
+                  class="invalid-feedback"
+                >
+                  <div *ngIf="f.DateNaissance.errors.required">
+                    * ce champ obligatoire
+                  </div>
+                </div>
+              </div>
+              <div class="form-group icon_form comments_form">
+                <input
+                  type="text"
+                  class="form-control require"
+                  formControlName="Email"
+                  placeholder="Email*"
+                  [ngClass]="{ 'is-invalid': submitted && f.Email.errors }"
+                  required />
                 <i class="fas fa-envelope"></i>
-                <div class="alert alert-danger" *ngIf="addForm.controls['Email'].errors && addForm.controls['Email'].errors.email">* Veuillez insérer un e-mail valide</div>
-                <div *ngIf="submitted && f.Email.errors" class="invalid-feedback">
-                    <div *ngIf="f.Email.errors.required">* ce champ obligatoire</div>
-                 </div>
-            </div>
-
-
-            <div class="form-group icon_form comments_form">
-              <input type="text" class="form-control require" formControlName="Tel" placeholder="Téléphone*" [ngClass]="{ 'is-invalid': submitted && f.Tel.errors }" required>
-              <i class="flaticon-telephone"></i>
-              <div class="alert alert-danger" *ngIf="addForm.controls['Tel'].errors && addForm.controls['Tel'].errors.pattern">* le numéro doit contenir seulement des chiffres</div>
-              <div class="alert alert-danger" *ngIf="addForm.controls['Tel'].touched && addForm.controls['Tel'].errors">* le numéro doit avoir au minimum 8 chiffres</div>
-
-              <div *ngIf="submitted && f.Tel.errors" class="invalid-feedback">
-                  <div *ngIf="f.Tel.errors.required">* ce champ obligatoire</div>
+                <div
+                  class="alert alert-danger"
+                  *ngIf="addForm.controls['Email'].errors && addForm.controls['Email'].errors.email">* Veuillez insérer un e-mail valide
                 </div>
-            </div>
-
-            <div class="form-group icon_form comments_form">
-              <input type="text" class="form-control require" formControlName="Job" placeholder="Profession*" [ngClass]="{ 'is-invalid': submitted && f.Job.errors }" required>
-              <i class="fas fa-suitcase"></i>
-              <div *ngIf="submitted && f.Job.errors" class="invalid-feedback">
-                <div *ngIf="f.Job.errors.required">* ce champ obligatoire</div>
+                <div
+                  *ngIf="submitted && f.Email.errors"
+                  class="invalid-feedback">
+                  <div *ngIf="f.Email.errors.required">
+                    * ce champ obligatoire
+                  </div>
                 </div>
-            </div>
-
-
-
-            <div class="form-group icon_form comments_form">
-              <input type="password" class="form-control require"  formControlName="Password" placeholder="Mot de passe*" [ngClass]="{ 'is-invalid': submitted && f.Password.errors }" required>
-              <i class="fas fa-lock"></i>
-              <div class="alert alert-danger" *ngIf="addForm.controls['Password'].touched && addForm.controls['Password'].errors">* le mot de passe doit avoir au minimum 6 caractéres</div>
-              <div *ngIf="submitted && f.Password.errors" class="invalid-feedback">
-                  <div *ngIf="f.Password.errors.required">* ce champ obligatoire</div>
+              </div>
+              <div class="form-group icon_form comments_form">
+                <input
+                  type="text"
+                  class="form-control require"
+                  formControlName="Tel"
+                  placeholder="Téléphone*"
+                  [ngClass]="{ 'is-invalid': submitted && f.Tel.errors }"
+                  required />
+                <i class="flaticon-telephone"></i>
+                <div
+                  class="alert alert-danger"
+                  *ngIf="
+                    addForm.controls['Tel'].errors &&
+                    addForm.controls['Tel'].errors.pattern"
+                > * le numéro doit contenir seulement des chiffres
                 </div>
-            </div>
+                <div
+                  class="alert alert-danger"
+                  *ngIf="
+                    addForm.controls['Tel'].touched &&
+                    addForm.controls['Tel'].errors
+                  "
+                >
+                  * le numéro doit avoir au minimum 8 chiffres
+                </div>
+
+                <div *ngIf="submitted && f.Tel.errors" class="invalid-feedback">
+                  <div *ngIf="f.Tel.errors.required">
+                    * ce champ obligatoire
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group icon_form comments_form">
+                <input
+                  type="text"
+                  class="form-control require"
+                  formControlName="Job"
+                  placeholder="Profession*"
+                  [ngClass]="{ 'is-invalid': submitted && f.Job.errors }"
+                  required
+                />
+                <i class="fas fa-suitcase"></i>
+                <div *ngIf="submitted && f.Job.errors" class="invalid-feedback">
+                  <div *ngIf="f.Job.errors.required">
+                    * ce champ obligatoire
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group icon_form comments_form">
+                <input
+                  type="password"
+                  class="form-control require"
+                  formControlName="Password"
+                  placeholder="Mot de passe*"
+                  [ngClass]="{ 'is-invalid': submitted && f.Password.errors }"
+                  required
+                />
+                <i class="fas fa-lock"></i>
+                <div
+                  class="alert alert-danger"
+                  *ngIf="
+                    addForm.controls['Password'].touched &&
+                    addForm.controls['Password'].errors ">
+                  * le mot de passe doit avoir au minimum 6 caractéres
+                </div>
+                <div
+                  *ngIf="submitted && f.Password.errors"
+                  class="invalid-feedback">
+                  <div *ngIf="f.Password.errors.required">
+                    * ce champ obligatoire
+                  </div>
+                </div>
+              </div>
             </div>
             <div class="form-group">
               <label for="signup-Cpassword" class="control-label sr-only">Photo</label>
-              <input  type="file"  id="file-input" name="Photo" class="form-control" (change)="recuperFile($event);AjouterMember()" >
-
+              <input
+                type="file"
+                id="file-input"
+                name="Photo"
+                class="form-control"
+                (change)="recuperFile($event); AjouterMember()"
+              />
             </div>
-             <div class="modal-footer">
-            <button type="button" class="btn btn-secondary annuler"  (click)=" modalRef.hide()">Annuler</button>
-            <button type="submit" class="btn btn-primary save">Enregistrer</button>
-          </div>
-
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary annuler"
+                (click)="modalRef.hide()"
+              >
+                Annuler
+              </button>
+              <button type="submit" class="btn btn-primary save">
+                Enregistrer
+              </button>
+            </div>
           </form>
+        </div>
+      </ng-template>
+      <ng-template #updateMember>
+        <div class="modal-body text-center">
+          <h3>Modifier membre</h3>
+          <form [formGroup]="updateForm" (ngSubmit)="ModifierMember()">
+            <div class="login_form_wrapper signup_wrapper">
+              <div class="form-group icon_form comments_form">
+                <input
+                  type="text"
+                  class="form-control require"
+                  formControlName="NomPrenom"
+                  placeholder="Nom et prénom*"
+                  [ngClass]="{ 'is-invalid': submitted && f1.NomPrenom.errors }"
+                  required
+                />
+                <i class="fas fa-user"></i>
+                <div
+                  *ngIf="submitted && f1.NomPrenom.errors"
+                  class="invalid-feedback"
+                >
+                  <div *ngIf="f1.NomPrenom.errors.required">
+                    * ce champ obligatoire
+                  </div>
+                </div>
+              </div>
 
-    </div>
-  </ng-template>
-  <ng-template #updateMember>
-    <div class="modal-body text-center" >
-      <h3>Modifier membre</h3>
-      <form [formGroup]="updateForm" (ngSubmit)="ModifierMember()">
+              <div class="form-group icon_form comments_form">
+                <input
+                  type="date"
+                  class="form-control require"
+                  formControlName="DateNaissance"
+                  title="Date de naissance"
+                  [ngClass]="{
+                    'is-invalid': submitted && f1.DateNaissance.errors
+                  }"
+                  required
+                />
+                <div
+                  *ngIf="submitted && f1.DateNaissance.errors"
+                  class="invalid-feedback"
+                >
+                  <div *ngIf="f1.DateNaissance.errors.required">
+                    * ce champ obligatoire
+                  </div>
+                </div>
+              </div>
 
-        <div class="login_form_wrapper signup_wrapper">
-          <div class="form-group icon_form comments_form">
-            <input type="text" class="form-control require" formControlName="NomPrenom" placeholder="Nom et prénom*" [ngClass]="{ 'is-invalid': submitted && f1.NomPrenom.errors }" required>
-            <i class="fas fa-user"></i>
-            <div *ngIf="submitted && f1.NomPrenom.errors" class="invalid-feedback">
-             <div *ngIf="f1.NomPrenom.errors.required">* ce champ obligatoire</div>
-           </div>
-          </div>
-
-
-          <div class="form-group icon_form comments_form">
-            <input  type="date" class="form-control require" formControlName="DateNaissance" title="Date de naissance" [ngClass]="{ 'is-invalid': submitted && f1.DateNaissance.errors }" required>
-            <div *ngIf="submitted && f1.DateNaissance.errors" class="invalid-feedback">
-                <div *ngIf="f1.DateNaissance.errors.required">* ce champ obligatoire</div>
-            </div>
-          </div>
-
-            <div class="form-group icon_form comments_form">
-                <input  type="text" class="form-control require" formControlName="Email" placeholder="Email*" [ngClass]="{ 'is-invalid': submitted && f1.Email.errors }" required>
+              <div class="form-group icon_form comments_form">
+                <input
+                  type="text"
+                  class="form-control require"
+                  formControlName="Email"
+                  placeholder="Email*"
+                  [ngClass]="{ 'is-invalid': submitted && f1.Email.errors }"
+                  required
+                />
                 <i class="fas fa-envelope"></i>
-                <div class="alert alert-danger" *ngIf="updateForm.controls['Email'].errors && updateForm.controls['Email'].errors.email">* Veuillez insérer un e-mail valide</div>
-                <div *ngIf="submitted && f1.Email.errors" class="invalid-feedback">
-                    <div *ngIf="f1.Email.errors.required">* ce champ obligatoire</div>
-                 </div>
-            </div>
-
-            <div class="form-group icon_form comments_form">
-              <input  type="text" class="form-control require" formControlName="Tel" placeholder="Téléphone*" [ngClass]="{ 'is-invalid': submitted && f1.Tel.errors }" required>
-              <i class="flaticon-telephone"></i>
-              <div class="alert alert-danger" *ngIf="updateForm.controls['Tel'].errors && updateForm.controls['Tel'].errors.pattern">* le numéro doit contenir seulement des chiffres</div>
-              <div class="alert alert-danger" *ngIf="updateForm.controls['Tel'].touched && updateForm.controls['Tel'].errors">* le numéro doit avoir au minimum 8 chiffres</div>
-
-              <div *ngIf="submitted && f.Tel.errors" class="invalid-feedback">
-                  <div *ngIf="f1.Tel.errors.required">* ce champ obligatoire</div>
+                <div
+                  class="alert alert-danger"
+                  *ngIf="
+                    updateForm.controls['Email'].errors &&
+                    updateForm.controls['Email'].errors.email
+                  "
+                >
+                  * Veuillez insérer un e-mail valide
                 </div>
-            </div>
-
-            <div class="form-group icon_form comments_form">
-              <input  type="text" class="form-control require" formControlName="Job" placeholder="Profession*" [ngClass]="{ 'is-invalid': submitted && f1.Job.errors }" required>
-              <i class="fas fa-suitcase"></i>
-              <div *ngIf="submitted && f1.Job.errors" class="invalid-feedback">
-                <div *ngIf="f1.Job.errors.required">* ce champ obligatoire</div>
+                <div
+                  *ngIf="submitted && f1.Email.errors"
+                  class="invalid-feedback"
+                >
+                  <div *ngIf="f1.Email.errors.required">
+                    * ce champ obligatoire
+                  </div>
                 </div>
+              </div>
+
+              <div class="form-group icon_form comments_form">
+                <input
+                  type="text"
+                  class="form-control require"
+                  formControlName="Tel"
+                  placeholder="Téléphone*"
+                  [ngClass]="{ 'is-invalid': submitted && f1.Tel.errors }"
+                  required
+                />
+                <i class="flaticon-telephone"></i>
+                <div
+                  class="alert alert-danger"
+                  *ngIf="
+                    updateForm.controls['Tel'].errors &&
+                    updateForm.controls['Tel'].errors.pattern
+                  "
+                >
+                  * le numéro doit contenir seulement des chiffres
+                </div>
+                <div
+                  class="alert alert-danger"
+                  *ngIf="
+                    updateForm.controls['Tel'].touched &&
+                    updateForm.controls['Tel'].errors
+                  "
+                >
+                  * le numéro doit avoir au minimum 8 chiffres
+                </div>
+
+                <div *ngIf="submitted && f.Tel.errors" class="invalid-feedback">
+                  <div *ngIf="f1.Tel.errors.required">
+                    * ce champ obligatoire
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group icon_form comments_form">
+                <input
+                  type="text"
+                  class="form-control require"
+                  formControlName="Job"
+                  placeholder="Profession*"
+                  [ngClass]="{ 'is-invalid': submitted && f1.Job.errors }"
+                  required
+                />
+                <i class="fas fa-suitcase"></i>
+                <div
+                  *ngIf="submitted && f1.Job.errors"
+                  class="invalid-feedback"
+                >
+                  <div *ngIf="f1.Job.errors.required">
+                    * ce champ obligatoire
+                  </div>
+                </div>
+              </div>
             </div>
 
-
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary annuler"
+                (click)="modalRef.hide()"
+              >
+                Annuler
+              </button>
+              <button type="submit" class="btn btn-primary save">
+                Modifier
+              </button>
             </div>
-
-
-             <div class="modal-footer" >
-            <button type="button" class="btn btn-secondary annuler"  (click)=" modalRef.hide()">Annuler</button>
-            <button type="submit" class="btn btn-primary save">Modifier</button>
-          </div>
-
           </form>
+        </div>
+      </ng-template>
     </div>
-  </ng-template>
-
+  </div>
+</div>

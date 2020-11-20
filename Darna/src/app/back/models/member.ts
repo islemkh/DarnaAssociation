@@ -1,11 +1,11 @@
 export class Member {
-    _id;
+  _id;
   NomPrenom;
- Email;
- Tel;
- DateNaissance ;
- Job;
- role;
- statut;
- photo;
+  Email;
+  Tel;
+  DateNaissance;
+  Job;
+  role;
+  statut;
+  photo;
 }

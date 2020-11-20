@@ -1,35 +1,34 @@
 import mongoose from 'mongoose';
 const Schema = mongoose.Schema;
- export const DemandeSchema = new Schema({
-     NomPrenom: {
-         type:String,
-         required: true
-     },
+export const DemandeSchema = new Schema({
+    NomPrenom: {
+        type: String,
+        required: true
+    },
     Email: {
-        type:String,
+        type: String,
         required: true
     },
     Tel: {
-        type:Number
+        type: Number
     },
     DateNaissance: {
-        type:Date
+        type: Date
     },
     Job: {
-        type:String
+        type: String
     },
     Password: {
-        type:String,
+        type: String,
         required: true
     },
     Create_date: {
         type: Date,
-        default:Date.now
+        default: Date.now
     },
     photo: {
-        type:String
+        type: String
     }
- }
+}
 
- )
- 
+)

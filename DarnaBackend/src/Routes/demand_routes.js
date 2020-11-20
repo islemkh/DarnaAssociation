@@ -8,21 +8,21 @@ import {
 
 const routes_demand = (app) => {
     app.route('/api/register')
-    .post(addNewDemand)
+        .post(addNewDemand)
 
     app.route('/api/listeDemandes')
-    .get(getAllDemands)
-    
+        .get(getAllDemands)
+
     app.route('/api/demandeById/:id')
-    .get(getDemande)
+        .get(getDemande)
 
     app.route('/api/deleteDemande/:id')
-    .get(deletDemande)
+        .get(deletDemande)
 
     app.route('/api/acceptDemande')
-    .post(AccepterDemande)
+        .post(AccepterDemande)
     //routes members
-    
+
 
 
 }
