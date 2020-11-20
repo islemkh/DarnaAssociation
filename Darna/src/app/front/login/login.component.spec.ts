@@ -6,7 +6,7 @@ describe('LoginComponent', () => {
 	let authServiceMock: any;
 	let formBuilderMock: FormBuilder;
   let routerMock: any;
-  
+  let loginserviceMock:any;
   beforeEach(() => {
 		authServiceMock = {
 			login: jest.fn()
@@ -16,8 +16,12 @@ describe('LoginComponent', () => {
 		CompLogin = new LoginComponent(    
 			formBuilderMock  ,
 			authServiceMock,
-			routerMock
+			routerMock,
+			
 		);
+		loginserviceMock = {
+			isLoggedIn : jest.fn()
+		}
 		CompLogin.ngOnInit();
   });
   describe('Test: ngOnInit', () => {
@@ -26,7 +30,10 @@ describe('LoginComponent', () => {
 				Email: '',
 				Password:'',
 			};
-			expect(CompLogin.loginForm.value).toEqual(loginForm);
+	expect(CompLogin.loginForm.value).toEqual(loginForm);
+	const expected = jest.spyOn(loginserviceMock, 'isLoggedIn').mockReturnValue(true);
+	expect(loginserviceMock.isLoggedIn()).toBe(true);
+	expect(expected).toHaveBeenCalled();
 		});
   });
   describe('Test: Login Form', () => {

@@ -17,7 +17,14 @@ export class RegisterComponent implements OnInit {
   photo;
   filesToUpload: Array<File>;
 
-  constructor(private formBuilder: FormBuilder , private router: Router , private registerservice: RegisterService, private imageservice: ImageService) { }
+  constructor(private formBuilder: FormBuilder , private router: Router , private registerservice: RegisterService, private imageservice: ImageService) {
+  /*   let isLoggedIn= this.registerservice.isLoggedIn();
+    console.log('isLoggedIn: ', isLoggedIn);
+
+    if (isLoggedIn) {
+      this.router.navigate(['/listeDemandes']);
+    }  */
+   }
 
   ngOnInit(): void {
     this.InscriptionForm= this.formBuilder.group({
@@ -31,11 +38,8 @@ export class RegisterComponent implements OnInit {
     },{
       validator: this.MustMatch('Password', 'ConfirmPassword')
     })
-    let isLoggedIn= this.registerservice.isLoggedIn();
 
-    if (isLoggedIn) {
-      this.router.navigate(['/listmembers']);
-    }
+  
   }
   get f() {
     return this.InscriptionForm.controls;
@@ -54,7 +58,9 @@ export class RegisterComponent implements OnInit {
       Password: this.InscriptionForm.value.Password,
       ConfirmPassword: this.InscriptionForm.value.ConfirmPassword,
       photo: this.filesToUpload[0].name
+      
     };
+    console.log('photo: ', this.photo);
     this.submitted = true;
 
     // stop here if form is invalid
@@ -62,7 +68,7 @@ export class RegisterComponent implements OnInit {
       return;
     }
 
-    this.router.navigate(['/login']);
+    
     console.log(this.InscriptionForm.value);
     this.registerservice.postdemand(data).subscribe(res => {
       console.log(res);
@@ -70,13 +76,15 @@ export class RegisterComponent implements OnInit {
         console.log(rest);
       });
          if (res["code"]==505){
+          this.router.navigate(['/register']);
           Swal.fire({
             icon: 'error',
             title: 'oops...',
             text: 'Cet Email existe déja !'
           });
-          this.router.navigate(['/register']);
+         
         }else{
+          this.router.navigate(['/login']);
           Swal.fire(
             'Votre demande a été envoyée avec succés!',
             '',

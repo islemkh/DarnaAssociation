@@ -5,19 +5,9 @@ import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import {ListMemberService} from '../service/list-Member.service'
 import {BsModalRef, BsModalService} from 'ngx-bootstrap/modal';
-import { ImageService } from 'src/app/front/services/image.service';
 import { NgxSpinnerService } from "ngx-spinner";
-export class Member{
-  _id;
-  NomPrenom;
- Email;
- Tel;
- DateNaissance ;
- Job;
- role;
- statut;
- photo;
- }
+import {Member} from '../models/member'
+import { ImageService } from '../../front/services/image.service';
 
 @Component({
   selector: 'app-listmembers',

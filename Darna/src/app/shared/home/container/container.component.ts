@@ -10,12 +10,14 @@ import {Router} from '@angular/router';
 export class ContainerComponent implements OnInit {
 
   constructor(private loginservice: LoginService, private router: Router) { }
-
+role;
   ngOnInit(): void {
     let isLoggedIn= this.loginservice.isLoggedIn();
-
-    if (isLoggedIn) {
-      this.router.navigate(['/listmembers']);
+    this.role= sessionStorage.getItem('role')
+    if (isLoggedIn && this.role==='admin') {
+      this.router.navigate(['/listeDemandes']);
+    }else if (isLoggedIn && this.role==='member'){
+      this.router.navigate(['/']);
     }
   }
 

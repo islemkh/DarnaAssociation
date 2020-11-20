@@ -23,11 +23,11 @@ export class LoginComponent implements OnInit {
       Email: [''],
       Password: ['']
     });
-    let isLoggedIn= this.loginservice.isLoggedIn();
+    // let isLoggedIn= this.loginservice.isLoggedIn();
 
-    if (isLoggedIn) {
-      this.router.navigate(['/listmembers']);
-    }
+    // if (isLoggedIn) {
+    //   this.router.navigate(['/listeDemandes']);
+    // }
 
   }
   get f() {
@@ -78,7 +78,7 @@ export class LoginComponent implements OnInit {
             this.router.navigate['/login']
           }else{
             if (this.role === 'admin'){
-              this.router.navigate(['/listmembers']);
+              this.router.navigate(['/listeDemandes']);
             }
             if (this.role === 'member'){
             this.router.navigate(['/']);

@@ -66,7 +66,7 @@ describe("test e2e",()=>{
         cy.visit("/")
      }) 
 it('Test Admin login', () => {
-   cy.visit("/");
+    cy.visit("/");
     cy.get('.posting_job > ul > :nth-child(2) > a').click()
     cy.wait(4000)
     cy.get('#signin-email').clear().type("testadmin@gmail.com");
@@ -74,9 +74,9 @@ it('Test Admin login', () => {
     cy.get('#signup-password').clear().type("testadmin123");
     cy.wait(4000)
     cy.get('.form-btn').click()
-    cy.wait(4000)});
+    cy.wait(4000)
+});
 it('liste des demande editer', () => {
-    //cy.url().should("include", "/listemembres")
     cy.get(':nth-child(4) > .card > .company_main_wrapper > .opening_job > div > .fa-edit').click();
     cy.wait(4000);
     cy.get('.login_form_wrapper > :nth-child(1) > .form-control').clear().type("chrigui intisar")

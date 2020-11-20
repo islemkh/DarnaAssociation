@@ -1,7 +1,10 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
-import routes from './src/Routes/routes';
+import routes_demand from './src/Routes/demand_routes';
+import routes_member from './src/Routes/member_routes';
+import routes_image from './src/Routes/image_routes';
+
 const app = express();
 const cors = require('cors');
 const PORT =8080 ;
@@ -11,6 +14,10 @@ const morgan = require('morgan');
 const _ = require('lodash');
 const fileUpload = require('express-fileupload');
 const fs = require("fs");
+
+
+
+
 
 //connection mongoose :DB
 mongoose.Promise = global.Promise;
@@ -44,11 +51,12 @@ app.use( (req, res, next) => {
   next();
 });  
 
-
+routes_demand(app)
+routes_member(app)
+routes_image(app)
   //app.use(express.static(__dirname + '../../views'));
   global.__basedir = __dirname;
  
-routes(app);
 //Port
 app.get('/', (req, res) =>
 res.send(`serveur node et express sur port ${PORT} `)

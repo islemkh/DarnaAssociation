@@ -3,15 +3,7 @@ import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import {ListeDemandeService} from '../service/liste-demande.service'
 import { NgxSpinnerService } from "ngx-spinner";
-export class Demande {
-  _id;
-  NomPrenom : string;
-  Email: string;
-  Tel: Int32List;
-  DateNaissance: Date;
-  Job:String;
-  photo:String
-}
+import {Demand} from '../models/demand'
 
 @Component({
   selector: 'app-liste-demande',
@@ -19,7 +11,7 @@ export class Demande {
   styleUrls: ['./liste-demande.component.css']
 })
 export class ListeDemandeComponent implements OnInit {
-  demandes :Demande[];
+  demandes :Demand[];
   pd;
   public listeDemandes:any;
   constructor( private router: Router , private listeDemandeService: ListeDemandeService, private SpinnerService: NgxSpinnerService) { }
