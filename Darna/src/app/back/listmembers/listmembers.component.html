@@ -6,8 +6,15 @@
       alt="img"
     />
   </div>
-  <div class="jb_heading_wraper">
-    <h1>Liste des membres</h1>
+  <div class="container">
+  <div class="row">
+    <div class="col-lg-10 offset-lg-1 col-md-12 col-sm-12">
+      <div class="jb_heading_wraper">
+        <h1>Liste des membres</h1>
+      </div>
+    </div>
+  </div>
+
   </div>
   <div class="pricing_table_3 recent_resume_wrapper coverbody">
     <div class="slider_small_shape44">
@@ -253,7 +260,7 @@
                 id="file-input"
                 name="Photo"
                 class="form-control"
-                (change)="recuperFile($event); AjouterMember()"
+                (change)="recoverFile($event); AjouterMember()"
               />
             </div>
             <div class="modal-footer">
