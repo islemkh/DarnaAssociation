@@ -37,7 +37,7 @@ export const getAllMember = (req, res) => {
     if (err) {
       res.send(err);
     }
-    console.log("this is res liste member")
+ 
     // console.log(res)
     res.json(user);
   });
@@ -54,7 +54,7 @@ export const getMember = (req, res) => {
       });
     }
     res.status(200).send(user);
-    console.log(user);
+    // console.log(user);
   })
     .catch((err) => {
       return res.status(500).send({
