@@ -218,3 +218,7 @@ button.w3-button {
   .cover{
     background-color: #f1efff;
   }
+  .justifyLabel{
+    display: flex;
+    flex-direction: row;
+  }

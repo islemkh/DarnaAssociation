@@ -9,6 +9,7 @@ import { AuthGuard } from './front/guards/auth.guard';
 import { ListmembersComponent } from './back/listmembers/listmembers.component';
 import { DetailsmembreComponent } from './back/listmembers/detailsmembre/detailsmembre.component';
 import {EventComponent} from './back/event/event.component'
+import {DetailsEventsComponent} from './back/event/details-events/details-events.component'
 
 const routes: Routes = [
   {
@@ -35,6 +36,10 @@ const routes: Routes = [
         path: 'Event',
         component: EventComponent,
         canActivate: [AuthGuard],
+      },
+       {
+        path: 'detailsEvent/:idEvent',
+        component: DetailsEventsComponent,
       },
     ],
   },

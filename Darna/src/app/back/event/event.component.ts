@@ -120,15 +120,26 @@ export class EventComponent implements OnInit {
   getEventByid(id) {
     this.EventService.getEvent(id).subscribe((res: EventModel) => {
       this.currentEvent = res;
-      this.currentEvent.NameEvent = res.NameEvent.substring(0, 10);
-      this.currentEvent.Description = res.Description.substring(0, 10);
-      this.currentEvent.lieu = res.lieu.substring(0, 10);
+      this.currentEvent.NameEvent = res.NameEvent;
+      this.currentEvent.Description = res.Description;
+      this.currentEvent.lieu = res.lieu;
       this.currentEvent.DateBeginEvent = res.DateBeginEvent.substring(0, 10);
       this.currentEvent.DateEndEvent = res.DateEndEvent.substring(0, 10);
-      this.currentEvent.NumberMember = res.NumberMember.substring(0, 10);
+      this.currentEvent.NumberMember = res.NumberMember;
       this.currentEvent.DateBeginInsc = res.DateBeginInsc.substring(0, 10);
       this.currentEvent.DateEndInsc = res.DateEndInsc.substring(0, 10);
-      
+     // this.currentEvent.photo = res.photo;
+      console.log('getid hhhhh')
+      this.updateFormEvent.setValue({
+        NameEvent: this.currentEvent.NameEvent,
+        Description: this.currentEvent.Description,
+        lieu: this.currentEvent.lieu,
+        DateBeginEvent: this.currentEvent.DateBeginEvent,
+        DateEndEvent: this.currentEvent.DateEndEvent,
+        NumberMember: this.currentEvent.NumberMember,
+        DateBeginInsc: this.currentEvent.DateBeginInsc,
+        DateEndInsc: this.currentEvent.DateEndInsc
+      });
     });
   }
   Publier(){
