@@ -18,6 +18,7 @@ export class EventComponent implements OnInit {
   events : EventModel[];
   photo;
   addFormEvent: FormGroup;
+  updateFormEvent : FormGroup;
   filesToUpload: Array<File>;
   submitted = false;
   currentEvent: EventModel;
@@ -36,6 +37,16 @@ export class EventComponent implements OnInit {
       this.role = sessionStorage.getItem('role');
       this.getLisEvents();
       (this.addFormEvent = this.formBuilder.group({
+        NameEvent: [null, Validators.required],
+        Description: [null, [Validators.required]],
+        NumberMember: [null,[Validators.required]],
+        lieu: [null, [Validators.required]],
+        DateBeginEvent: [null, Validators.required],
+        DateEndEvent: [null, Validators.required],
+        DateBeginInsc: [null, [Validators.required]],
+        DateEndInsc: [null, [Validators.required]]
+      })),
+      (this.updateFormEvent = this.formBuilder.group({
         NameEvent: [null, Validators.required],
         Description: [null, [Validators.required]],
         NumberMember: [null,[Validators.required]],
@@ -70,6 +81,9 @@ export class EventComponent implements OnInit {
   
   get Validate() {
     return this.addFormEvent.controls;
+  }
+  get UpdatEventControls() {
+    return this.updateFormEvent.controls;
   }
  
    AjouterEvent() {
@@ -106,9 +120,15 @@ export class EventComponent implements OnInit {
   getEventByid(id) {
     this.EventService.getEvent(id).subscribe((res: EventModel) => {
       this.currentEvent = res;
+      this.currentEvent.NameEvent = res.NameEvent.substring(0, 10);
+      this.currentEvent.Description = res.Description.substring(0, 10);
+      this.currentEvent.lieu = res.lieu.substring(0, 10);
       this.currentEvent.DateBeginEvent = res.DateBeginEvent.substring(0, 10);
       this.currentEvent.DateEndEvent = res.DateEndEvent.substring(0, 10);
-      this.currentEvent.DateBeginInsc = res.DateEndInsc.substring(0, 10);
+      this.currentEvent.NumberMember = res.NumberMember.substring(0, 10);
+      this.currentEvent.DateBeginInsc = res.DateBeginInsc.substring(0, 10);
+      this.currentEvent.DateEndInsc = res.DateEndInsc.substring(0, 10);
+      
     });
   }
   Publier(){
@@ -137,6 +157,22 @@ export class EventComponent implements OnInit {
         );
       }
     });
+  }
+
+  ModifierEvent() {
+    this.EventService
+      .updateEvent(this.currentEvent._id, this.updateFormEvent.value)
+      .subscribe(
+        (response) => {
+          console.log(response);
+          Swal.fire('Cet événement a été modifié avec succés', '', 'success');
+          this.getLisEvents();
+          this.modalRef.hide();
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
   }
 
 }

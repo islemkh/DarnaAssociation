@@ -69,7 +69,7 @@ export const deleteEvent = (req, res) => {
 //modifier Event
 export const UpdateEvent = (req, res) => {
   const id = req.params.id;
-  Event.findByIdAndUpdate({ _id: id }, req.body, { new: true }, (err, event) => {
+  Event.findByIdAndUpdate({ '_id': id }, req.body, { new: true }, (err, event) => {
     if (err) {
       res.send(err)
     }
