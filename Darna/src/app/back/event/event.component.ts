@@ -112,11 +112,10 @@ export class EventComponent implements OnInit {
           console.log(rest);
         
         });
-       
+        Swal.fire('Event ajouté avec succès!', '', 'success');
+        this.getLisEvents();
+        this.modalRef.hide();
     });
-    Swal.fire('Event ajouté avec succès!', '', 'success');
-    this.getLisEvents();
-    this.modalRef.hide();
   } 
 
   getEventByid(id) {
