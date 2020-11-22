@@ -3,19 +3,11 @@ import { TemplateRef } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
-<<<<<<< HEAD
-import { ListMemberService } from '../service/list-Member.service';
-import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
-import { ImageService } from 'src/app/front/services/image.service';
-import { NgxSpinnerService } from 'ngx-spinner';
-import { Member } from '../models/member';
-=======
 import {ListMemberService} from '../service/list-Member.service'
 import {BsModalRef, BsModalService} from 'ngx-bootstrap/modal';
 import { NgxSpinnerService } from "ngx-spinner";
 import {Member} from '../models/member'
 import { ImageService } from '../../front/services/image.service';
->>>>>>> 64d7ee0713440bb46d350700731896977dde61fc
 
 @Component({
   selector: 'app-listmembers',

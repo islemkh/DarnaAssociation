@@ -18,6 +18,7 @@ import { DetailsmembreComponent } from './back/listmembers/detailsmembre/details
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { SearchMemberPipe } from './back/pipes/search-member.pipe';
+import { EventComponent } from './back/event/event.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,6 +36,8 @@ import { SearchMemberPipe } from './back/pipes/search-member.pipe';
     DetailsmembreComponent,
 
     SearchMemberPipe,
+
+    EventComponent,
   ],
   imports: [
     BrowserModule,

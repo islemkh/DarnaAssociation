@@ -4,6 +4,8 @@ import bodyParser from 'body-parser';
 import routes_demand from './src/Routes/demand_routes';
 import routes_member from './src/Routes/member_routes';
 import routes_image from './src/Routes/image_routes';
+import routes_event from './src/Routes/event_routes';
+
 
 const app = express();
 const cors = require('cors');
@@ -14,9 +16,6 @@ const morgan = require('morgan');
 const _ = require('lodash');
 const fileUpload = require('express-fileupload');
 const fs = require("fs");
-
-
-
 
 
 //connection mongoose :DB
@@ -54,6 +53,7 @@ app.use((req, res, next) => {
 routes_demand(app)
 routes_member(app)
 routes_image(app)
+routes_event(app)
 //app.use(express.static(__dirname + '../../views'));
 global.__basedir = __dirname;
 

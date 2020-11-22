@@ -27,20 +27,12 @@ export class LoginComponent implements OnInit {
       Email: [''],
       Password: [''],
     });
-<<<<<<< HEAD
-    let isLoggedIn = this.loginservice.isLoggedIn();
-
-    if (isLoggedIn) {
-      this.router.navigate(['/listeDemandes']);
-    }
-=======
     // let isLoggedIn= this.loginservice.isLoggedIn();
 
     // if (isLoggedIn) {
     //   this.router.navigate(['/listeDemandes']);
     // }
 
->>>>>>> 64d7ee0713440bb46d350700731896977dde61fc
   }
   get f() {
     return this.loginForm.controls;
