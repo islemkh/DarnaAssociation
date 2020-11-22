@@ -24,6 +24,7 @@ const routes_member = (app) => {
 
     app.route('/api/UpdateMember/:id')
         .put(UpdateMember)
+        
     app.route('/api/bannirmember/:id')
         .put(BannirMember)
     //public routes
