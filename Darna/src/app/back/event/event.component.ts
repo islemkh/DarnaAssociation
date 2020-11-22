@@ -121,9 +121,9 @@ export class EventComponent implements OnInit {
   getEventByid(id) {
     this.EventService.getEvent(id).subscribe((res: EventModel) => {
       this.currentEvent = res;
-      this.currentEvent.NameEvent = res.NameEvent.substring(0, 10);
-      this.currentEvent.Description = res.Description.substring(0, 10);
-      this.currentEvent.lieu = res.lieu.substring(0, 10);
+      this.currentEvent.NameEvent = res.NameEvent;
+      this.currentEvent.Description = res.Description;
+      this.currentEvent.lieu = res.lieu;
       this.currentEvent.DateBeginEvent = res.DateBeginEvent.substring(0, 10);
       this.currentEvent.DateEndEvent = res.DateEndEvent.substring(0, 10);
       this.currentEvent.NumberMember = res.NumberMember;

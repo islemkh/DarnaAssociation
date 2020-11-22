@@ -15,7 +15,7 @@ export class EventService {
   }
   //get Event
   getEvent(id) {
-    return this.http.get(host + '/api/GetEvent/' + id);
+    return this.http.get(host + '/api/detailsEvent/' + id);
   }
   //Add Event
   AddNewEvent(obj) {

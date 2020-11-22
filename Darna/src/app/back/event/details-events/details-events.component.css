@@ -1,0 +1,14 @@
+.company_details_wrapper{
+    background-image: url(../../../../assets/images/e2.jpg);
+}
+.styleInfoEvent{
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+}
+.IconE{
+   
+    border-radius: 5px;
+    color:hsl(278, 61%, 57%)  ;
+  }
+  

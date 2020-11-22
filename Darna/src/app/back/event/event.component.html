@@ -1,28 +1,45 @@
-<div class="job_filter_listing_wrapper jb_cover cover" >
-    <div class="slider_small_shape44">
-        <img
-          src="../../../../assets/images/p2.png"
-          class="img-responsive"
-          alt="img"/>
-      </div>
+<div class="job_filter_listing_wrapper jb_cover cover">
+  <div class="slider_small_shape44">
+    <img
+      src="../../../../assets/images/p2.png"
+      class="img-responsive"
+      alt="img"
+    />
+  </div>
   <div class="container">
-    <div class="row" style="margin-left: -30%;">
+    <div class="row" style="margin-left: -30%">
       <div
         class="col-lg-3 col-md-12 col-sm-12 col-12 d-none d-sm-none d-md-none d-lg-block d-xl-block"
       ></div>
       <div class="col-lg-9 col-md-12 col-sm-12 col-12">
         <div class="job_listing_left_side jb_cover">
-          <div class="filter-area jb_cover"  style="background-color: white;">
+          <div class="filter-area jb_cover" style="background-color: white">
             <div class="list-grid">
               <ul class="nav nav-tabs">
-                <li class="nav-item">               
+                <li class="nav-item"></li>
+                <li class="nav-item">
+                  <button
+                    type="button"
+                    class="btn btn-primary addbtn"
+                    (click)="openModal(AddNewEvent)"
+                  >
+                    <i class="fas fa-plus"> </i> Nouveau événement
+                  </button>
+                </li>
+
+                <li class="nav-item">
+                  <a class="nav-link active" data-toggle="tab" href="#list"
+                    ><i class="flaticon-list"></i
+                  ></a>
                 </li>
                 <li class="nav-item">
                   <button
                     type="button"
                     class="btn btn-primary addbtn"
-                    (click)="openModal(AddNewEvent)">
-                    <i class="fas fa-plus"> </i> Nouveau événement</button>
+                    (click)="openModal(AddNewEvent)"
+                  >
+                    <i class="fas fa-plus"> </i> Nouveau Event
+                  </button>
                 </li>
               </ul>
             </div>
@@ -32,74 +49,171 @@
           </div>
           <div class="tab-content btc_shop_index_content_tabs_main jb_cover">
             <div id="list" class="tab-pane active">
-              <div class="row"  *ngFor="let el of events | paginate: { itemsPerPage: 3, currentPage: pm }" style="background-color: white;">
+              <div
+                class="row"
+                *ngFor="
+                  let el of events
+                    | paginate: { itemsPerPage: 3, currentPage: pm }
+                "
+                style="background-color: white"
+              >
                 <div class="col-lg-12 col-md-12 col-sm-12 col-12">
                   <div class="job_listing_left_fullwidth jb_cover">
-                    <div class="row" >
-                        <div class="col" style="margin-left:10%;" class="bgSizeContain">
-                          <img
-                            class="img-fluid images_event "
-                            width="790"
-                            height="410"
-                            src="http://localhost:8080/api/getfile/{{
-                              el?.photo
-                            }}"
-                            alt="image event"
-                          />
-                        </div>
-                        <br />
+                    <div class="row">
+                      <div
+                        class="col"
+                        style="margin-left: 10%"
+                        class="bgSizeContain"
+                      >
+                        <img
+                          class="img-fluid images_event"
+                          width="790"
+                          height="410"
+                          src="http://localhost:8080/api/getfile/{{
+                            el?.photo
+                          }}"
+                          alt="image event"
+                        />
                       </div>
-                      <div class="col">
+                      <br />
+                    </div>
+                    <div class="col">
                       <div class="jp_job_post_right_cont">
-                        <h2 style="color:#1dcec8">{{ el.NameEvent }}</h2>
+                        <h2 style="color: #1dcec8">{{ el.NameEvent }}</h2>
                         <br />
                         <h6>{{ el.Description }}</h6>
                         <br />
                         <ul>
                           <li>
-                            <i class="fa fa-calendar"></i>&nbsp;{{DateBeginEvent }} / {{DateEndEvent}}
+                            <i class="fa fa-calendar"></i>&nbsp;{{
+                              DateBeginEvent
+                            }}
+                            / {{ DateEndEvent }}
                           </li>
                           <li>
-                            <i class="flaticon-location-pointer"></i>&nbsp;{{el.lieu}}
+                            <i class="flaticon-location-pointer"></i>&nbsp;{{
+                              el.lieu
+                            }}
                           </li>
                         </ul>
                       </div>
                     </div>
                     <div class="col">
-                        <div class="jp_job_post_right_btn_wrapper jb_cover">
-                            <ul>
-                              <li> <a role="button1" (click)="Publier()">
-                                    <i class="fa fa-info fa-lg IconToAcceptDemande"></i>
-                                  </a>
-                                </li> 
-                                <li> <a role="button2" (click)="Publier()">
-                                    <i class="fa fa-check fa-lg IconToAcceptDemande"></i>
-                                  </a>
-                                </li> <ul>
-                                </ul>
-                                <li *ngIf="role === 'member' || role === 'admin'"> 
-                                  <a role="button3" (click)="DeleteEvent(el._id)">
-                                    <i class="fas fa-trash-alt fa-lg IconToDeleteDemande"> </i>
-                                  </a>
-                                </li> 
-                                <li *ngIf="role === 'member' || role === 'admin'"><a  (click)="openModal(updateEvent); getEventByid(el._id)" data-toggle="modal" data-target="#myModal051">Modifier</a></li>
-                                <li *ngIf="role === 'member'"> <a href="#" data-toggle="modal" data-target="#myModal051">Participer</a></li>
-                            </ul>
-                        </div>
+                      <<<<<<< HEAD
+                      <div class="jp_job_post_right_btn_wrapper jb_cover">
+                        <ul>
+                          <li>
+                            <a role="button1" (click)="Publier()">
+                              <i
+                                class="fa fa-info fa-lg IconToAcceptDemande"
+                              ></i>
+                            </a>
+                          </li>
+                          <li>
+                            <a role="button2" (click)="Publier()">
+                              <i
+                                class="fa fa-check fa-lg IconToAcceptDemande"
+                              ></i>
+                            </a>
+                          </li>
+                          <ul></ul>
+                          <li *ngIf="role === 'member' || role === 'admin'">
+                            <a role="button3" (click)="DeleteEvent(el._id)">
+                              <i
+                                class="fas fa-trash-alt fa-lg IconToDeleteDemande"
+                              >
+                              </i>
+                            </a>
+                          </li>
+                          <li *ngIf="role === 'member' || role === 'admin'">
+                            <a
+                              (click)="
+                                openModal(updateEvent); getEventByid(el._id)
+                              "
+                              data-toggle="modal"
+                              data-target="#myModal051"
+                              >Modifier</a
+                            >
+                          </li>
+                          <li *ngIf="role === 'member'">
+                            <a
+                              href="#"
+                              data-toggle="modal"
+                              data-target="#myModal051"
+                              >Participer</a
+                            >
+                          </li>
+                        </ul>
+                      </div>
                       <div
                         class="modal fade apply_job_popup"
                         id="myModal1"
                         role="dialog"
                       >
-                        <div class="modal-dialog">
-                          <div class="modal-content">
-                            <button
-                              type="button"
-                              class="close"
-                              data-dismiss="modal"
-                            >
-                              &times;
-                            </button>
+                        
+                        <div class="jp_job_post_right_btn_wrapper jb_cover">
+                          <ul>
+                            <li>
+                              <a
+                                role="button1"
+                                routerLink="/detailsEvent/{{ el._id }}"
+                              >
+                                <i
+                                  class="fa fa-info fa-lg IconToAcceptDemande"
+                                ></i>
+                              </a>
+                            </li>
+                            <li>
+                              <a role="button2" (click)="Publier()">
+                                <i
+                                  class="fa fa-check fa-lg IconToAcceptDemande"
+                                ></i>
+                              </a>
+                            </li>
+                            <ul></ul>
+                            <li *ngIf="role === 'member' || role === 'admin'">
+                              <a role="button3" (click)="DeleteEvent(el._id)">
+                                <i
+                                  class="fas fa-trash-alt fa-lg IconToDeleteDemande"
+                                >
+                                </i>
+                              </a>
+                            </li>
+                            <li *ngIf="role === 'member' || role === 'admin'">
+                              <a
+                                (click)="
+                                  openModal(updateEvent); getEventByid(el._id)
+                                "
+                                data-toggle="modal"
+                                data-target="#myModal051"
+                                >Modifier</a
+                              >
+                            </li>
+                            <li *ngIf="role === 'member'">
+                              <a
+                                href="#"
+                                data-toggle="modal"
+                                data-target="#myModal051"
+                                >Participer</a
+                              >
+                            </li>
+                          </ul>
+                        </div>
+                        <div
+                          class="modal fade apply_job_popup"
+                          id="myModal1"
+                          role="dialog"
+                        >
+                          <div class="modal-dialog">
+                            <div class="modal-content">
+                              <button
+                                type="button"
+                                class="close"
+                                data-dismiss="modal"
+                              >
+                                &times;
+                              </button>
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -108,86 +222,61 @@
                 </div>
               </div>
             </div>
+            
           </div>
-          
-     <!--      <div class="blog_pagination_section jb_cover">
-            <ul>
-              <li>
-                <a href="#" class="prev">
-                  <i class="flaticon-left-arrow"></i>
-                </a>
-              </li>
-              <li><a href="#">1</a></li>
-              <li class="third_pagger"><a href="#">2</a></li>
-              <li class="d-block d-sm-block d-md-block d-lg-block">
-                <a href="#">3</a>
-              </li>
-              <li class="d-none d-sm-block d-md-block d-lg-block">
-                <a href="#">...</a>
-              </li>
-              <li class="d-none d-sm-block d-md-block d-lg-block">
-                <a href="#">6</a>
-              </li>
-
-              <li>
-                <a href="#" class="next">
-                  <i class="flaticon-right-arrow"></i>
-                </a>
-              </li>
-            </ul>
-          </div> -->
-        </div>
-        <div class="counter_jbbb2 jb_cover">
+          <div class="counter_jbbb2 jb_cover">
             <img
               src="../../../../assets/images/line3.png"
               class="img-responsive"
               alt="img"
             />
           </div>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
-<div style="float: right">
-  <pagination-controls (pageChange)="pm = $event"></pagination-controls>
-</div>
-<ngx-spinner
-  bdColor="rgba(51, 51, 51, 0.8)"
-  size="default"
-  type="ball-spin-clockwise"
->
-  <p style="color: white">Please Wait.</p>
-</ngx-spinner>
-<!-- Add event  -->
-<ng-template #AddNewEvent>
-  <div class="modal-body text-center">
-    <h3>Ajouter Event</h3>
-    <form [formGroup]="addFormEvent" (ngSubmit)="AjouterEvent()">
-      <div class="login_form_wrapper signup_wrapper">
-        <div class="form-group icon_form comments_form">
-          <input
-            type="text"
-            class="form-control require"
-            formControlName="NameEvent"
-            placeholder="Nom event*"
-            [ngClass]="{
-              'is-invalid': submitted && AddEventControls.NameEvent.errors
-            }"
-            required
-          />
-          <i class="fa fa-pencil"></i>
-          <div
-            *ngIf="submitted && AddEventControls.NameEvent.errors"
-            class="invalid-feedback"
-          >
-            <div *ngIf="AddEventControls.NameEvent.errors.required">
-              * ce champ obligatoire
+  <div style="float: right">
+    <pagination-controls (pageChange)="pm = $event"></pagination-controls>
+  </div>
+  <ngx-spinner
+    bdColor="rgba(51, 51, 51, 0.8)"
+    size="default"
+    type="ball-spin-clockwise"
+  >
+    <p style="color: white">Please Wait.</p>
+  </ngx-spinner>
+  <!-- Add event  -->
+  <ng-template #AddNewEvent>
+    <div class="modal-body text-center">
+      <h3>Ajouter Event</h3>
+      <form [formGroup]="addFormEvent" (ngSubmit)="AjouterEvent()">
+        <div class="login_form_wrapper signup_wrapper">
+          <div class="form-group icon_form comments_form">
+            <input
+              type="text"
+              class="form-control require"
+              formControlName="NameEvent"
+              placeholder="Nom event*"
+              [ngClass]="{
+                'is-invalid': submitted && AddEventControls.NameEvent.errors
+              }"
+              required
+            />
+            <i class="fa fa-pencil"></i>
+            <div
+              *ngIf="submitted && AddEventControls.NameEvent.errors"
+              class="invalid-feedback"
+            >
+              <div *ngIf="AddEventControls.NameEvent.errors.required">
+                * ce champ obligatoire
+              </div>
             </div>
           </div>
-        </div>
-        <div class="form-group">
-            <label for="signup-Cpassword" class="control-label sr-only">Photo</label>
+          <div class="form-group">
+            <label for="signup-Cpassword" class="control-label sr-only"
+              >Photo</label
+            >
             <input
               type="file"
               id="file-input"
@@ -196,153 +285,364 @@
               (change)="recuperFile($event); AjouterEvent()"
             />
           </div>
-        <div class="form-group icon_form comments_form">
-          <textarea
-            class="textarea"
-            rows="5"
-            maxlength="100"
-            formControlName="Description"
-            class="form-control require"
-            placeholder="Description evenement"
-            [ngClass]="{
-              'is-invalid': submitted && AddEventControls.Description.errors
-            }"
-          ></textarea>
-          <i class="fa fa-pencil"></i>
-          <div
-            *ngIf="submitted && AddEventControls.Description.errors"
-            class="invalid-feedback"
-          ></div>
-        </div>
-        <div class="row">
-        <div class="form-group icon_form comments_form col-md-6">
-            <label>Date debut Evenement</label>
-          <input
-            type="date"
-            class="form-control require"
-            formControlName="DateBeginEvent"
-            title="Date debut event"
-            [ngClass]="{
-              'is-invalid': submitted && AddEventControls.DateBeginEvent.errors
-            }"
-            required
-          />
-          <div
-            *ngIf="submitted && AddEventControls.DateBeginEvent.errors"
-            class="invalid-feedback"
-          >
-            <div *ngIf="AddEventControls.DateBeginEvent.errors.required">
-              * ce champ obligatoire
-            </div>
+          <div class="form-group icon_form comments_form">
+            <textarea
+              class="textarea"
+              rows="5"
+              maxlength="100"
+              formControlName="Description"
+              class="form-control require"
+              placeholder="Description evenement"
+              [ngClass]="{
+                'is-invalid': submitted && AddEventControls.Description.errors
+              }"
+            ></textarea>
+            <i class="fa fa-pencil"></i>
+            <div
+              *ngIf="submitted && AddEventControls.Description.errors"
+              class="invalid-feedback"
+            ></div>
           </div>
-        </div>
-        <div class="form-group icon_form comments_form col-md-6">
-            <label>Date Fin Evenement</label>
-          <input
-            type="date"
-            class="form-control require"
-            formControlName="DateEndEvent"
-            title="Date fin event"
-            [ngClass]="{
-              'is-invalid': submitted && AddEventControls.DateEndEvent.errors
-            }"
-            required
-          />
-          <div
-            *ngIf="submitted && AddEventControls.DateEndEvent.errors"
-            class="invalid-feedback"
-          >
-            <div *ngIf="AddEventControls.DateEndEvent.errors.required">
-              * ce champ obligatoire
-            </div>
-          </div>
-        </div>
-    </div>
-        <div class="form-group icon_form comments_form">
-          <input
-            type="number"
-            class="form-control require"
-            formControlName="NumberMember"
-            placeholder="Nombre des participant*"
-            [ngClass]="{
-              'is-invalid': submitted && AddEventControls.NumberMember.errors
-            }"
-          />
+          <div class="row">
+            <div class="form-group icon_form comments_form col-md-6">
+              <label>Date debut Evenement</label>
+              <input
+                type="date"
+                class="form-control require"
+                formControlName="DateBeginEvent"
+                title="Date debut event"
+                [ngClass]="{
+                  'is-invalid':
+                    submitted && AddEventControls.DateBeginEvent.errors
+                }"
+                required
+              />
+              <div
+                *ngIf="submitted && AddEventControls.DateBeginEvent.errors"
+                class="invalid-feedback"
+              >
+                <div *ngIf="AddEventControls.DateBeginEvent.errors.required">
+                  * ce champ obligatoire
+                </div>
+              </div>
+              <div class="form-group icon_form comments_form col-md-6">
+                <label>Date Fin Evenement</label>
+                <input
+                  type="date"
+                  class="form-control require"
+                  formControlName="DateEndEvent"
+                  title="Date fin event"
+                  [ngClass]="{
+                    'is-invalid':
+                      submitted && AddEventControls.DateEndEvent.errors
+                  }"
+                  required
+                />
+                <div
+                  *ngIf="submitted && AddEventControls.DateEndEvent.errors"
+                  class="invalid-feedback"
+                >
+                  <div *ngIf="AddEventControls.DateEndEvent.errors.required">
+                    * ce champ obligatoire
+                  </div>
+                </div>
+              </div>
+              <div class="form-group icon_form comments_form">
+                <input
+                  type="number"
+                  class="form-control require"
+                  formControlName="NumberMember"
+                  placeholder="Nombre des participant*"
+                  [ngClass]="{
+                    'is-invalid':
+                      submitted && AddEventControls.NumberMember.errors
+                  }"
+                />
 
-          <div
-            *ngIf="submitted && AddEventControls.NumberMember.errors"
-            class="invalid-feedback"
-          >
-            <div *ngIf="AddEventControls.NumberMember.errors.required">
-              * ce champ obligatoire
+                <div
+                  *ngIf="submitted && AddEventControls.NumberMember.errors"
+                  class="invalid-feedback"
+                >
+                  <div *ngIf="AddEventControls.NumberMember.errors.required">
+                    * ce champ obligatoire
+                  </div>
+                </div>
+              </div>
+              <div class="form-group icon_form comments_form">
+                <input
+                  type="text"
+                  class="form-control require"
+                  formControlName="lieu"
+                  placeholder="lieu event*"
+                  [ngClass]="{
+                    'is-invalid': submitted && AddEventControls.lieu.errors
+                  }"
+                  required
+                />
+                <i class="fas fa-map-marker"></i>
+                <div
+                  *ngIf="submitted && AddEventControls.lieu.errors"
+                  class="invalid-feedback"
+                >
+                  <div *ngIf="AddEventControls.lieu.errors.required">
+                    * ce champ obligatoire
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="form-group icon_form comments_form col-md-6">
+                <label>Date debut inscription</label>
+                <input
+                  type="date"
+                  class="form-control require"
+                  formControlName="DateBeginInsc"
+                  [ngClass]="{
+                    'is-invalid':
+                      submitted && AddEventControls.DateBeginInsc.errors
+                  }"
+                  required
+                />
+                <div
+                  *ngIf="submitted && AddEventControls.DateBeginInsc.errors"
+                  class="invalid-feedback"
+                >
+                  <div *ngIf="AddEventControls.DateBeginInsc.errors.required">
+                    * ce champ obligatoire
+                  </div>
+                </div>
+                <div class="form-group icon_form comments_form col-md-6">
+                  <label>Date Fin inscription</label>
+                  <input
+                    type="date"
+                    class="form-control require"
+                    formControlName="DateEndInsc"
+                    title="Date Fin d'inscription membre"
+                    [ngClass]="{
+                      'is-invalid':
+                        submitted && AddEventControls.DateEndInsc.errors
+                    }"
+                    required
+                  />
+                  <div
+                    *ngIf="submitted && AddEventControls.DateEndInsc.errors"
+                    class="invalid-feedback"
+                  >
+                    <div *ngIf="AddEventControls.DateEndInsc.errors.required">
+                      * ce champ obligatoire
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-secondary annuler"
+                  (click)="modalRef.hide()"
+                >
+                  Annuler
+                </button>
+                <button type="submit" class="btn btn-primary save">
+                  Enregistrer
+                </button>
+              </div>
             </div>
           </div>
         </div>
-        <div class="form-group icon_form comments_form">
+      </form>
+    </div>
+  </ng-template>
+
+  <!-- modifier event  -->
+  <ng-template #updateEvent>
+    <div class="modal-body text-center">
+      <h3>Modifier evenement</h3>
+      <form [formGroup]="updateFormEvent" (ngSubmit)="ModifierEvent()">
+        <div class="login_form_wrapper signup_wrapper">
+          <div class="form-group icon_form comments_form">
+            <input
+              type="text"
+              class="form-control require"
+              formControlName="NameEvent"
+              placeholder="Nom de l'évenement*"
+              [ngClass]="{
+                'is-invalid': submitted && UpdatEventControls.NameEvent.errors
+              }"
+              required
+            />
+
+            <div
+              *ngIf="submitted && UpdatEventControls.NameEvent.errors"
+              class="invalid-feedback"
+            >
+              <div *ngIf="UpdatEventControls.NameEvent.errors.required">
+                * ce champ obligatoire
+              </div>
+            </div>
+          </div>
+          <div class="form-group icon_form comments_form">
+            <input
+              rows="4"
+              cols="40"
+              class="form-control require"
+              formControlName="Description"
+              placeholder="Description de l'évenement*"
+              [ngClass]="{
+                'is-invalid': submitted && UpdatEventControls.Description.errors
+              }"
+              required
+            />
+
+            <div
+              *ngIf="submitted && UpdatEventControls.Description.errors"
+              class="invalid-feedback"
+            >
+              <div *ngIf="UpdatEventControls.Description.errors.required">
+                * ce champ obligatoire
+              </div>
+            </div>
+          </div>
+          <div class="form-group icon_form comments_form">
             <input
               type="text"
               class="form-control require"
               formControlName="lieu"
-              placeholder="lieu event*"
+              placeholder="lieu de l'évenement*"
               [ngClass]="{
-                'is-invalid': submitted && AddEventControls.lieu.errors
+                'is-invalid': submitted && UpdatEventControls.lieu.errors
               }"
               required
             />
-            <i class="fas fa-map-marker "></i>
+            <i class="fas fa-map-marker"></i>
             <div
-              *ngIf="submitted && AddEventControls.lieu.errors"
+              *ngIf="submitted && UpdatEventControls.lieu.errors"
               class="invalid-feedback"
             >
-              <div *ngIf="AddEventControls.lieu.errors.required">
+              <div *ngIf="UpdatEventControls.lieu.errors.required">
                 * ce champ obligatoire
               </div>
             </div>
           </div>
-        <div class="row">
-        <div class="form-group icon_form comments_form col-md-6">
-            <label>Date debut inscription</label>
-          <input
-            type="date"
-            class="form-control require"
-            formControlName="DateBeginInsc"
-            [ngClass]="{
-              'is-invalid': submitted && AddEventControls.DateBeginInsc.errors
-            }"
-            required
-          />
-          <div
-            *ngIf="submitted && AddEventControls.DateBeginInsc.errors"
-            class="invalid-feedback"
-          >
-            <div *ngIf="AddEventControls.DateBeginInsc.errors.required">
-              * ce champ obligatoire
+          <div class="row">
+            <div class="form-group icon_form comments_form col">
+              <label>Date debut Evenement</label>
+              <input
+                type="date"
+                class="form-control require"
+                formControlName="DateBeginEvent"
+                title="Date de debut de l'événement"
+                [ngClass]="{
+                  'is-invalid':
+                    submitted && UpdatEventControls.DateBeginEvent.errors
+                }"
+                required
+              />
+              <div
+                *ngIf="submitted && UpdatEventControls.DateBeginEvent.errors"
+                class="invalid-feedback"
+              >
+                <div *ngIf="UpdatEventControls.DateBeginEvent.errors.required">
+                  * ce champ obligatoire
+                </div>
+              </div>
+            </div>
+            <div class="form-group icon_form comments_form col">
+              <label>Date fin Evenement</label>
+              <input
+                type="date"
+                class="form-control require"
+                formControlName="DateEndEvent"
+                title="Date de fin de l'événement"
+                [ngClass]="{
+                  'is-invalid':
+                    submitted && UpdatEventControls.DateEndEvent.errors
+                }"
+                required
+              />
+              <div
+                *ngIf="submitted && UpdatEventControls.DateEndEvent.errors"
+                class="invalid-feedback"
+              >
+                <div *ngIf="UpdatEventControls.DateEndEvent.errors.required">
+                  * ce champ obligatoire
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-          <div class="form-group icon_form comments_form col-md-6">
-            <label>Date Fin inscription</label>
+
+          <div class="form-group icon_form comments_form">
             <input
-              type="date"
+              type="number"
               class="form-control require"
-              formControlName="DateEndInsc"
-              title="Date Fin d'inscription membre"
+              formControlName="NumberMember"
+              placeholder="Nombre des participants*"
               [ngClass]="{
-                'is-invalid': submitted && AddEventControls.DateEndInsc.errors
+                'is-invalid':
+                  submitted && UpdatEventControls.NumberMember.errors
               }"
               required
             />
+
             <div
-              *ngIf="submitted && AddEventControls.DateEndInsc.errors"
+              *ngIf="submitted && UpdatEventControls.NumberMember.errors"
               class="invalid-feedback"
             >
-              <div *ngIf="AddEventControls.DateEndInsc.errors.required">
+              <div *ngIf="UpdatEventControls.NumberMember.errors.required">
                 * ce champ obligatoire
               </div>
             </div>
           </div>
+          <div class="row">
+            <div class="form-group icon_form comments_form col">
+              <label>Date debut inscription</label>
+              <input
+                type="date"
+                class="form-control require"
+                formControlName="DateBeginInsc"
+                placeholder="Date de debut de l'inscription*"
+                [ngClass]="{
+                  'is-invalid':
+                    submitted && UpdatEventControls.DateBeginInsc.errors
+                }"
+                required
+              />
+              <div
+                *ngIf="submitted && UpdatEventControls.DateBeginInsc.errors"
+                class="invalid-feedback"
+              >
+                <div *ngIf="UpdatEventControls.DateBeginInsc.errors.required">
+                  * ce champ obligatoire
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group icon_form comments_form col">
+              <label>Date fin inscription</label>
+              <input
+                type="date"
+                class="form-control require"
+                formControlName="DateEndInsc"
+                placeholder="Date de la fin de l'inscription*"
+                [ngClass]="{
+                  'is-invalid':
+                    submitted && UpdatEventControls.DateEndInsc.errors
+                }"
+                required
+              />
+
+              <div
+                *ngIf="submitted && UpdatEventControls.DateEndInsc.errors"
+                class="invalid-feedback"
+              >
+                <div *ngIf="UpdatEventControls.DateEndInsc.errors.required">
+                  * ce champ obligatoire
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-       
+
         <div class="modal-footer">
           <button
             type="button"
@@ -351,193 +651,9 @@
           >
             Annuler
           </button>
-          <button type="submit" class="btn btn-primary save">
-            Enregistrer
-          </button>
+          <button type="submit" class="btn btn-primary save">Modifier</button>
         </div>
-      </div>
-    </form>
-  </div>
-</ng-template>
-
-<!-- modifier event  -->
-<ng-template #updateEvent>
-  <div class="modal-body text-center">
-    <h3>Modifier evenement</h3>
-    <form [formGroup]="updateFormEvent" (ngSubmit)="ModifierEvent()">
-      <div class="login_form_wrapper signup_wrapper">
-        <div class="form-group icon_form comments_form">
-          <input
-            type="text"
-            class="form-control require"
-            formControlName="NameEvent"
-            placeholder="Nom de l'évenement*"
-            [ngClass]="{ 'is-invalid': submitted && UpdatEventControls.NameEvent.errors }"
-            required
-          />
-         
-          <div
-            *ngIf="submitted && UpdatEventControls.NameEvent.errors"
-            class="invalid-feedback"
-          >
-            <div *ngIf="UpdatEventControls.NameEvent.errors.required">
-              * ce champ obligatoire
-            </div>
-          </div>
-        </div>
-        <div class="form-group icon_form comments_form">
-          <input
-          rows=4 
-          cols=40
-          class="form-control require"
-          formControlName="Description"
-          placeholder="Description de l'évenement*"
-          [ngClass]="{ 'is-invalid': submitted && UpdatEventControls.Description.errors }"
-          required
-          
-           />
-         
-          
-          <div
-            *ngIf="submitted && UpdatEventControls.Description.errors"
-            class="invalid-feedback"
-          >
-            <div *ngIf="UpdatEventControls.Description.errors.required">
-              * ce champ obligatoire
-            </div>
-          </div>
-        </div>
-        <div class="form-group icon_form comments_form">
-          <input
-            type="text"
-            class="form-control require"
-            formControlName="lieu"
-            placeholder="lieu de l'évenement*"
-            [ngClass]="{ 'is-invalid': submitted && UpdatEventControls.lieu.errors }"
-            required
-          />
-          <i class="fas fa-map-marker "></i>
-          <div
-            *ngIf="submitted && UpdatEventControls.lieu.errors"
-            class="invalid-feedback"
-          >
-            <div *ngIf="UpdatEventControls.lieu.errors.required">
-              * ce champ obligatoire
-            </div>
-          </div>
-        </div>
-        <div class="form-group icon_form comments_form">
-          <input
-            type="date"
-            class="form-control require"
-            formControlName="DateBeginEvent"
-            title="Date de debut de l'événement"
-            [ngClass]="{
-              'is-invalid': submitted && UpdatEventControls.DateBeginEvent.errors
-            }"
-            required
-          />
-          <div
-            *ngIf="submitted && UpdatEventControls.DateBeginEvent.errors"
-            class="invalid-feedback"
-          >
-            <div *ngIf="UpdatEventControls.DateBeginEvent.errors.required">
-              * ce champ obligatoire
-            </div>
-          </div>
-        </div>
-        <div class="form-group icon_form comments_form">
-          <input
-            type="date"
-            class="form-control require"
-            formControlName="DateEndEvent"
-            title="Date de fin de l'événement"
-            [ngClass]="{
-              'is-invalid': submitted && UpdatEventControls.DateEndEvent.errors
-            }"
-            required
-          />
-          <div
-            *ngIf="submitted && UpdatEventControls.DateEndEvent.errors"
-            class="invalid-feedback"
-          >
-            <div *ngIf="UpdatEventControls.DateEndEvent.errors.required">
-              * ce champ obligatoire
-            </div>
-          </div>
-        </div>
-
-        <div class="form-group icon_form comments_form">
-          <input
-            type="number"
-            class="form-control require"
-            formControlName="NumberMember"
-            placeholder="Nombre des participants*"
-            [ngClass]="{ 'is-invalid': submitted && UpdatEventControls.NumberMember.errors }"
-            required
-          />
-          
-          <div
-            *ngIf="submitted && UpdatEventControls.NumberMember.errors"
-            class="invalid-feedback"
-          >
-            <div *ngIf="UpdatEventControls.NumberMember.errors.required">
-              * ce champ obligatoire
-            </div>
-          </div>
-        </div>
-
-        <div class="form-group icon_form comments_form">
-          <input
-            type="date"
-            class="form-control require"
-            formControlName="DateBeginInsc"
-            placeholder="Date de debut de l'inscription*"
-            [ngClass]="{ 'is-invalid': submitted && UpdatEventControls.DateBeginInsc.errors }"
-            required
-          />
-          
-
-          <div *ngIf="submitted && UpdatEventControls.DateBeginInsc.errors" class="invalid-feedback">
-            <div *ngIf="UpdatEventControls.DateBeginInsc.errors.required">
-              * ce champ obligatoire
-            </div>
-          </div>
-        </div>
-
-        <div class="form-group icon_form comments_form">
-          <input
-            type="date"
-            class="form-control require"
-            formControlName="DateEndInsc"
-            placeholder="Date de la fin de l'inscription*"
-            [ngClass]="{ 'is-invalid': submitted && UpdatEventControls.DateEndInsc.errors }"
-            required
-          />
-          
-          <div
-            *ngIf="submitted && UpdatEventControls.DateEndInsc.errors"
-            class="invalid-feedback"
-          >
-            <div *ngIf="UpdatEventControls.DateEndInsc.errors.required">
-              * ce champ obligatoire
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="modal-footer">
-        <button
-          type="button"
-          class="btn btn-secondary annuler"
-          (click)="modalRef.hide()"
-        >
-          Annuler
-        </button>
-        <button type="submit" class="btn btn-primary save">
-          Modifier
-        </button>
-      </div>
-    </form>
-  </div>
-</ng-template>
+      </form>
+    </div>
+  </ng-template>
+</div>
