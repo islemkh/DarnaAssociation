@@ -25,6 +25,7 @@ export class EventComponent implements OnInit {
   DateBeginEvent;
   DateEndEvent;
   role: string;
+  pm;
   constructor(  
      private router: Router,
     private formBuilder: FormBuilder,
@@ -79,7 +80,7 @@ export class EventComponent implements OnInit {
     });
   }
   
-  get Validate() {
+  get AddEventControls() {
     return this.addFormEvent.controls;
   }
   get UpdatEventControls() {
@@ -125,10 +126,19 @@ export class EventComponent implements OnInit {
       this.currentEvent.lieu = res.lieu.substring(0, 10);
       this.currentEvent.DateBeginEvent = res.DateBeginEvent.substring(0, 10);
       this.currentEvent.DateEndEvent = res.DateEndEvent.substring(0, 10);
-      this.currentEvent.NumberMember = res.NumberMember.substring(0, 10);
+      this.currentEvent.NumberMember = res.NumberMember;
       this.currentEvent.DateBeginInsc = res.DateBeginInsc.substring(0, 10);
       this.currentEvent.DateEndInsc = res.DateEndInsc.substring(0, 10);
-      
+      this.updateFormEvent.setValue({
+        NameEvent: this.currentEvent.NameEvent,
+        Description: this.currentEvent.Description,
+        lieu: this.currentEvent.lieu,
+        DateBeginEvent: this.currentEvent.DateBeginEvent,
+        DateEndEvent: this.currentEvent.DateEndEvent,
+        NumberMember: this.currentEvent.NumberMember,
+        DateBeginInsc: this.currentEvent.DateBeginInsc,
+        DateEndInsc: this.currentEvent.DateEndInsc
+      });
     });
   }
   Publier(){

@@ -15,35 +15,32 @@
           <div class="filter-area jb_cover"  style="background-color: white;">
             <div class="list-grid">
               <ul class="nav nav-tabs">
-                <li class="nav-item">
-                  <a class="nav-link active" data-toggle="tab" href="#list"
-                    ><i class="flaticon-list"></i
-                  ></a>
+                <li class="nav-item">               
                 </li>
                 <li class="nav-item">
                   <button
                     type="button"
                     class="btn btn-primary addbtn"
-                    (click)="openModal(AddNewEvent)"
-                  >
-                    <i class="fas fa-plus"> </i> Nouveau Event
-                  </button>
+                    (click)="openModal(AddNewEvent)">
+                    <i class="fas fa-plus"> </i> Nouveau événement</button>
                 </li>
               </ul>
             </div>
             <div class="showpro">
-              <p>Listes des Evenements</p>
+              <p>Liste des événements</p>
             </div>
           </div>
           <div class="tab-content btc_shop_index_content_tabs_main jb_cover">
             <div id="list" class="tab-pane active">
-              <div class="row"  *ngFor="let el of events" style="background-color: white;">
+              <div class="row"  *ngFor="let el of events | paginate: { itemsPerPage: 3, currentPage: pm }" style="background-color: white;">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-12">
                   <div class="job_listing_left_fullwidth jb_cover">
                     <div class="row" >
                         <div class="col" style="margin-left:10%;" class="bgSizeContain">
                           <img
                             class="img-fluid images_event "
+                            width="790"
+                            height="410"
                             src="http://localhost:8080/api/getfile/{{
                               el?.photo
                             }}"
@@ -54,7 +51,7 @@
                       </div>
                       <div class="col">
                       <div class="jp_job_post_right_cont">
-                        <h4>{{ el.NameEvent }}</h4>
+                        <h2 style="color:#1dcec8">{{ el.NameEvent }}</h2>
                         <br />
                         <h6>{{ el.Description }}</h6>
                         <br />
@@ -85,7 +82,7 @@
                                     <i class="fas fa-trash-alt fa-lg IconToDeleteDemande"> </i>
                                   </a>
                                 </li> 
-                                <li *ngIf="role === 'member' || role === 'admin'"><a  (click)="openModal(updateEvent)" data-toggle="modal" data-target="#myModal051">Modifier</a></li>
+                                <li *ngIf="role === 'member' || role === 'admin'"><a  (click)="openModal(updateEvent); getEventByid(el._id)" data-toggle="modal" data-target="#myModal051">Modifier</a></li>
                                 <li *ngIf="role === 'member'"> <a href="#" data-toggle="modal" data-target="#myModal051">Participer</a></li>
                             </ul>
                         </div>
@@ -113,7 +110,7 @@
             </div>
           </div>
           
-          <div class="blog_pagination_section jb_cover">
+     <!--      <div class="blog_pagination_section jb_cover">
             <ul>
               <li>
                 <a href="#" class="prev">
@@ -138,7 +135,7 @@
                 </a>
               </li>
             </ul>
-          </div>
+          </div> -->
         </div>
         <div class="counter_jbbb2 jb_cover">
             <img
@@ -152,6 +149,17 @@
   </div>
 </div>
 
+<div style="float: right">
+  <pagination-controls (pageChange)="pm = $event"></pagination-controls>
+</div>
+<ngx-spinner
+  bdColor="rgba(51, 51, 51, 0.8)"
+  size="default"
+  type="ball-spin-clockwise"
+>
+  <p style="color: white">Please Wait.</p>
+</ngx-spinner>
+<!-- Add event  -->
 <ng-template #AddNewEvent>
   <div class="modal-body text-center">
     <h3>Ajouter Event</h3>
@@ -164,16 +172,16 @@
             formControlName="NameEvent"
             placeholder="Nom event*"
             [ngClass]="{
-              'is-invalid': submitted && Validate.NameEvent.errors
+              'is-invalid': submitted && AddEventControls.NameEvent.errors
             }"
             required
           />
           <i class="fa fa-pencil"></i>
           <div
-            *ngIf="submitted && Validate.NameEvent.errors"
+            *ngIf="submitted && AddEventControls.NameEvent.errors"
             class="invalid-feedback"
           >
-            <div *ngIf="Validate.NameEvent.errors.required">
+            <div *ngIf="AddEventControls.NameEvent.errors.required">
               * ce champ obligatoire
             </div>
           </div>
@@ -197,12 +205,12 @@
             class="form-control require"
             placeholder="Description evenement"
             [ngClass]="{
-              'is-invalid': submitted && Validate.Description.errors
+              'is-invalid': submitted && AddEventControls.Description.errors
             }"
           ></textarea>
           <i class="fa fa-pencil"></i>
           <div
-            *ngIf="submitted && Validate.Description.errors"
+            *ngIf="submitted && AddEventControls.Description.errors"
             class="invalid-feedback"
           ></div>
         </div>
@@ -215,15 +223,15 @@
             formControlName="DateBeginEvent"
             title="Date debut event"
             [ngClass]="{
-              'is-invalid': submitted && Validate.DateBeginEvent.errors
+              'is-invalid': submitted && AddEventControls.DateBeginEvent.errors
             }"
             required
           />
           <div
-            *ngIf="submitted && Validate.DateBeginEvent.errors"
+            *ngIf="submitted && AddEventControls.DateBeginEvent.errors"
             class="invalid-feedback"
           >
-            <div *ngIf="Validate.DateBeginEvent.errors.required">
+            <div *ngIf="AddEventControls.DateBeginEvent.errors.required">
               * ce champ obligatoire
             </div>
           </div>
@@ -236,15 +244,15 @@
             formControlName="DateEndEvent"
             title="Date fin event"
             [ngClass]="{
-              'is-invalid': submitted && Validate.DateEndEvent.errors
+              'is-invalid': submitted && AddEventControls.DateEndEvent.errors
             }"
             required
           />
           <div
-            *ngIf="submitted && Validate.DateEndEvent.errors"
+            *ngIf="submitted && AddEventControls.DateEndEvent.errors"
             class="invalid-feedback"
           >
-            <div *ngIf="Validate.DateEndEvent.errors.required">
+            <div *ngIf="AddEventControls.DateEndEvent.errors.required">
               * ce champ obligatoire
             </div>
           </div>
@@ -257,15 +265,15 @@
             formControlName="NumberMember"
             placeholder="Nombre des participant*"
             [ngClass]="{
-              'is-invalid': submitted && Validate.NumberMember.errors
+              'is-invalid': submitted && AddEventControls.NumberMember.errors
             }"
           />
 
           <div
-            *ngIf="submitted && Validate.NumberMember.errors"
+            *ngIf="submitted && AddEventControls.NumberMember.errors"
             class="invalid-feedback"
           >
-            <div *ngIf="Validate.NumberMember.errors.required">
+            <div *ngIf="AddEventControls.NumberMember.errors.required">
               * ce champ obligatoire
             </div>
           </div>
@@ -277,16 +285,16 @@
               formControlName="lieu"
               placeholder="lieu event*"
               [ngClass]="{
-                'is-invalid': submitted && Validate.lieu.errors
+                'is-invalid': submitted && AddEventControls.lieu.errors
               }"
               required
             />
             <i class="fas fa-map-marker "></i>
             <div
-              *ngIf="submitted && Validate.lieu.errors"
+              *ngIf="submitted && AddEventControls.lieu.errors"
               class="invalid-feedback"
             >
-              <div *ngIf="Validate.lieu.errors.required">
+              <div *ngIf="AddEventControls.lieu.errors.required">
                 * ce champ obligatoire
               </div>
             </div>
@@ -299,15 +307,15 @@
             class="form-control require"
             formControlName="DateBeginInsc"
             [ngClass]="{
-              'is-invalid': submitted && Validate.DateBeginInsc.errors
+              'is-invalid': submitted && AddEventControls.DateBeginInsc.errors
             }"
             required
           />
           <div
-            *ngIf="submitted && Validate.DateBeginInsc.errors"
+            *ngIf="submitted && AddEventControls.DateBeginInsc.errors"
             class="invalid-feedback"
           >
-            <div *ngIf="Validate.DateBeginInsc.errors.required">
+            <div *ngIf="AddEventControls.DateBeginInsc.errors.required">
               * ce champ obligatoire
             </div>
           </div>
@@ -320,15 +328,15 @@
               formControlName="DateEndInsc"
               title="Date Fin d'inscription membre"
               [ngClass]="{
-                'is-invalid': submitted && Validate.DateEndInsc.errors
+                'is-invalid': submitted && AddEventControls.DateEndInsc.errors
               }"
               required
             />
             <div
-              *ngIf="submitted && Validate.DateEndInsc.errors"
+              *ngIf="submitted && AddEventControls.DateEndInsc.errors"
               class="invalid-feedback"
             >
-              <div *ngIf="Validate.DateEndInsc.errors.required">
+              <div *ngIf="AddEventControls.DateEndInsc.errors.required">
                 * ce champ obligatoire
               </div>
             </div>
@@ -418,7 +426,6 @@
             </div>
           </div>
         </div>
-
         <div class="form-group icon_form comments_form">
           <input
             type="date"
