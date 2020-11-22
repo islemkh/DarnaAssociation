@@ -7,8 +7,10 @@
     flex-direction: row;
 }
 .IconE{
-   
     border-radius: 5px;
     color:hsl(278, 61%, 57%)  ;
+  }
+  .cover{
+    background-color: #f1efff;
   }
   

@@ -90,7 +90,7 @@
             *ngIf="!isLoggedIn || role === 'member'"
             class="has-mega gc_main_navigation kv_sub_menu green_sub_menu blue_sub_menu"
           >
-            <a href="#" class="gc_main_navigation"> Nous aider</a>
+            <a  routerLink="/Event" class="gc_main_navigation"> Nos Actions</a>
           </li>
           <li class="has-mega gc_main_navigation">
             <a href="#" class="gc_main_navigation">News</a>
@@ -99,10 +99,7 @@
           <li>
             <a href="contact_us.html" class="gc_main_navigation">contact</a>
           </li>
-          <li
-          *ngIf="role === 'admin'"
-          class="has-mega gc_main_navigation kv_sub_menu green_sub_menu blue_sub_menu"
-        >
+          <li *ngIf="role === 'admin'" class="has-mega gc_main_navigation kv_sub_menu green_sub_menu blue_sub_menu" >
           <a routerLink="/Event" class="gc_main_navigation">Nos Actions</a>
         </li>
           <li

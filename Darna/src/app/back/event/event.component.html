@@ -3,8 +3,7 @@
     <img
       src="../../../../assets/images/p2.png"
       class="img-responsive"
-      alt="img"
-    />
+      alt="img"/>
   </div>
   <div class="container">
     <div class="row" style="margin-left: -30%">
@@ -27,20 +26,7 @@
                   </button>
                 </li>
 
-                <li class="nav-item">
-                  <a class="nav-link active" data-toggle="tab" href="#list"
-                    ><i class="flaticon-list"></i
-                  ></a>
-                </li>
-                <li class="nav-item">
-                  <button
-                    type="button"
-                    class="btn btn-primary addbtn"
-                    (click)="openModal(AddNewEvent)"
-                  >
-                    <i class="fas fa-plus"> </i> Nouveau Event
-                  </button>
-                </li>
+                
               </ul>
             </div>
             <div class="showpro">
@@ -63,8 +49,7 @@
                       <div
                         class="col"
                         style="margin-left: 10%"
-                        class="bgSizeContain"
-                      >
+                        class="bgSizeContain" >
                         <img
                           class="img-fluid images_event"
                           width="790"
@@ -79,138 +64,63 @@
                     </div>
                     <div class="col">
                       <div class="jp_job_post_right_cont">
-                        <h2 style="color: #1dcec8">{{ el.NameEvent }}</h2>
+                        <h2 style="color: #1dcec8;font-family:'Lucida Console'">{{ el.NameEvent }}</h2>
                         <br />
                         <h6>{{ el.Description }}</h6>
                         <br />
                         <ul>
                           <li>
-                            <i class="fa fa-calendar"></i>&nbsp;{{
-                              DateBeginEvent
-                            }}
-                            / {{ DateEndEvent }}
+                            <i class="fa fa-calendar"></i>&nbsp;{{ DateBeginEvent }} / {{ DateEndEvent }}
                           </li>
                           <li>
-                            <i class="flaticon-location-pointer"></i>&nbsp;{{
-                              el.lieu
-                            }}
+                            <i class="flaticon-location-pointer"></i>&nbsp;{{ el.lieu}}
                           </li>
                         </ul>
                       </div>
                     </div>
                     <div class="col">
-                      <<<<<<< HEAD
                       <div class="jp_job_post_right_btn_wrapper jb_cover">
                         <ul>
-                          <li>
-                            <a role="button1" (click)="Publier()">
-                              <i
-                                class="fa fa-info fa-lg IconToAcceptDemande"
-                              ></i>
+                          <li *ngIf="role === 'admin'">
+                            <a role="button1" routerLink="/detailsEvent/{{el._id }}">
+                              <i class="fa fa-info fa-lg IconToAcceptDemande"></i>
                             </a>
                           </li>
-                          <li>
+                          <li *ngIf="role === 'admin'">
                             <a role="button2" (click)="Publier()">
-                              <i
-                                class="fa fa-check fa-lg IconToAcceptDemande"
-                              ></i>
+                              <i class="fa fa-check fa-lg IconToAcceptDemande" ></i>
                             </a>
                           </li>
                           <ul></ul>
-                          <li *ngIf="role === 'member' || role === 'admin'">
+                          <li *ngIf="role === 'admin'">
                             <a role="button3" (click)="DeleteEvent(el._id)">
-                              <i
-                                class="fas fa-trash-alt fa-lg IconToDeleteDemande"
-                              >
+                              <i class="fas fa-trash-alt fa-lg IconToDeleteDemande">
                               </i>
                             </a>
                           </li>
-                          <li *ngIf="role === 'member' || role === 'admin'">
-                            <a
-                              (click)="
-                                openModal(updateEvent); getEventByid(el._id)
-                              "
+                          <li *ngIf="role === 'admin'">
+                            <a (click)=" openModal(updateEvent); getEventByid(el._id)"
                               data-toggle="modal"
-                              data-target="#myModal051"
-                              >Modifier</a
-                            >
+                              data-target="#myModal051" >Modifier</a>
                           </li>
-                          <li *ngIf="role === 'member'">
-                            <a
-                              href="#"
-                              data-toggle="modal"
-                              data-target="#myModal051"
-                              >Participer</a
-                            >
+                          <li *ngIf="role === 'member'" style="margin-top:3%;float:left">
+                            <a href="#" data-toggle="modal" data-target="#myModal051">Participer</a>
+                          </li>
+                          <li *ngIf="role === 'member'" style="margin-top:3%;">
+                            <a routerLink="/detailsEvent/{{el._id }}" data-toggle="modal" data-target="#myModal051">détails</a>
                           </li>
                         </ul>
                       </div>
                       <div
                         class="modal fade apply_job_popup"
                         id="myModal1"
-                        role="dialog"
-                      >
-                        
-                        <div class="jp_job_post_right_btn_wrapper jb_cover">
-                          <ul>
-                            <li>
-                              <a
-                                role="button1"
-                                routerLink="/detailsEvent/{{ el._id }}"
-                              >
-                                <i
-                                  class="fa fa-info fa-lg IconToAcceptDemande"
-                                ></i>
-                              </a>
-                            </li>
-                            <li>
-                              <a role="button2" (click)="Publier()">
-                                <i
-                                  class="fa fa-check fa-lg IconToAcceptDemande"
-                                ></i>
-                              </a>
-                            </li>
-                            <ul></ul>
-                            <li *ngIf="role === 'member' || role === 'admin'">
-                              <a role="button3" (click)="DeleteEvent(el._id)">
-                                <i
-                                  class="fas fa-trash-alt fa-lg IconToDeleteDemande"
-                                >
-                                </i>
-                              </a>
-                            </li>
-                            <li *ngIf="role === 'member' || role === 'admin'">
-                              <a
-                                (click)="
-                                  openModal(updateEvent); getEventByid(el._id)
-                                "
-                                data-toggle="modal"
-                                data-target="#myModal051"
-                                >Modifier</a
-                              >
-                            </li>
-                            <li *ngIf="role === 'member'">
-                              <a
-                                href="#"
-                                data-toggle="modal"
-                                data-target="#myModal051"
-                                >Participer</a
-                              >
-                            </li>
-                          </ul>
-                        </div>
-                        <div
-                          class="modal fade apply_job_popup"
-                          id="myModal1"
-                          role="dialog"
-                        >
+                        role="dialog" >
                           <div class="modal-dialog">
                             <div class="modal-content">
                               <button
                                 type="button"
                                 class="close"
-                                data-dismiss="modal"
-                              >
+                                data-dismiss="modal">
                                 &times;
                               </button>
                             </div>
@@ -242,8 +152,7 @@
   <ngx-spinner
     bdColor="rgba(51, 51, 51, 0.8)"
     size="default"
-    type="ball-spin-clockwise"
-  >
+    type="ball-spin-clockwise">
     <p style="color: white">Please Wait.</p>
   </ngx-spinner>
   <!-- Add event  -->
@@ -274,17 +183,15 @@
             </div>
           </div>
           <div class="form-group">
-            <label for="signup-Cpassword" class="control-label sr-only"
-              >Photo</label
-            >
-            <input
-              type="file"
-              id="file-input"
-              name="Photo"
-              class="form-control"
-              (change)="recuperFile($event); AjouterEvent()"
-            />
-          </div>
+              <label for="signup-Cpassword" class="control-label sr-only">Photo</label>
+              <input
+                type="file"
+                id="file-input"
+                name="Photo"
+                class="form-control"
+                (change)="recuperFile($event); AjouterEvent()"
+              />
+            </div>
           <div class="form-group icon_form comments_form">
             <textarea
               class="textarea"
@@ -304,150 +211,145 @@
             ></div>
           </div>
           <div class="row">
-            <div class="form-group icon_form comments_form col-md-6">
+          <div class="form-group icon_form comments_form col-md-6">
               <label>Date debut Evenement</label>
+            <input
+              type="date"
+              class="form-control require"
+              formControlName="DateBeginEvent"
+              title="Date debut event"
+              [ngClass]="{
+                'is-invalid': submitted && AddEventControls.DateBeginEvent.errors
+              }"
+              required
+            />
+            <div
+              *ngIf="submitted && AddEventControls.DateBeginEvent.errors"
+              class="invalid-feedback"
+            >
+              <div *ngIf="AddEventControls.DateBeginEvent.errors.required">
+                * ce champ obligatoire
+              </div>
+            </div>
+          </div>
+          <div class="form-group icon_form comments_form col-md-6">
+              <label>Date Fin Evenement</label>
+            <input
+              type="date"
+              class="form-control require"
+              formControlName="DateEndEvent"
+              title="Date fin event"
+              [ngClass]="{
+                'is-invalid': submitted && AddEventControls.DateEndEvent.errors
+              }"
+              required
+            />
+            <div
+              *ngIf="submitted && AddEventControls.DateEndEvent.errors"
+              class="invalid-feedback"
+            >
+              <div *ngIf="AddEventControls.DateEndEvent.errors.required">
+                * ce champ obligatoire
+              </div>
+            </div>
+          </div>
+      </div>
+          <div class="form-group icon_form comments_form">
+            <input
+              type="number"
+              class="form-control require"
+              formControlName="NumberMember"
+              placeholder="Nombre des participant*"
+              [ngClass]="{
+                'is-invalid': submitted && AddEventControls.NumberMember.errors
+              }"
+            />
+  
+            <div
+              *ngIf="submitted && AddEventControls.NumberMember.errors"
+              class="invalid-feedback"
+            >
+              <div *ngIf="AddEventControls.NumberMember.errors.required">
+                * ce champ obligatoire
+              </div>
+            </div>
+          </div>
+          <div class="form-group icon_form comments_form">
+              <input
+                type="text"
+                class="form-control require"
+                formControlName="lieu"
+                placeholder="lieu event*"
+                [ngClass]="{
+                  'is-invalid': submitted && AddEventControls.lieu.errors
+                }"
+                required
+              />
+              <i class="fas fa-map-marker "></i>
+              <div
+                *ngIf="submitted && AddEventControls.lieu.errors"
+                class="invalid-feedback"
+              >
+                <div *ngIf="AddEventControls.lieu.errors.required">
+                  * ce champ obligatoire
+                </div>
+              </div>
+            </div>
+          <div class="row">
+          <div class="form-group icon_form comments_form col-md-6">
+              <label>Date debut inscription</label>
+            <input
+              type="date"
+              class="form-control require"
+              formControlName="DateBeginInsc"
+              [ngClass]="{
+                'is-invalid': submitted && AddEventControls.DateBeginInsc.errors
+              }"
+              required
+            />
+            <div
+              *ngIf="submitted && AddEventControls.DateBeginInsc.errors"
+              class="invalid-feedback"
+            >
+              <div *ngIf="AddEventControls.DateBeginInsc.errors.required">
+                * ce champ obligatoire
+              </div>
+            </div>
+          </div>
+            <div class="form-group icon_form comments_form col-md-6">
+              <label>Date Fin inscription</label>
               <input
                 type="date"
                 class="form-control require"
-                formControlName="DateBeginEvent"
-                title="Date debut event"
+                formControlName="DateEndInsc"
+                title="Date Fin d'inscription membre"
                 [ngClass]="{
-                  'is-invalid':
-                    submitted && AddEventControls.DateBeginEvent.errors
+                  'is-invalid': submitted && AddEventControls.DateEndInsc.errors
                 }"
                 required
               />
               <div
-                *ngIf="submitted && AddEventControls.DateBeginEvent.errors"
+                *ngIf="submitted && AddEventControls.DateEndInsc.errors"
                 class="invalid-feedback"
               >
-                <div *ngIf="AddEventControls.DateBeginEvent.errors.required">
+                <div *ngIf="AddEventControls.DateEndInsc.errors.required">
                   * ce champ obligatoire
                 </div>
               </div>
-              <div class="form-group icon_form comments_form col-md-6">
-                <label>Date Fin Evenement</label>
-                <input
-                  type="date"
-                  class="form-control require"
-                  formControlName="DateEndEvent"
-                  title="Date fin event"
-                  [ngClass]="{
-                    'is-invalid':
-                      submitted && AddEventControls.DateEndEvent.errors
-                  }"
-                  required
-                />
-                <div
-                  *ngIf="submitted && AddEventControls.DateEndEvent.errors"
-                  class="invalid-feedback"
-                >
-                  <div *ngIf="AddEventControls.DateEndEvent.errors.required">
-                    * ce champ obligatoire
-                  </div>
-                </div>
-              </div>
-              <div class="form-group icon_form comments_form">
-                <input
-                  type="number"
-                  class="form-control require"
-                  formControlName="NumberMember"
-                  placeholder="Nombre des participant*"
-                  [ngClass]="{
-                    'is-invalid':
-                      submitted && AddEventControls.NumberMember.errors
-                  }"
-                />
-
-                <div
-                  *ngIf="submitted && AddEventControls.NumberMember.errors"
-                  class="invalid-feedback"
-                >
-                  <div *ngIf="AddEventControls.NumberMember.errors.required">
-                    * ce champ obligatoire
-                  </div>
-                </div>
-              </div>
-              <div class="form-group icon_form comments_form">
-                <input
-                  type="text"
-                  class="form-control require"
-                  formControlName="lieu"
-                  placeholder="lieu event*"
-                  [ngClass]="{
-                    'is-invalid': submitted && AddEventControls.lieu.errors
-                  }"
-                  required
-                />
-                <i class="fas fa-map-marker"></i>
-                <div
-                  *ngIf="submitted && AddEventControls.lieu.errors"
-                  class="invalid-feedback"
-                >
-                  <div *ngIf="AddEventControls.lieu.errors.required">
-                    * ce champ obligatoire
-                  </div>
-                </div>
-              </div>
             </div>
-            <div class="row">
-              <div class="form-group icon_form comments_form col-md-6">
-                <label>Date debut inscription</label>
-                <input
-                  type="date"
-                  class="form-control require"
-                  formControlName="DateBeginInsc"
-                  [ngClass]="{
-                    'is-invalid':
-                      submitted && AddEventControls.DateBeginInsc.errors
-                  }"
-                  required
-                />
-                <div
-                  *ngIf="submitted && AddEventControls.DateBeginInsc.errors"
-                  class="invalid-feedback"
-                >
-                  <div *ngIf="AddEventControls.DateBeginInsc.errors.required">
-                    * ce champ obligatoire
-                  </div>
-                </div>
-                <div class="form-group icon_form comments_form col-md-6">
-                  <label>Date Fin inscription</label>
-                  <input
-                    type="date"
-                    class="form-control require"
-                    formControlName="DateEndInsc"
-                    title="Date Fin d'inscription membre"
-                    [ngClass]="{
-                      'is-invalid':
-                        submitted && AddEventControls.DateEndInsc.errors
-                    }"
-                    required
-                  />
-                  <div
-                    *ngIf="submitted && AddEventControls.DateEndInsc.errors"
-                    class="invalid-feedback"
-                  >
-                    <div *ngIf="AddEventControls.DateEndInsc.errors.required">
-                      * ce champ obligatoire
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="modal-footer">
-                <button
-                  type="button"
-                  class="btn btn-secondary annuler"
-                  (click)="modalRef.hide()"
-                >
-                  Annuler
-                </button>
-                <button type="submit" class="btn btn-primary save">
-                  Enregistrer
-                </button>
-              </div>
-            </div>
+          </div>
+         
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary annuler"
+              (click)="modalRef.hide()"
+            >
+              Annuler
+            </button>
+            <button type="submit" class="btn btn-primary save">
+              Enregistrer
+            </button>
           </div>
         </div>
       </form>
@@ -656,4 +558,3 @@
       </form>
     </div>
   </ng-template>
-</div>

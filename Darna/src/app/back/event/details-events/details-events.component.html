@@ -1,97 +1,105 @@
+<div class="company_details_wrapper"></div>
 
-    <div class="company_details_wrapper">
-        
-    </div>
-    <div class="webstrot_tech_detail jb_cover">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 col-md-12 col-sm-12">
-                    <div class="job_listing_left_fullwidth jb_cover">
-                        <div class="row">
-                            <div class="col-lg-8 col-md-7 col-sm-12 col-12">
-                                
-                                
-                                    <h1  style="color:#1dcec8">{{currentEvent?.NameEvent}}</h1><br/>
-
-                                    <div class="styleInfoEvent">
-                                        <h6><i class="flaticon-location-pointer IconE"></i>{{currentEvent?.lieu}}</h6>
-                                        <h6><i class="fas fa-hourglass-start IconE"></i>{{DateBeginEvent}}</h6>
-                                        <h6><i class="fas fa-hourglass-end IconE"></i>{{DateEndEvent}}</h6>
-                                    </div>
-                               
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-8 col-md-12 col-sm-12 col-12">
-                    <div class="jb_listing_single_overview jb_cover">
-                        <div class="jp_job_des jb_cover">
-                            <h2 class="job_description_heading">Description</h2>
-                            <p> {{currentEvent?.Description}}</p>
-
-                        </div>
-                        <div class="jp_job_res jb_cover">
-                            <h2 class="job_description_heading">Informations supplémentaires</h2>
-                            <p>Nombre des membres qui doivent participer : {{currentEvent.NumberMember}}</p>
-                            <br>
-                            <p>Date d debut de l'inscription des membres : {{DateBeginInsc}}</p>
-                            <br>
-                            <p>Date d debut de l'inscription des membres : {{DateEndInsc}}</p>
-
-                        </div>
-                        <div class="imgEvent">
-                            
-                                    <img src="http://localhost:8080/api/getfile/{{currentEvent?.photo}}" alt="event picture" />
-
-                               
-                        </div>
-
-                        <div class="jp_job_res jp_listing_left_wrapper jb_cover">
-                            <div class="jp_listing_left_bottom_sidebar_social_wrapper">
-                                <ul>
-                                    <li>share :</li>
-                                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-
-                                    <li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
-
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-12 col-sm-12 col-12">
-                    <div class="job_filter_category_sidebar jb_cover">
-                        <div class="job_filter_sidebar_heading jb_cover">
-                            <h1> Participants</h1>
-                        </div>
-                        <div class="job_overview_header jb_cover">
-                            <div class="jp_listing_overview_list_main_wrapper jb_cover">
-                                <div class="jp_listing_list_icon">
-                                    <i class="far fa-calendar"></i>
-                                </div>
-                                <div class="jp_listing_list_icon_cont_wrapper">
-                                    <ul>
-                                        <li>categories:</li>
-                                        <li>Design & Creative</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+<div class="webstrot_tech_detail jb_cover cover">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 col-md-12 col-sm-12">
+        <div class="job_listing_left_fullwidth jb_cover">
+          <div class="row">
+            <div class="col-lg-8 col-md-7 col-sm-12 col-12">
+              <h1 style="color: #1dcec8">{{ currentEvent?.NameEvent }}</h1>
+              <br />
+              <div class="styleInfoEvent">
+                <h6>
+                  <i class="flaticon-location-pointer IconE"></i>{{ currentEvent?.lieu }}
+                </h6>
+                <h6><i class="fas fa-hourglass-start IconE"></i> {{ DateBeginEvent }}
+                </h6>
+                <h6><i class="fas fa-hourglass-end IconE"></i> {{ DateEndEvent }}
+                </h6>
+              </div>
             </div>
+          </div>
         </div>
-    </div>
-
-
-
-    <div class="counter_jbbb2 jb_cover">
-        <img
-          src="../../../../assets/images/line3.png"
-          class="img-responsive"
-          alt="img"
-        />
       </div>
+      <div class="col-lg-8 col-md-12 col-sm-12 col-12">
+        <div class="jb_listing_single_overview jb_cover" style="background-color: white">
+          <div class="jp_job_des jb_cover">
+            <h2 class="job_description_heading">Description</h2>
+            <p>{{ currentEvent?.Description }}</p>
+          </div>
+          <div class="jp_job_res jb_cover">
+            <h2 class="job_description_heading">
+              Informations supplémentaires </h2>
+            <p> Nombre des membres qui doivent participer :
+              {{ currentEvent.NumberMember }}
+            </p>
+            <br />
+            <p>
+              Date d debut de l'inscription des membres : {{ DateBeginInsc }}
+            </p>
+            <br />
+            <p>Date d debut de l'inscription des membres : {{ DateEndInsc }}</p>
+          </div>
+          <div class="imgEvent">
+            <img
+              src="http://localhost:8080/api/getfile/{{ currentEvent?.photo }}"
+              alt="event picture"
+              width="728px"
+            />
+          </div>
+
+          <div class="jp_job_res jp_listing_left_wrapper jb_cover">
+            <div class="jp_listing_left_bottom_sidebar_social_wrapper">
+              <ul>
+                <li>Partager :</li>
+                <li>
+                  <a href="#"><i class="fab fa-facebook-f"></i></a>
+                </li>
+                <li>
+                  <a href="#"><i class="fab fa-twitter"></i></a>
+                </li>
+                <li>
+                  <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </li>
+
+                <li>
+                  <a href="#"><i class="fab fa-google-plus-g"></i></a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-12 col-sm-12 col-12">
+        <div class="job_filter_category_sidebar jb_cover">
+          <div class="job_filter_sidebar_heading jb_cover">
+            <h1>Participants</h1>
+          </div>
+          <div class="job_overview_header jb_cover" style="background-color: white">
+            <div class="jp_listing_overview_list_main_wrapper jb_cover">
+              <div class="jp_listing_list_icon">
+                <i class="far fa-user"></i>
+            
+              </div>
+              <div class="jp_listing_list_icon_cont_wrapper">
+                <ul>
+                  <li>islem khemiri</li>
+                </ul>
+                <ul>
+                    <li>emna amri</li>
+                  </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<div class="counter_jbbb2 cover">
+    <img
+      src="../../../../assets/images/line3.png"
+      class="img-responsive"
+      alt="img"
+    />
+  </div>

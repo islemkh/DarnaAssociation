@@ -110,12 +110,13 @@ export class EventComponent implements OnInit {
         .pushFileToStorage(this.filesToUpload[0])
         .subscribe((rest) => {
           console.log(rest);
-            Swal.fire('Event ajouté avec succès!', '', 'success');
-            this.getLisEvents();
-            this.modalRef.hide();
-          
+        
         });
+       
     });
+    Swal.fire('Event ajouté avec succès!', '', 'success');
+    this.getLisEvents();
+    this.modalRef.hide();
   } 
 
   getEventByid(id) {
