@@ -13,6 +13,7 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   submitted = false;
   role;
+  connectedUser;
   token: string;
   jwt: string;
   statut: string;
@@ -85,6 +86,8 @@ export class LoginComponent implements OnInit {
           }
           if (this.role === 'member') {
             this.router.navigate(['/']);
+            this.connectedUser=res.body.user.Email;
+            sessionStorage.setItem('UserConnect', this.connectedUser);
             console.log("hello member , you're connected");
           }
         }

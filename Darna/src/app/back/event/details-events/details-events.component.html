@@ -77,18 +77,14 @@
             <h1>Participants</h1>
           </div>
           <div class="job_overview_header jb_cover" style="background-color: white">
-            <div class="jp_listing_overview_list_main_wrapper jb_cover">
+            <div class="jp_listing_overview_list_main_wrapper jb_cover" *ngFor="let participant of currentEvent.participants">
               <div class="jp_listing_list_icon">
                 <i class="far fa-user"></i>
-            
               </div>
               <div class="jp_listing_list_icon_cont_wrapper">
                 <ul>
-                  <li>islem khemiri</li>
-                </ul>
-                <ul>
-                    <li>emna amri</li>
-                  </ul>
+                  <li>{{participant}}</li>
+                </ul>      
               </div>
             </div>
           </div>

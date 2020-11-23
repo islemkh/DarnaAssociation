@@ -87,8 +87,8 @@
                             </a>
                           </li>
                           <li *ngIf="role === 'admin'">
-                            <a role="button2" (click)="Publier()">
-                              <i class="fa fa-check fa-lg IconToAcceptDemande" ></i>
+                            <a role="button2" (click)="Publier()">                         
+                              publier
                             </a>
                           </li>
                           <ul></ul>
@@ -101,10 +101,11 @@
                           <li *ngIf="role === 'admin'">
                             <a (click)=" openModal(updateEvent); getEventByid(el._id)"
                               data-toggle="modal"
-                              data-target="#myModal051" >Modifier</a>
-                          </li>
-                          <li *ngIf="role === 'member'" style="margin-top:3%;float:left">
-                            <a href="#" data-toggle="modal" data-target="#myModal051">Participer</a>
+                              data-target="#myModal051" >Modifier</a> 
+                          </li> 
+                                       
+                          <li *ngIf="role === 'member' " style="margin-top:3%;float:left" >
+                            <a role="button5" (click)="part(el._id)" data-toggle="modal" data-target="#myModal051">Participer</a>
                           </li>
                           <li *ngIf="role === 'member'" style="margin-top:3%;">
                             <a routerLink="/detailsEvent/{{el._id }}" data-toggle="modal" data-target="#myModal051">détails</a>

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpRequest } from '@angular/common/http';
+import{host} from '../../../app/host'
 
-const host = 'http://localhost:8080';
 @Injectable({
   providedIn: 'root',
 })
@@ -29,7 +29,9 @@ export class EventService {
   updateEvent(id, updateform) {
     return this.http.put(host + '/api/UpdateEvent/' + id, updateform);
   }
-
+  Participate(id, userConnect) {
+    return this.http.put(host + '/api/ParticipateEvent/' + id,{userConnect});
+  }
 }
 
 

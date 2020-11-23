@@ -10,4 +10,5 @@ export class EventModel {
   DateBeginInsc;
   DateEndInsc;
   photo;
+  participants;
 }

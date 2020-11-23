@@ -6,8 +6,8 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { ImageService } from 'src/app/front/services/image.service';
 import {EventModel} from '../models/event';
 import Swal from 'sweetalert2';
-
 import { EventService } from '../service/event.service';
+
 @Component({
   selector: 'app-event',
   templateUrl: './event.component.html',
@@ -26,6 +26,8 @@ export class EventComponent implements OnInit {
   DateEndEvent;
   role: string;
   pm;
+  etat = false;
+  userConnect:string;
   constructor(  
      private router: Router,
     private formBuilder: FormBuilder,
@@ -142,8 +144,21 @@ export class EventComponent implements OnInit {
     });
   }
   Publier(){
-    
+    console.log("publier")
   }
+  part(id){
+      this.userConnect = sessionStorage.getItem('UserConnect');
+      console.log('this.userConnect: ', this.userConnect);
+      this.EventService.Participate(id,this.userConnect).subscribe((res) => {
+      }) 
+    }
+    part2(id){
+      console.log("deja participer")
+
+    }
+ 
+    
+  
   DeleteEvent(_id) {
     Swal.fire({
       title: 'êtes-vous sûr?',
