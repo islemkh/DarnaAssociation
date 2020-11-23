@@ -1,11 +1,10 @@
 import { ObjectID } from 'mongodb';
 import mongoose from 'mongoose';
 import { EventSchema } from '../Models/event';
-const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
 const Event = mongoose.model('Event', EventSchema);
 
 //Event crud
+
 //Add Event
 export const addNewEvent = (req, res) => {  
       let newEvent = new Event(req.body);
@@ -19,6 +18,7 @@ export const addNewEvent = (req, res) => {
         }
       })
     }
+    
 export const getAllEvents = (req, res) => {
   Event.find({}, (err, event) => {
     if (err) {
@@ -29,7 +29,18 @@ export const getAllEvents = (req, res) => {
     res.json(event);
   });
 };
-
+export const ParticipateEvent = (req, res) => {
+  const id = req.params.id;
+  const ObjectId = require('mongodb').ObjectID;
+  Event.findOne({ '_id': ObjectId(id) })
+    .then((event) => { 
+      console.log("les participants de cet evenement")
+      console.log(event.participants)
+      console.log(req.body)
+      event.participants.push({"emailP":req.body.userConnect,"etat":"non valide"});
+      event.save();
+    })
+};
 //affisher details d'un event
 export const getEvent = (req, res) => {
   const id = req.params.id;

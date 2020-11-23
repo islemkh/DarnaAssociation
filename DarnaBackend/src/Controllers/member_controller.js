@@ -16,7 +16,7 @@ export const addNewMember = (req, res) => {
     else {
       req.body["role"] = "member";
       req.body["statut"] = "actif";
-      req.body["Create_date"] = Date.now();;
+      req.body["Create_date"] = Date.now();
 
       let newUser = new User(req.body);
       var password = bcrypt.hashSync(req.body.Password, 10);

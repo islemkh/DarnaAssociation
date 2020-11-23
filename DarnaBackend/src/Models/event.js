@@ -34,7 +34,9 @@ export const EventSchema = new Schema({
     },
     photo: {
         type: String
-    }
+    },
+    participants: [{emailP: String, etat: String}]
+    
 }
 
 )

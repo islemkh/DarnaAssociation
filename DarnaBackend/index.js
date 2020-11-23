@@ -9,7 +9,7 @@ import routes_event from './src/Routes/event_routes';
 
 const app = express();
 const cors = require('cors');
-const PORT = 8080;
+const PORT = 8000;
 var serveStatic = require('serve-static');
 var path = require('path');
 const morgan = require('morgan');
