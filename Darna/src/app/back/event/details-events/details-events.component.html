@@ -73,15 +73,22 @@
             <h1>Participants</h1>
           </div>
           <div class="job_overview_header jb_cover" style="background-color: white">
-            <div class="jp_listing_overview_list_main_wrapper jb_cover"
-              *ngFor="let participant of currentEvent.participants">
-              <div class="jp_listing_list_icon">
+            <div class="jp_listing_overview_list_main_wrapper jb_cover" *ngFor="let p of currentEvent.participants">
+              <div *ngIf="p.etat!=='refusé'" >
+                <div class="jp_listing_list_icon IconUserParticipant">
                 <i class="far fa-user"></i>
               </div>
-              <div class="jp_listing_list_icon_cont_wrapper">
-                <ul>
-                  <li>{{participant}}</li>
-                </ul>
+              <div  class="jp_listing_list_icon_cont_wrapper listeParticipantsflex" >
+                <h6 class="mailParticipant" *ngIf="(p.etat==='valide' && role === 'member') || role === 'admin'">
+                  {{p.emailP}}
+                </h6>
+                <a role="button1" *ngIf="p.etat==='non valide' && role === 'admin'" (click)="validerParticipant(currentEvent._id,p.emailP)">
+                    <i class="fa fa-check fa-lg IconToAcceptParticipant"></i>
+                  </a>
+                  <a role="button2" *ngIf="p.etat==='non valide' && role === 'admin'" (click)="refuserParticipant(currentEvent._id,p.emailP)">
+                    <i class="fas fa-trash-alt fa-lg IconTorefuserParticipant"> </i>
+                  </a>    
+              </div>
               </div>
             </div>
           </div>

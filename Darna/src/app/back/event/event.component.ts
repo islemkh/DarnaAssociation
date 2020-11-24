@@ -28,31 +28,31 @@ export class EventComponent implements OnInit {
   DateEndEvent;
   role: string;
   pm;
-  disable;
-  test = [];
-
-  userConnect: string;
-  constructor(
-    private router: Router,
+  etat = false;
+  alreadyParti=false;
+  userConnect:string;
+  constructor(  
+     private router: Router,
     private formBuilder: FormBuilder,
     private EventService: EventService,
     private modalService: BsModalService,
     private imageservice: ImageService,
     private SpinnerService: NgxSpinnerService) { }
 
-  ngOnInit(): void {
-    this.role = sessionStorage.getItem('role');
-    this.getLisEvents();
-    (this.addFormEvent = this.formBuilder.group({
-      NameEvent: [null, Validators.required],
-      Description: [null, [Validators.required]],
-      NumberMember: [null, [Validators.required]],
-      lieu: [null, [Validators.required]],
-      DateBeginEvent: [null, Validators.required],
-      DateEndEvent: [null, Validators.required],
-      DateBeginInsc: [null, [Validators.required]],
-      DateEndInsc: [null, [Validators.required]]
-    })),
+    ngOnInit(): void {
+      this.role = sessionStorage.getItem('role');
+      this.userConnect=sessionStorage.getItem('UserConnect')
+      this.getLisEvents();
+      (this.addFormEvent = this.formBuilder.group({
+        NameEvent: [null, Validators.required],
+        Description: [null, [Validators.required]],
+        NumberMember: [null,[Validators.required]],
+        lieu: [null, [Validators.required]],
+        DateBeginEvent: [null, Validators.required],
+        DateEndEvent: [null, Validators.required],
+        DateBeginInsc: [null, [Validators.required]],
+        DateEndInsc: [null, [Validators.required]]
+      })),
       (this.updateFormEvent = this.formBuilder.group({
         NameEvent: [null, Validators.required],
         Description: [null, [Validators.required]],
@@ -71,7 +71,7 @@ export class EventComponent implements OnInit {
     this.filesToUpload = file.target.files as Array<File>;
     this.photo = file.target.files[0].photo;
   }
-  getLisEvents() {
+ getLisEvents() {
     this.SpinnerService.show();
     this.EventService.getAllEvents().subscribe((res: any) => {
       console.log(res);
@@ -153,16 +153,44 @@ export class EventComponent implements OnInit {
       });
     });
   }
-  Publier() {
-    console.log("publier")
-  }
-  participate(id) {
-    this.userConnect = sessionStorage.getItem('UserConnect');
-    console.log('this.userConnect: ', this.userConnect);
-    this.EventService.Participate(id, this.userConnect).subscribe((res) => {
+ 
+  participate(id){
+      this.EventService.getEvent(id).subscribe((res: EventModel) => {
+        let part= false
+        this.currentEvent=res;
+        this.userConnect = sessionStorage.getItem('UserConnect');
+        console.log('this.userConnect: ', this.currentEvent);
+        for(let i = 0; i < this.currentEvent.participants.length; i++){
+          if(this.currentEvent.participants[i].emailP === this.userConnect){
+            part=true;
+            break
+          }
+        }
+        if(part===false)
+        {this.EventService.Participate(id,this.userConnect).subscribe((res) => {
+          
     })
-
+  Swal.fire(
+            'participer',
+            'Vous avez participé à cet événement avec succes',
+            'success'
+          );
+          this.getLisEvents()
   }
+    else{
+      Swal.fire(
+        'Deja participer',
+        'Vous avez déja participé à cet éénement',
+        'error'
+      );
+      this.getLisEvents()
+    }
+      })
+      
+    }
+    part2(id){
+      console.log("deja participer")
+    }
 
   DeleteEvent(_id) {
     Swal.fire({

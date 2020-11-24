@@ -35,6 +35,12 @@ export class EventService {
   PublishEvent(id, value) {
     return this.http.put(host + '/api/PublishEvent/' + id, { publish: value });
   }
+  ValiderP(id, email) {
+    return this.http.put(host + '/api/validerParticipant/' + id,{email});
+  }
+  NoValiderP(id, email) {
+    return this.http.put(host + '/api/NovaliderParticipant/' + id,{email});
+  }
 }
 
 
