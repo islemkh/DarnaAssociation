@@ -32,6 +32,9 @@ export class EventService {
   Participate(id, userConnect) {
     return this.http.put(host + '/api/ParticipateEvent/' + id,{userConnect});
   }
+  PublishEvent(id, value) {
+    return this.http.put(host + '/api/PublishEvent/' + id, { publish: value });
+  }
 }
 
 

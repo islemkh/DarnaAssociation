@@ -86,8 +86,12 @@
           >
             <a href="#" class="gc_main_navigation">Qui Somme Nous ?</a>
           </li>
-          <li
-            *ngIf="!isLoggedIn || role === 'member'"
+          <li *ngIf="role === 'member'"
+            class="has-mega gc_main_navigation kv_sub_menu green_sub_menu blue_sub_menu"
+          >
+            <a  routerLink="/Event" class="gc_main_navigation"> Nos Actions</a>
+          </li>
+          <li *ngIf="role != 'member' && role != 'admin'"
             class="has-mega gc_main_navigation kv_sub_menu green_sub_menu blue_sub_menu"
           >
             <a  routerLink="/Event" class="gc_main_navigation"> Nos Actions</a>

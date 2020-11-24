@@ -4,7 +4,8 @@ import {
     getEvent,
     deleteEvent,
     UpdateEvent,
-    ParticipateEvent
+    ParticipateEvent,
+    PublishEvent
 } from '../Controllers/event-controller'
 
 const routes_event = (app) => {
@@ -24,5 +25,7 @@ const routes_event = (app) => {
         .put(UpdateEvent)
     app.route('/api/ParticipateEvent/:id')
         .put(ParticipateEvent)
+    app.route('/api/PublishEvent/:id')
+        .put(PublishEvent)
 }
 export default routes_event;

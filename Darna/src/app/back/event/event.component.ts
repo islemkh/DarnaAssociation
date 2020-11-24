@@ -26,7 +26,9 @@ export class EventComponent implements OnInit {
   DateEndEvent;
   role: string;
   pm;
-  etat = false;
+  disable ; 
+  test=[];
+
   userConnect:string;
   constructor(  
      private router: Router,
@@ -150,16 +152,11 @@ export class EventComponent implements OnInit {
       this.userConnect = sessionStorage.getItem('UserConnect');
       console.log('this.userConnect: ', this.userConnect);
       this.EventService.Participate(id,this.userConnect).subscribe((res) => {
-      }) 
-    }
-    part2(id){
-      console.log("deja participer")
-
-    }
+          })
  
+    }
     
-  
-  DeleteEvent(_id) {
+       DeleteEvent(_id) {
     Swal.fire({
       title: 'êtes-vous sûr?',
       text: 'Vous ne pourrez plus récuperer cela!',
@@ -177,14 +174,14 @@ export class EventComponent implements OnInit {
         });
         Swal.fire(
           'Supprimé',
-          'Ce Member a été supprimé avec succés',
+          'Ce événement a été supprimé avec succés',
           'success'
         );
       }
     });
   }
 
-  ModifierEvent() {
+  EditEvent() {
     this.EventService
       .updateEvent(this.currentEvent._id, this.updateFormEvent.value)
       .subscribe(
@@ -199,5 +196,25 @@ export class EventComponent implements OnInit {
         }
       );
   }
+  Publish(id) {
+    Swal.fire({
+      title: 'êtes-vous sûr pour publier cette événement?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Oui, Publier-le!',
+      cancelButtonText: 'Annuler',
+    }).then((result) => {
+      if (result.value) {
+        this.EventService.PublishEvent(id, 'oui').subscribe((res) => {
+          console.log("test1",result.value)
+          // this.selectedValue=null;
+          this.ngOnInit();
+        });
 
+        Swal.fire('Publier', 'publier avec succés', 'success');
+      }
+    });
+  }
 }

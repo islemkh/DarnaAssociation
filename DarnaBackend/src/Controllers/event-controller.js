@@ -7,6 +7,8 @@ const Event = mongoose.model('Event', EventSchema);
 
 //Add Event
 export const addNewEvent = (req, res) => {  
+  req.body["publish"] = "non";
+  console.log('req.body["publish"]: ', req.body["publish"]);
       let newEvent = new Event(req.body);
       newEvent.save((err, event) => {
         if (err) {
@@ -62,7 +64,6 @@ export const getEvent = (req, res) => {
 };
 
 
-
 //supprimer Event
 export const deleteEvent = (req, res) => {
   const id = req.params.id;
@@ -88,4 +89,23 @@ export const UpdateEvent = (req, res) => {
   }
   )
 }
+
+export const PublishEvent = (req, res) => {
+  const id = req.params.id;
+  const ObjectId = require('mongodb').ObjectID;
+  Event.findOne({ '_id': ObjectId(id) })
+    .then((event) => {
+      console.log(event.publish)
+      if (event.publish == "non") {
+        event.publish  = "oui"
+        console.log(' event.publish : ',  event.publish );
+        event.save()
+        res.send({ message: "event publier" });
+      } else {
+        res.send({ message: "error canno't make this action" });
+      }
+    })
+
+}
+
 
