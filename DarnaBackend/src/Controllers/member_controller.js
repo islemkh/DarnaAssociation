@@ -30,14 +30,15 @@ export const addNewMember = (req, res) => {
           })
         }
       })
-    }})
+    }
+  })
 };
 export const getAllMember = (req, res) => {
   User.find({}, (err, user) => {
     if (err) {
       res.send(err);
     }
- 
+
     // console.log(res)
     res.json(user);
   });

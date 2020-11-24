@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpEvent, HttpRequest } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import {host} from '../../../app/host'
+import { host } from '../../../app/host'
 
 @Injectable({
   providedIn: 'root',
 })
 export class ImageService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
   pushFileToStorage(file: File): Observable<HttpEvent<{}>> {
     const formdata: FormData = new FormData();
     formdata.append('file', file);

@@ -8,8 +8,8 @@ import { ListeDemandeComponent } from './back/liste-demande/liste-demande.compon
 import { AuthGuard } from './front/guards/auth.guard';
 import { ListmembersComponent } from './back/listmembers/listmembers.component';
 import { DetailsmembreComponent } from './back/listmembers/detailsmembre/detailsmembre.component';
-import {EventComponent} from './back/event/event.component'
-import {DetailsEventsComponent} from './back/event/details-events/details-events.component'
+import { EventComponent } from './back/event/event.component'
+import { DetailsEventsComponent } from './back/event/details-events/details-events.component'
 
 const routes: Routes = [
   {
@@ -35,15 +35,15 @@ const routes: Routes = [
       {
         path: 'Event',
         component: EventComponent,
-        canActivate: [AuthGuard],
+        //canActivate: [AuthGuard],
       },
-       {
+      {
         path: 'detailsEvent/:idEvent',
         component: DetailsEventsComponent,
       },
     ],
   },
-  
+
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
 ];
@@ -52,4 +52,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

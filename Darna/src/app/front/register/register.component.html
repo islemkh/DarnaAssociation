@@ -4,20 +4,12 @@
 <!-- sign up wrapper start -->
 <div class="login_wrapper jb_cover">
   <div class="line_shape">
-    <img
-      src="../../../../assets/images/line.png"
-      class="img-responsive"
-      alt="img"
-    />
+    <img src="../../../../assets/images/line.png" class="img-responsive" alt="img" />
   </div>
   <div class="container">
     <div class="row">
       <div class="counter_jbbb2 jb_cover">
-        <img
-          src="../../../../assets/images/line3.png"
-          class="img-responsive"
-          alt="img"
-        />
+        <img src="../../../../assets/images/line3.png" class="img-responsive" alt="img" />
       </div>
       <div class="col-lg-12 col-md-12 col-sm-12 picregister">
         <div class="login_top_box jb_cover">
@@ -28,53 +20,30 @@
           </div>
 
           <form [formGroup]="InscriptionForm" (ngSubmit)="Inscrit()">
-            <img
-              src="../../../assets/images/darnalogo.png"
-              width="250px"
-              alt="logo"
-              class="logoLogin"
-            />
+            <img src="../../../assets/images/darnalogo.png" width="250px" alt="logo" class="logoLogin" />
 
             <div class="login_form_wrapper signup_wrapper">
               <h2>Inscription</h2>
               <div class="form-group icon_form comments_form">
                 <div class="form-row">
                   <div class="form-group col-md-6">
-                    <input
-                      type="text"
-                      class="form-control require"
-                      formControlName="NomPrenom"
-                      placeholder="Nom et prénom*"
-                      [ngClass]="{
+                    <input type="text" class="form-control require" formControlName="NomPrenom"
+                      placeholder="Nom et prénom*" [ngClass]="{
                         'is-invalid': submitted && f.NomPrenom.errors
-                      }"
-                      required
-                    />
+                      }" required />
                     <i class="fas fa-user"></i>
-                    <div
-                      *ngIf="submitted && f.NomPrenom.errors"
-                      class="invalid-feedback"
-                    >
+                    <div *ngIf="submitted && f.NomPrenom.errors" class="invalid-feedback">
                       <div *ngIf="f.NomPrenom.errors.required">
                         * ce champ obligatoire
                       </div>
                     </div>
                   </div>
                   <div class="form-group col-md-6">
-                    <input
-                      type="date"
-                      class="form-control require"
-                      formControlName="DateNaissance"
-                      title="Date de naissance"
-                      [ngClass]="{
+                    <input type="date" class="form-control require" formControlName="DateNaissance"
+                      title="Date de naissance" [ngClass]="{
                         'is-invalid': submitted && f.DateNaissance.errors
-                      }"
-                      required
-                    />
-                    <div
-                      *ngIf="submitted && f.DateNaissance.errors"
-                      class="invalid-feedback"
-                    >
+                      }" required />
+                    <div *ngIf="submitted && f.DateNaissance.errors" class="invalid-feedback">
                       <div *ngIf="f.DateNaissance.errors.required">
                         * ce champ obligatoire
                       </div>
@@ -83,28 +52,16 @@
                 </div>
               </div>
               <div class="form-group icon_form comments_form">
-                <input
-                  type="text"
-                  class="form-control require"
-                  formControlName="Email"
-                  placeholder="Email*"
-                  [ngClass]="{ 'is-invalid': submitted && f.Email.errors }"
-                  required
-                />
+                <input type="text" class="form-control require" formControlName="Email" placeholder="Email*"
+                  [ngClass]="{ 'is-invalid': submitted && f.Email.errors }" required />
                 <i class="fas fa-envelope"></i>
-                <div
-                  class="alert alert-danger"
-                  *ngIf="
+                <div class="alert alert-danger" *ngIf="
                     InscriptionForm.controls['Email'].errors &&
                     InscriptionForm.controls['Email'].errors.email
-                  "
-                >
+                  ">
                   * Veuillez insérer un e-mail valide
                 </div>
-                <div
-                  *ngIf="submitted && f.Email.errors"
-                  class="invalid-feedback"
-                >
+                <div *ngIf="submitted && f.Email.errors" class="invalid-feedback">
                   <div *ngIf="f.Email.errors.required">
                     * ce champ obligatoire
                   </div>
@@ -114,38 +71,23 @@
               <div class="form-group icon_form comments_form">
                 <div class="form-row">
                   <div class="form-group col-md-6">
-                    <input
-                      type="text"
-                      class="form-control require"
-                      formControlName="Tel"
-                      placeholder="Téléphone*"
-                      [ngClass]="{ 'is-invalid': submitted && f.Tel.errors }"
-                      required
-                    />
+                    <input type="text" class="form-control require" formControlName="Tel" placeholder="Téléphone*"
+                      [ngClass]="{ 'is-invalid': submitted && f.Tel.errors }" required />
                     <i class="flaticon-telephone"></i>
-                    <div
-                      class="alert alert-danger"
-                      *ngIf="
+                    <div class="alert alert-danger" *ngIf="
                         InscriptionForm.controls['Tel'].errors &&
                         InscriptionForm.controls['Tel'].errors.pattern
-                      "
-                    >
+                      ">
                       * le numéro doit contenir seulement des chiffres
                     </div>
-                    <div
-                      class="alert alert-danger"
-                      *ngIf="
+                    <div class="alert alert-danger" *ngIf="
                         InscriptionForm.controls['Tel'].touched &&
                         InscriptionForm.controls['Tel'].errors
-                      "
-                    >
+                      ">
                       * le numéro doit avoir au minimum 8 chiffres
                     </div>
 
-                    <div
-                      *ngIf="submitted && f.Tel.errors"
-                      class="invalid-feedback"
-                    >
+                    <div *ngIf="submitted && f.Tel.errors" class="invalid-feedback">
                       <div *ngIf="f.Tel.errors.required">
                         * ce champ obligatoire
                       </div>
@@ -153,19 +95,10 @@
                   </div>
 
                   <div class="form-group col-md-6">
-                    <input
-                      type="text"
-                      class="form-control require"
-                      formControlName="Job"
-                      placeholder="Profession*"
-                      [ngClass]="{ 'is-invalid': submitted && f.Job.errors }"
-                      required
-                    />
+                    <input type="text" class="form-control require" formControlName="Job" placeholder="Profession*"
+                      [ngClass]="{ 'is-invalid': submitted && f.Job.errors }" required />
                     <i class="fas fa-suitcase"></i>
-                    <div
-                      *ngIf="submitted && f.Job.errors"
-                      class="invalid-feedback"
-                    >
+                    <div *ngIf="submitted && f.Job.errors" class="invalid-feedback">
                       <div *ngIf="f.Job.errors.required">
                         * ce champ obligatoire
                       </div>
@@ -177,59 +110,36 @@
               <div class="form-group icon_form comments_form">
                 <div class="form-row">
                   <div class="form-group col-md-6">
-                    <input
-                      type="password"
-                      class="form-control require"
-                      formControlName="Password"
-                      placeholder="Mot de passe*"
-                      [ngClass]="{
+                    <input type="password" class="form-control require" formControlName="Password"
+                      placeholder="Mot de passe*" [ngClass]="{
                         'is-invalid': submitted && f.Password.errors
-                      }"
-                      required
-                    />
+                      }" required />
                     <i class="fas fa-lock"></i>
-                    <div
-                      class="alert alert-danger"
-                      *ngIf="
+                    <div class="alert alert-danger" *ngIf="
                         InscriptionForm.controls['Password'].touched &&
                         InscriptionForm.controls['Password'].errors
-                      "
-                    >
+                      ">
                       * le mot de passe doit avoir au minimum 6 caractéres
                     </div>
-                    <div
-                      *ngIf="submitted && f.Password.errors"
-                      class="invalid-feedback"
-                    >
+                    <div *ngIf="submitted && f.Password.errors" class="invalid-feedback">
                       <div *ngIf="f.Password.errors.required">
                         * ce champ obligatoire
                       </div>
                     </div>
                   </div>
                   <div class="form-group col-md-6">
-                    <input
-                      type="password"
-                      class="form-control require"
-                      formControlName="ConfirmPassword"
-                      placeholder="Confirmer mot de passe*"
-                      required
-                    />
+                    <input type="password" class="form-control require" formControlName="ConfirmPassword"
+                      placeholder="Confirmer mot de passe*" required />
                     <i class="fas fa-lock"></i>
-                    <div
-                      class="alert alert-danger"
-                      *ngIf="
+                    <div class="alert alert-danger" *ngIf="
                         InscriptionForm.controls['ConfirmPassword'].touched &&
                         InscriptionForm.controls['ConfirmPassword'].status ===
                           'INVALID'
-                      "
-                    >
+                      ">
                       *verifier que les mots de passe sont identiques
                     </div>
 
-                    <div
-                      *ngIf="submitted && f.ConfirmPassword.errors"
-                      class="invalid-feedback"
-                    >
+                    <div *ngIf="submitted && f.ConfirmPassword.errors" class="invalid-feedback">
                       <div *ngIf="f.ConfirmPassword.errors.required">
                         * ce champ obligatoire
                       </div>
@@ -238,16 +148,8 @@
                 </div>
               </div>
               <div class="form-group">
-                <label for="signup-Cpassword" class="control-label sr-only"
-                  >Photo</label
-                >
-                <input
-                  type="file"
-                  id="file-input"
-                  name="Photo"
-                  class="form-control"
-                  (change)="recoverFile($event)"
-                />
+                <label for="signup-Cpassword" class="control-label sr-only">Photo</label>
+                <input type="file" id="file-input" name="Photo" class="form-control" (change)="recoverFile($event)" />
               </div>
               <div>
                 <button class="form-btn" type="submit">S'inscrire</button>

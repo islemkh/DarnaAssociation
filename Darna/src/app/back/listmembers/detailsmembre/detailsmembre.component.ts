@@ -20,7 +20,7 @@ export class DetailsmembreComponent implements OnInit {
     private route: ActivatedRoute,
     private listMemberService: ListMemberService,
     private SpinnerService: NgxSpinnerService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.id_Member = this.route.snapshot.paramMap.get('idMember');

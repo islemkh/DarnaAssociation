@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 })
 export class DetailsEventsComponent implements OnInit {
   idEvent;
-  currentEvent : EventModel;
+  currentEvent: EventModel;
   selectedValue: String;
   DateBeginEvent;
   DateEndEvent;
@@ -25,8 +25,8 @@ export class DetailsEventsComponent implements OnInit {
     private route: ActivatedRoute,
     private EventService: EventService,
     private SpinnerService: NgxSpinnerService
-  ) { 
-    
+  ) {
+
   }
 
   ngOnInit(): void {

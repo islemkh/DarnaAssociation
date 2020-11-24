@@ -10,4 +10,5 @@ export class EventModel {
   DateEndInsc;
   photo;
   participants;
+  publish;
 }

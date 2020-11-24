@@ -1,10 +1,10 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import {BsModalRef, BsModalService} from 'ngx-bootstrap/modal';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ImageService } from 'src/app/front/services/image.service';
-import {EventModel} from '../models/event';
+import { EventModel } from '../models/event';
 import Swal from 'sweetalert2';
 import { EventService } from '../service/event.service';
 
@@ -15,10 +15,10 @@ import { EventService } from '../service/event.service';
 })
 export class EventComponent implements OnInit {
   modalRef: BsModalRef;
-  events : EventModel[];
+  events: EventModel[];
   photo;
   addFormEvent: FormGroup;
-  updateFormEvent : FormGroup;
+  updateFormEvent: FormGroup;
   filesToUpload: Array<File>;
   submitted = false;
   currentEvent: EventModel;
@@ -54,14 +54,14 @@ export class EventComponent implements OnInit {
       (this.updateFormEvent = this.formBuilder.group({
         NameEvent: [null, Validators.required],
         Description: [null, [Validators.required]],
-        NumberMember: [null,[Validators.required]],
+        NumberMember: [null, [Validators.required]],
         lieu: [null, [Validators.required]],
         DateBeginEvent: [null, Validators.required],
         DateEndEvent: [null, Validators.required],
         DateBeginInsc: [null, [Validators.required]],
         DateEndInsc: [null, [Validators.required]]
       }))
-    }
+  }
   openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template);
   }
@@ -70,13 +70,12 @@ export class EventComponent implements OnInit {
     this.photo = file.target.files[0].photo;
   }
  getLisEvents() {
-   
     this.SpinnerService.show();
     this.EventService.getAllEvents().subscribe((res: any) => {
       console.log(res);
-      this.events=res
+      this.events = res
       this.events.forEach(element => {
-         this.DateBeginEvent = element.DateBeginEvent.substring(0, 10);
+        this.DateBeginEvent = element.DateBeginEvent.substring(0, 10);
         element.DateBeginInsc.substring(0, 10);
         this.DateEndEvent = element.DateEndEvent.substring(0, 10);
         element.DateEndInsc.substring(0, 10);
@@ -84,15 +83,15 @@ export class EventComponent implements OnInit {
       this.SpinnerService.hide();
     });
   }
-  
+
   get AddEventControls() {
     return this.addFormEvent.controls;
   }
   get UpdatEventControls() {
     return this.updateFormEvent.controls;
   }
- 
-   AjouterEvent() {
+
+  AjouterEvent() {
     const data = {
       NameEvent: this.addFormEvent.value.NameEvent,
       Description: this.addFormEvent.value.Description,
@@ -115,13 +114,13 @@ export class EventComponent implements OnInit {
         .pushFileToStorage(this.filesToUpload[0])
         .subscribe((rest) => {
           console.log(rest);
-        
+
         });
-        Swal.fire('Event ajouté avec succès!', '', 'success');
-        this.getLisEvents();
-        this.modalRef.hide();
+      Swal.fire('Event ajouté avec succès!', '', 'success');
+      this.getLisEvents();
+      this.modalRef.hide();
     });
-  } 
+  }
 
   getEventByid(id) {
     this.EventService.getEvent(id).subscribe((res: EventModel) => {
@@ -146,10 +145,8 @@ export class EventComponent implements OnInit {
       });
     });
   }
-  Publier(){
-    console.log("publier")
-  }
-  part(id){
+ 
+  participate(id){
       this.EventService.getEvent(id).subscribe((res: EventModel) => {
         let part= false
         this.currentEvent=res;
@@ -185,11 +182,8 @@ export class EventComponent implements OnInit {
     }
     part2(id){
       console.log("deja participer")
-
     }
- 
-    
-  
+
   DeleteEvent(_id) {
     Swal.fire({
       title: 'êtes-vous sûr?',
@@ -208,14 +202,14 @@ export class EventComponent implements OnInit {
         });
         Swal.fire(
           'Supprimé',
-          'Ce Member a été supprimé avec succés',
+          'Ce événement a été supprimé avec succés',
           'success'
         );
       }
     });
   }
 
-  ModifierEvent() {
+  EditEvent() {
     this.EventService
       .updateEvent(this.currentEvent._id, this.updateFormEvent.value)
       .subscribe(
@@ -230,5 +224,25 @@ export class EventComponent implements OnInit {
         }
       );
   }
+  Publish(id) {
+    Swal.fire({
+      title: 'êtes-vous sûr pour publier cette événement?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Oui, Publier-le!',
+      cancelButtonText: 'Annuler',
+    }).then((result) => {
+      if (result.value) {
+        this.EventService.PublishEvent(id, 'oui').subscribe((res) => {
+          console.log("test1", result.value)
+          // this.selectedValue=null;
+          this.ngOnInit();
+        });
 
+        Swal.fire('Publier', 'publier avec succés', 'success');
+      }
+    });
+  }
 }

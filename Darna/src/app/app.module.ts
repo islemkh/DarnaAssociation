@@ -29,17 +29,11 @@ import { DetailsEventsComponent } from './back/event/details-events/details-even
     ContainerComponent,
     LoginComponent,
     RegisterComponent,
-
     ListeDemandeComponent,
-
     ListmembersComponent,
-
     DetailsmembreComponent,
-
     SearchMemberPipe,
-
     EventComponent,
-
     DetailsEventsComponent,
   ],
   imports: [
@@ -57,4 +51,4 @@ import { DetailsEventsComponent } from './back/event/details-events/details-even
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
-export class AppModule {}
+export class AppModule { }

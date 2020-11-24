@@ -6,7 +6,7 @@ import { host } from 'src/app/host';
   providedIn: 'root',
 })
 export class RegisterService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
   postdemand(data) {
     return this.http.post(host + '/api/register', data);
   }
