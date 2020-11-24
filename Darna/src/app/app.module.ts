@@ -20,7 +20,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { SearchMemberPipe } from './back/pipes/search-member.pipe';
 import { EventComponent } from './back/event/event.component';
 import { DetailsEventsComponent } from './back/event/details-events/details-events.component';
-import { NgbDateParserFormatter, NgbDatepickerModule, NgbModule, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import {  NgbDatepickerModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [

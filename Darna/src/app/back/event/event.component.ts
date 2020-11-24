@@ -7,7 +7,7 @@ import { ImageService } from 'src/app/front/services/image.service';
 import { EventModel } from '../models/event';
 import Swal from 'sweetalert2';
 import { EventService } from '../service/event.service';
-
+import {host} from '../../host'
 @Component({
   selector: 'app-event',
   templateUrl: './event.component.html',
@@ -107,10 +107,10 @@ export class EventComponent implements OnInit {
       DateEndInsc: this.addFormEvent.value.DateEndInsc,
       photo: this.filesToUpload[0].name,
     };
-    this.minDate = this.DateBeginEvent;
+/*     this.minDate = this.DateBeginEvent;
     console.log(' this.minDate: ',  this.minDate);
     this.maxDate = this.DateEndEvent;
-    console.log('this.maxDate : ', this.maxDate );
+    console.log('this.maxDate : ', this.maxDate ); */
     this.submitted = true;
 
     // stop here if form is invalid
@@ -122,14 +122,13 @@ export class EventComponent implements OnInit {
         .pushFileToStorage(this.filesToUpload[0])
         .subscribe((rest) => {
           console.log(rest);
-
+            Swal.fire('Event ajouté avec succès!', '', 'success');
+            this.getLisEvents();
+            this.modalRef.hide();
+          
         });
-      Swal.fire('Event ajouté avec succès!', '', 'success');
-      this.getLisEvents();
-      this.modalRef.hide();
     });
   }
-
   getEventByid(id) {
     this.EventService.getEvent(id).subscribe((res: EventModel) => {
       this.currentEvent = res;

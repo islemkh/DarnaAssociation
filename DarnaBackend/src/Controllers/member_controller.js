@@ -99,7 +99,6 @@ export const BannirMember = (req, res) => {
     .then((user) => {
       if (user.statut == "actif") {
         user.statut = "banni"
-
         user.save()
         res.send({ message: "member banni" });
       } else {

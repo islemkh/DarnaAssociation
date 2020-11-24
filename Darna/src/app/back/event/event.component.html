@@ -33,9 +33,7 @@
                   <div class="job_listing_left_fullwidth jb_cover">
                     <div class="row">
                       <div class="col" style="margin-left: 10%" class="bgSizeContain">
-                        <img class="img-fluid images_event" width="790" height="410" src="http://localhost:8080/api/getfile/{{
-                            el?.photo
-                          }}" alt="image event" />
+                        <img class="img-fluid images_event" width="790" height="410" src="http://localhost:8080/api/getfile/{{el?.photo}}" alt="image event" />
                       </div>
                       <br />
                     </div>
@@ -108,8 +106,7 @@
                     <div class="row">
                       <div class="col" style="margin-left: 10%" class="bgSizeContain">
                         <img class="img-fluid images_event" width="790" height="410" src="http://localhost:8080/api/getfile/{{
-                            el?.photo
-                          }}" alt="image event" />
+                            el?.photo}}" alt="image event" />
                       </div>
                       <br />
                     </div>
@@ -195,8 +192,7 @@
         <div class="row">
           <div class="form-group icon_form comments_form col-md-6">
             <label>Date debut Evenement</label>
-            <input required  class="form-control" placeholder="Date début" name="dp" [(ngModel)]="DateBeginEvent" ngbDatepicker
-            [minDate]="this.DateBeginEvent" [maxDate]="this.maxDate"  (ngModelChange)="ChangeDateDebut($event)" #dbAct="ngbDatepicker" [readonly]="true">
+            
             <input  class="form-control require" formControlName="DateBeginEvent" placeholder="Date début" name="dp"  title="Date debut event" ngbDatepicker
               [ngClass]="{'is-invalid': submitted && AddEventControls.DateBeginEvent.errors}"    (ngModelChange)="ChangeDateDebut($event)" required />
             <div *ngIf="submitted && AddEventControls.DateBeginEvent.errors" class="invalid-feedback">

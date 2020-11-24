@@ -1,4 +1,3 @@
-
 //upload image
 const uploadFile = require("../middleware/upload");
 
