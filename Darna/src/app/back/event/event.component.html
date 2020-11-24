@@ -195,10 +195,10 @@
         <div class="row">
           <div class="form-group icon_form comments_form col-md-6">
             <label>Date debut Evenement</label>
-            <input type="date" class="form-control require" formControlName="DateBeginEvent" title="Date debut event"
-              [ngClass]="{
-                'is-invalid': submitted && AddEventControls.DateBeginEvent.errors
-              }" required />
+            <input required  class="form-control" placeholder="Date début" name="dp" [(ngModel)]="DateBeginEvent" ngbDatepicker
+            [minDate]="this.DateBeginEvent" [maxDate]="this.maxDate"  (ngModelChange)="ChangeDateDebut($event)" #dbAct="ngbDatepicker" [readonly]="true">
+            <input  class="form-control require" formControlName="DateBeginEvent" placeholder="Date début" name="dp"  title="Date debut event" ngbDatepicker
+              [ngClass]="{'is-invalid': submitted && AddEventControls.DateBeginEvent.errors}"    (ngModelChange)="ChangeDateDebut($event)" required />
             <div *ngIf="submitted && AddEventControls.DateBeginEvent.errors" class="invalid-feedback">
               <div *ngIf="AddEventControls.DateBeginEvent.errors.required">
                 * ce champ obligatoire

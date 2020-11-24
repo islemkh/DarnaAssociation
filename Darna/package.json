@@ -23,6 +23,8 @@
     "@angular/platform-browser-dynamic": "~10.0.14",
     "@angular/router": "~10.0.14",
     "@auth0/angular-jwt": "^5.0.1",
+    "@ng-bootstrap/ng-bootstrap": "^8.0.0",
+    "mydatepicker": "^2.6.11",
     "ngx-bootstrap": "^6.2.0",
     "ngx-pagination": "^5.0.0",
     "ngx-spinner": "^10.0.1",

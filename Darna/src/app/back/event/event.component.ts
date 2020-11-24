@@ -16,6 +16,8 @@ import { EventService } from '../service/event.service';
 export class EventComponent implements OnInit {
   modalRef: BsModalRef;
   events: EventModel[];
+  minDate=null;
+  maxDate = null ;
   photo;
   addFormEvent: FormGroup;
   updateFormEvent: FormGroup;
@@ -92,6 +94,8 @@ export class EventComponent implements OnInit {
   }
 
   AjouterEvent() {
+    this.minDate= {year: 1900, month: 1, day: 1};
+    this.maxDate= {year: 2100, month: 1, day: 1};
     const data = {
       NameEvent: this.addFormEvent.value.NameEvent,
       Description: this.addFormEvent.value.Description,
@@ -103,6 +107,10 @@ export class EventComponent implements OnInit {
       DateEndInsc: this.addFormEvent.value.DateEndInsc,
       photo: this.filesToUpload[0].name,
     };
+    this.minDate = this.DateBeginEvent;
+    console.log(' this.minDate: ',  this.minDate);
+    this.maxDate = this.DateEndEvent;
+    console.log('this.maxDate : ', this.maxDate );
     this.submitted = true;
 
     // stop here if form is invalid
@@ -217,4 +225,12 @@ export class EventComponent implements OnInit {
       }
     });
   }
+
+  ChangeDateDebut(event){
+    this.minDate = event;
+  }
+  ChangeDateFin(event){
+    this.maxDate = event;
+  }
+  
 }
