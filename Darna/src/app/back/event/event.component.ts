@@ -27,6 +27,7 @@ export class EventComponent implements OnInit {
   role: string;
   pm;
   etat = false;
+  alreadyParti=false;
   userConnect:string;
   constructor(  
      private router: Router,
@@ -38,6 +39,7 @@ export class EventComponent implements OnInit {
 
     ngOnInit(): void {
       this.role = sessionStorage.getItem('role');
+      this.userConnect=sessionStorage.getItem('UserConnect')
       this.getLisEvents();
       (this.addFormEvent = this.formBuilder.group({
         NameEvent: [null, Validators.required],
@@ -68,6 +70,7 @@ export class EventComponent implements OnInit {
     this.photo = file.target.files[0].photo;
   }
  getLisEvents() {
+   
     this.SpinnerService.show();
     this.EventService.getAllEvents().subscribe((res: any) => {
       console.log(res);
@@ -147,10 +150,38 @@ export class EventComponent implements OnInit {
     console.log("publier")
   }
   part(id){
-      this.userConnect = sessionStorage.getItem('UserConnect');
-      console.log('this.userConnect: ', this.userConnect);
-      this.EventService.Participate(id,this.userConnect).subscribe((res) => {
-      }) 
+      this.EventService.getEvent(id).subscribe((res: EventModel) => {
+        let part= false
+        this.currentEvent=res;
+        this.userConnect = sessionStorage.getItem('UserConnect');
+        console.log('this.userConnect: ', this.currentEvent);
+        for(let i = 0; i < this.currentEvent.participants.length; i++){
+          if(this.currentEvent.participants[i].emailP === this.userConnect){
+            part=true;
+            break
+          }
+        }
+        if(part===false)
+        {this.EventService.Participate(id,this.userConnect).subscribe((res) => {
+          
+    })
+  Swal.fire(
+            'participer',
+            'Vous avez participé à cet événement avec succes',
+            'success'
+          );
+          this.getLisEvents()
+  }
+    else{
+      Swal.fire(
+        'Deja participer',
+        'Vous avez déja participé à cet éénement',
+        'error'
+      );
+      this.getLisEvents()
+    }
+      })
+      
     }
     part2(id){
       console.log("deja participer")

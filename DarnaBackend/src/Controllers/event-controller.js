@@ -41,6 +41,38 @@ export const ParticipateEvent = (req, res) => {
       event.save();
     })
 };
+
+//valider participant
+export const ValidateParticipate = (req, res) => {
+  const id = req.params.id;
+  const ObjectId = require('mongodb').ObjectID;
+  Event.findOne({ '_id': ObjectId(id) })
+    .then((event) => { 
+      event.participants.forEach(function(element) {
+        if(element.emailP==req.body.email)
+          {
+          (element.set({"etat":"valide"}))
+          event.save();}
+      });
+    })
+};
+
+//ne pas valider participant
+export const NoValidateParticipate = (req, res) => {
+  const id = req.params.id;
+  const ObjectId = require('mongodb').ObjectID;
+  Event.findOne({ '_id': ObjectId(id) })
+    .then((event) => { 
+      event.participants.forEach(function(element) {
+        if(element.emailP==req.body.email)
+        {
+          (element.set({"etat":"refusé"}))
+          event.save();}
+          
+      });
+    })
+};
+
 //affisher details d'un event
 export const getEvent = (req, res) => {
   const id = req.params.id;

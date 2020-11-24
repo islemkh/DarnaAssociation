@@ -32,6 +32,12 @@ export class EventService {
   Participate(id, userConnect) {
     return this.http.put(host + '/api/ParticipateEvent/' + id,{userConnect});
   }
+  ValiderP(id, email) {
+    return this.http.put(host + '/api/validerParticipant/' + id,{email});
+  }
+  NoValiderP(id, email) {
+    return this.http.put(host + '/api/NovaliderParticipant/' + id,{email});
+  }
 }
 
 

@@ -1,4 +1,3 @@
-
 export class EventModel {
   _id;
   NameEvent;
