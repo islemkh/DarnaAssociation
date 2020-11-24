@@ -42,11 +42,7 @@
             <p>Date d debut de l'inscription des membres : {{ DateEndInsc }}</p>
           </div>
           <div class="imgEvent">
-            <img
-              src="http://localhost:8080/api/getfile/{{ currentEvent?.photo }}"
-              alt="event picture"
-              width="728px"
-            />
+            <img src="http://localhost:8080/api/getfile/{{ currentEvent?.photo }}" alt="event picture" width="728px" />
           </div>
 
           <div class="jp_job_res jp_listing_left_wrapper jb_cover">
@@ -77,14 +73,15 @@
             <h1>Participants</h1>
           </div>
           <div class="job_overview_header jb_cover" style="background-color: white">
-            <div class="jp_listing_overview_list_main_wrapper jb_cover" *ngFor="let participant of currentEvent.participants">
+            <div class="jp_listing_overview_list_main_wrapper jb_cover"
+              *ngFor="let participant of currentEvent.participants">
               <div class="jp_listing_list_icon">
                 <i class="far fa-user"></i>
               </div>
               <div class="jp_listing_list_icon_cont_wrapper">
                 <ul>
                   <li>{{participant}}</li>
-                </ul>      
+                </ul>
               </div>
             </div>
           </div>
@@ -92,10 +89,6 @@
       </div>
     </div>
   </div>
-<div class="counter_jbbb2 cover">
-    <img
-      src="../../../../assets/images/line3.png"
-      class="img-responsive"
-      alt="img"
-    />
+  <div class="counter_jbbb2 cover">
+    <img src="../../../../assets/images/line3.png" class="img-responsive" alt="img" />
   </div>

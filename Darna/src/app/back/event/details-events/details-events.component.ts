@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { EventService } from '../../service/event.service';
-import {EventModel} from '../../models/event';import Swal from 'sweetalert2';
+import { EventModel } from '../../models/event'; import Swal from 'sweetalert2';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { Router } from '@angular/router';
 @Component({
@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 })
 export class DetailsEventsComponent implements OnInit {
   idEvent;
-  currentEvent : EventModel;
+  currentEvent: EventModel;
   selectedValue: String;
   DateBeginEvent;
   DateEndEvent;
@@ -22,8 +22,8 @@ export class DetailsEventsComponent implements OnInit {
     private route: ActivatedRoute,
     private EventService: EventService,
     private SpinnerService: NgxSpinnerService
-  ) { 
-    
+  ) {
+
   }
 
   ngOnInit(): void {

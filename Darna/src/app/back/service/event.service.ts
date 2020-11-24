@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpRequest } from '@angular/common/http';
-import{host} from '../../../app/host'
+import { host } from '../../../app/host'
 
 @Injectable({
   providedIn: 'root',
@@ -8,7 +8,7 @@ import{host} from '../../../app/host'
 
 export class EventService {
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
   //Get all event
   getAllEvents() {
     return this.http.get(host + '/api/GetAllEvents');
@@ -30,7 +30,7 @@ export class EventService {
     return this.http.put(host + '/api/UpdateEvent/' + id, updateform);
   }
   Participate(id, userConnect) {
-    return this.http.put(host + '/api/ParticipateEvent/' + id,{userConnect});
+    return this.http.put(host + '/api/ParticipateEvent/' + id, { userConnect });
   }
   PublishEvent(id, value) {
     return this.http.put(host + '/api/PublishEvent/' + id, { publish: value });

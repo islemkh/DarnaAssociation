@@ -81,7 +81,7 @@
                           </li>
 
                           <li *ngIf="role === 'member' " style="margin-top:3%;float:left">
-                            <a role="button5"  (click)="part(el._id);" data-toggle="modal"
+                            <a role="button5" (click)="participate(el._id);" data-toggle="modal"
                               data-target="#myModal051">Participer</a>
                           </li>
                           <li *ngIf="role === 'member'" style="margin-top:3%;">
@@ -102,7 +102,8 @@
                     </div>
                   </div>
                 </div>
-                <div class="col-lg-12 col-md-12 col-sm-12 col-12" *ngIf="el.publish =='oui' && role != 'admin' && role != 'member'">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-12"
+                  *ngIf="el.publish =='oui' && role != 'admin' && role != 'member'">
                   <div class="job_listing_left_fullwidth jb_cover">
                     <div class="row">
                       <div class="col" style="margin-left: 10%" class="bgSizeContain">
@@ -128,7 +129,7 @@
                         </ul>
                       </div>
                     </div>
-                    <div class="col">           
+                    <div class="col">
                       <div class="modal fade apply_job_popup" id="myModal1" role="dialog">
                         <div class="modal-dialog">
                           <div class="modal-content">

@@ -1,10 +1,10 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import {BsModalRef, BsModalService} from 'ngx-bootstrap/modal';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ImageService } from 'src/app/front/services/image.service';
-import {EventModel} from '../models/event';
+import { EventModel } from '../models/event';
 import Swal from 'sweetalert2';
 import { EventService } from '../service/event.service';
 
@@ -15,10 +15,10 @@ import { EventService } from '../service/event.service';
 })
 export class EventComponent implements OnInit {
   modalRef: BsModalRef;
-  events : EventModel[];
+  events: EventModel[];
   photo;
   addFormEvent: FormGroup;
-  updateFormEvent : FormGroup;
+  updateFormEvent: FormGroup;
   filesToUpload: Array<File>;
   submitted = false;
   currentEvent: EventModel;
@@ -26,42 +26,42 @@ export class EventComponent implements OnInit {
   DateEndEvent;
   role: string;
   pm;
-  disable ; 
-  test=[];
+  disable;
+  test = [];
 
-  userConnect:string;
-  constructor(  
-     private router: Router,
+  userConnect: string;
+  constructor(
+    private router: Router,
     private formBuilder: FormBuilder,
     private EventService: EventService,
     private modalService: BsModalService,
     private imageservice: ImageService,
     private SpinnerService: NgxSpinnerService) { }
 
-    ngOnInit(): void {
-      this.role = sessionStorage.getItem('role');
-      this.getLisEvents();
-      (this.addFormEvent = this.formBuilder.group({
-        NameEvent: [null, Validators.required],
-        Description: [null, [Validators.required]],
-        NumberMember: [null,[Validators.required]],
-        lieu: [null, [Validators.required]],
-        DateBeginEvent: [null, Validators.required],
-        DateEndEvent: [null, Validators.required],
-        DateBeginInsc: [null, [Validators.required]],
-        DateEndInsc: [null, [Validators.required]]
-      })),
+  ngOnInit(): void {
+    this.role = sessionStorage.getItem('role');
+    this.getLisEvents();
+    (this.addFormEvent = this.formBuilder.group({
+      NameEvent: [null, Validators.required],
+      Description: [null, [Validators.required]],
+      NumberMember: [null, [Validators.required]],
+      lieu: [null, [Validators.required]],
+      DateBeginEvent: [null, Validators.required],
+      DateEndEvent: [null, Validators.required],
+      DateBeginInsc: [null, [Validators.required]],
+      DateEndInsc: [null, [Validators.required]]
+    })),
       (this.updateFormEvent = this.formBuilder.group({
         NameEvent: [null, Validators.required],
         Description: [null, [Validators.required]],
-        NumberMember: [null,[Validators.required]],
+        NumberMember: [null, [Validators.required]],
         lieu: [null, [Validators.required]],
         DateBeginEvent: [null, Validators.required],
         DateEndEvent: [null, Validators.required],
         DateBeginInsc: [null, [Validators.required]],
         DateEndInsc: [null, [Validators.required]]
       }))
-    }
+  }
   openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template);
   }
@@ -69,13 +69,13 @@ export class EventComponent implements OnInit {
     this.filesToUpload = file.target.files as Array<File>;
     this.photo = file.target.files[0].photo;
   }
- getLisEvents() {
+  getLisEvents() {
     this.SpinnerService.show();
     this.EventService.getAllEvents().subscribe((res: any) => {
       console.log(res);
-      this.events=res
+      this.events = res
       this.events.forEach(element => {
-         this.DateBeginEvent = element.DateBeginEvent.substring(0, 10);
+        this.DateBeginEvent = element.DateBeginEvent.substring(0, 10);
         element.DateBeginInsc.substring(0, 10);
         this.DateEndEvent = element.DateEndEvent.substring(0, 10);
         element.DateEndInsc.substring(0, 10);
@@ -83,15 +83,15 @@ export class EventComponent implements OnInit {
       this.SpinnerService.hide();
     });
   }
-  
+
   get AddEventControls() {
     return this.addFormEvent.controls;
   }
   get UpdatEventControls() {
     return this.updateFormEvent.controls;
   }
- 
-   AjouterEvent() {
+
+  AjouterEvent() {
     const data = {
       NameEvent: this.addFormEvent.value.NameEvent,
       Description: this.addFormEvent.value.Description,
@@ -114,13 +114,13 @@ export class EventComponent implements OnInit {
         .pushFileToStorage(this.filesToUpload[0])
         .subscribe((rest) => {
           console.log(rest);
-        
+
         });
-        Swal.fire('Event ajouté avec succès!', '', 'success');
-        this.getLisEvents();
-        this.modalRef.hide();
+      Swal.fire('Event ajouté avec succès!', '', 'success');
+      this.getLisEvents();
+      this.modalRef.hide();
     });
-  } 
+  }
 
   getEventByid(id) {
     this.EventService.getEvent(id).subscribe((res: EventModel) => {
@@ -145,18 +145,18 @@ export class EventComponent implements OnInit {
       });
     });
   }
-  Publier(){
+  Publier() {
     console.log("publier")
   }
-  part(id){
-      this.userConnect = sessionStorage.getItem('UserConnect');
-      console.log('this.userConnect: ', this.userConnect);
-      this.EventService.Participate(id,this.userConnect).subscribe((res) => {
-          })
- 
-    }
-    
-       DeleteEvent(_id) {
+  participate(id) {
+    this.userConnect = sessionStorage.getItem('UserConnect');
+    console.log('this.userConnect: ', this.userConnect);
+    this.EventService.Participate(id, this.userConnect).subscribe((res) => {
+    })
+
+  }
+
+  DeleteEvent(_id) {
     Swal.fire({
       title: 'êtes-vous sûr?',
       text: 'Vous ne pourrez plus récuperer cela!',
@@ -208,7 +208,7 @@ export class EventComponent implements OnInit {
     }).then((result) => {
       if (result.value) {
         this.EventService.PublishEvent(id, 'oui').subscribe((res) => {
-          console.log("test1",result.value)
+          console.log("test1", result.value)
           // this.selectedValue=null;
           this.ngOnInit();
         });

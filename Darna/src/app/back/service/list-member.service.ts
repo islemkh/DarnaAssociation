@@ -6,7 +6,7 @@ import { host } from 'src/app/host';
   providedIn: 'root',
 })
 export class ListMemberService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
   getAllmembers() {
     return this.http.get(host + '/api/ListMember');
   }

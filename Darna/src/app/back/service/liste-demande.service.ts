@@ -8,7 +8,7 @@ import { host } from 'src/app/host';
   providedIn: 'root',
 })
 export class ListeDemandeService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
   getListeDemand() {
     return this.http.get(host + '/api/listeDemandes');
   }

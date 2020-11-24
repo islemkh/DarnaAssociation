@@ -11,7 +11,7 @@ export class LoginService {
   jwt: string;
   username: string;
   role;
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(private http: HttpClient, private router: Router) { }
   login(data) {
     return this.http.post(host + '/api/login', data, {
       observe: 'response',

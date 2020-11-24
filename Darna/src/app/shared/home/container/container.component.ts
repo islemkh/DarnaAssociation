@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./container.component.css'],
 })
 export class ContainerComponent implements OnInit {
-  constructor(private loginservice: LoginService, private router: Router) {}
+  constructor(private loginservice: LoginService, private router: Router) { }
   role;
   ngOnInit(): void {
     let isLoggedIn = this.loginservice.isLoggedIn();

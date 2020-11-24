@@ -6,21 +6,21 @@ const Event = mongoose.model('Event', EventSchema);
 //Event crud
 
 //Add Event
-export const addNewEvent = (req, res) => {  
+export const addNewEvent = (req, res) => {
   req.body["publish"] = "non";
   console.log('req.body["publish"]: ', req.body["publish"]);
-      let newEvent = new Event(req.body);
-      newEvent.save((err, event) => {
-        if (err) {
-          res.send(err);
-        } else {
-            res.status(200).json({
-                message: "event added successfully"
-              });
-        }
-      })
+  let newEvent = new Event(req.body);
+  newEvent.save((err, event) => {
+    if (err) {
+      res.send(err);
+    } else {
+      res.status(200).json({
+        message: "event added successfully"
+      });
     }
-    
+  })
+}
+
 export const getAllEvents = (req, res) => {
   Event.find({}, (err, event) => {
     if (err) {
@@ -35,11 +35,11 @@ export const ParticipateEvent = (req, res) => {
   const id = req.params.id;
   const ObjectId = require('mongodb').ObjectID;
   Event.findOne({ '_id': ObjectId(id) })
-    .then((event) => { 
+    .then((event) => {
       console.log("les participants de cet evenement")
       console.log(event.participants)
       console.log(req.body)
-      event.participants.push({"emailP":req.body.userConnect,"etat":"non valide"});
+      event.participants.push({ "emailP": req.body.userConnect, "etat": "non valide" });
       event.save();
     })
 };
@@ -54,7 +54,7 @@ export const getEvent = (req, res) => {
       });
     }
     res.status(200).send(event);
-   // console.log(event);
+    // console.log(event);
   })
     .catch((err) => {
       return res.status(400).send({
@@ -97,8 +97,8 @@ export const PublishEvent = (req, res) => {
     .then((event) => {
       console.log(event.publish)
       if (event.publish == "non") {
-        event.publish  = "oui"
-        console.log(' event.publish : ',  event.publish );
+        event.publish = "oui"
+        console.log(' event.publish : ', event.publish);
         event.save()
         res.send({ message: "event publier" });
       } else {
