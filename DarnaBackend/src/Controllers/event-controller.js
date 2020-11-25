@@ -4,7 +4,7 @@ import { EventSchema } from '../Models/event';
 const Event = mongoose.model('Event', EventSchema);
 
 //Event crud
-
+   
 //Add Event
 export const addNewEvent = (req, res) => {
   req.body["publish"] = "non";

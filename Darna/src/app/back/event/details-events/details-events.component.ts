@@ -52,7 +52,6 @@ export class DetailsEventsComponent implements OnInit {
 
 validerParticipant(id,emailP){
 this.EventService.ValiderP(id,emailP).subscribe((res: EventModel) => {
-
   });
   Swal.fire(
     "Participant a été validé avec succés!",

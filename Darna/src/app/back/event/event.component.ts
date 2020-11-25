@@ -7,7 +7,7 @@ import { ImageService } from 'src/app/front/services/image.service';
 import { EventModel } from '../models/event';
 import Swal from 'sweetalert2';
 import { EventService } from '../service/event.service';
-import {host} from '../../host'
+
 @Component({
   selector: 'app-event',
   templateUrl: './event.component.html',
@@ -46,7 +46,7 @@ export class EventComponent implements OnInit {
       (this.addFormEvent = this.formBuilder.group({
         NameEvent: [null, Validators.required],
         Description: [null, [Validators.required]],
-        NumberMember: [null,[Validators.required]],
+        NumberMember: [null,[Validators.required]],  
         lieu: [null, [Validators.required]],
         DateBeginEvent: [null, Validators.required],
         DateEndEvent: [null, Validators.required],
@@ -187,9 +187,7 @@ export class EventComponent implements OnInit {
       })
       
     }
-    part2(id){
-      console.log("deja participer")
-    }
+
 
   DeleteEvent(_id) {
     Swal.fire({
