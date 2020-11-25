@@ -18,6 +18,8 @@ export class NavbarComponent implements OnInit {
   }
   logout() {
     this.loginservice.logout();
+    sessionStorage.setItem('UserConnect', null);
+
   }
   /*  logout(){
     sessionStorage.removeItem("token");

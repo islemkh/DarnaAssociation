@@ -16,7 +16,7 @@ export const addNewMember = (req, res) => {
     else {
       req.body["role"] = "member";
       req.body["statut"] = "actif";
-      req.body["Create_date"] = Date.now();;
+      req.body["Create_date"] = Date.now();
 
       let newUser = new User(req.body);
       var password = bcrypt.hashSync(req.body.Password, 10);
@@ -30,14 +30,15 @@ export const addNewMember = (req, res) => {
           })
         }
       })
-    }})
+    }
+  })
 };
 export const getAllMember = (req, res) => {
   User.find({}, (err, user) => {
     if (err) {
       res.send(err);
     }
- 
+
     // console.log(res)
     res.json(user);
   });
@@ -98,7 +99,6 @@ export const BannirMember = (req, res) => {
     .then((user) => {
       if (user.statut == "actif") {
         user.statut = "banni"
-
         user.save()
         res.send({ message: "member banni" });
       } else {

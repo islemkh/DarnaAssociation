@@ -22,8 +22,5 @@ const routes_demand = (app) => {
     app.route('/api/acceptDemande')
         .post(AccepterDemande)
     //routes members
-
-
-
 }
 export default routes_demand;

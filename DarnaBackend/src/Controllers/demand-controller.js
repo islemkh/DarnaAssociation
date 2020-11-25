@@ -26,7 +26,6 @@ export const addNewDemand = (req, res) => {
             //"code": "200",
             message: "demand added successfuly"
           });
-
         }
       })
     }

@@ -18,7 +18,7 @@ export class ListeDemandeComponent implements OnInit {
     private router: Router,
     private listeDemandeService: ListeDemandeService,
     private SpinnerService: NgxSpinnerService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.getListDemands();
