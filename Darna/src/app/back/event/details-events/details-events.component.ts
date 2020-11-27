@@ -39,11 +39,6 @@ export class DetailsEventsComponent implements OnInit {
   getEventByid(id) {
     this.SpinnerService.show();
     this.EventService.getEvent(id).subscribe((res: EventModel) => {
-      this.currentEvent = res;
-      this.DateBeginEvent = res.DateBeginEvent.substring(0, 10);
-      this.DateEndEvent = res.DateEndEvent.substring(0, 10);
-      this.DateBeginInsc = res.DateBeginInsc.substring(0, 10);
-      this.DateEndInsc = res.DateEndInsc.substring(0, 10);
       this.participants.push({"emailP":res.participants.emailP,"etat":res.participants.etat})
       console.log(this.participants)
       this.SpinnerService.hide();

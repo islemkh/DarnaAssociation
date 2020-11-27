@@ -45,7 +45,7 @@
                         <br />
                         <ul>
                           <li>
-                            <i class="fa fa-calendar"></i>&nbsp;{{ DateBeginEvent }} / {{ DateEndEvent }}
+                            <i class="fa fa-calendar"></i>&nbsp; {{ el.DateBeginEvent  | date: 'dd/MM/yyyy'}} - {{ el.DateEndEvent | date: 'dd/MM/yyyy'}}
                           </li>
                           <li>
                             <i class="flaticon-location-pointer"></i>&nbsp;{{ el.lieu}}
@@ -118,7 +118,7 @@
                         <br />
                         <ul>
                           <li>
-                            <i class="fa fa-calendar"></i>&nbsp;{{ DateBeginEvent }} / {{ DateEndEvent }}
+                            <i class="fa fa-calendar"></i>&nbsp;{{ el.DateBeginEvent }} / {{ el.DateEndEvent }}
                           </li>
                           <li>
                             <i class="flaticon-location-pointer"></i>&nbsp;{{ el.lieu}}
@@ -162,7 +162,7 @@
 <ng-template #AddNewEvent>
   <div class="modal-body text-center">
     <h3>Ajouter Event</h3>
-    <form [formGroup]="addFormEvent" (ngSubmit)="AjouterEvent()">
+    <form [formGroup]="addFormEvent" (ngSubmit)="AddEvent()">
       <div class="login_form_wrapper signup_wrapper">
         <div class="form-group icon_form comments_form">
           <input type="text" class="form-control require" formControlName="NameEvent" placeholder="Nom event*"
@@ -179,7 +179,7 @@
         <div class="form-group">
           <label for="signup-Cpassword" class="control-label sr-only">Photo</label>
           <input type="file" id="file-input" name="Photo" class="form-control"
-            (change)="recuperFile($event); AjouterEvent()" />
+            (change)="recuperFile($event); AddEvent()" />
         </div>
         <div class="form-group icon_form comments_form">
           <textarea class="textarea" rows="5" maxlength="100" formControlName="Description" class="form-control require"
@@ -192,9 +192,8 @@
         <div class="row">
           <div class="form-group icon_form comments_form col-md-6">
             <label>Date debut Evenement</label>
-            
-            <input  class="form-control require" formControlName="DateBeginEvent" placeholder="Date début" name="dp"  title="Date debut event" ngbDatepicker
-              [ngClass]="{'is-invalid': submitted && AddEventControls.DateBeginEvent.errors}"    (ngModelChange)="ChangeDateDebut($event)" required />
+            <input type="date" class="form-control require" formControlName="DateBeginEvent" [min]="minDate"  title="Date debut event" 
+              [ngClass]="{'is-invalid': submitted && AddEventControls.DateBeginEvent.errors}"    />
             <div *ngIf="submitted && AddEventControls.DateBeginEvent.errors" class="invalid-feedback">
               <div *ngIf="AddEventControls.DateBeginEvent.errors.required">
                 * ce champ obligatoire
@@ -215,7 +214,7 @@
           </div>
         </div>
         <div class="form-group icon_form comments_form">
-          <input type="number" class="form-control require" formControlName="NumberMember"
+          <input type="number" [min]='0' class="form-control require" formControlName="NumberMember"
             placeholder="Nombre des participant*" [ngClass]="{
                 'is-invalid': submitted && AddEventControls.NumberMember.errors
               }" />

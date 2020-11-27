@@ -7,6 +7,7 @@ import { ImageService } from 'src/app/front/services/image.service';
 import { EventModel } from '../models/event';
 import Swal from 'sweetalert2';
 import { EventService } from '../service/event.service';
+import { formatDate } from '@angular/common';
 
 @Component({
   selector: 'app-event',
@@ -18,6 +19,8 @@ export class EventComponent implements OnInit {
   events: EventModel[];
   minDate=null;
   maxDate = null ;
+  BeginDate=null;
+  EndDate=null;
   photo;
   addFormEvent: FormGroup;
   updateFormEvent: FormGroup;
@@ -31,6 +34,10 @@ export class EventComponent implements OnInit {
   etat = false;
   alreadyParti=false;
   userConnect:string;
+  currentDate='';
+  today= new Date();
+  error:any={isError:false,errorMessage:''};
+  isValidDate:any;
   constructor(  
      private router: Router,
     private formBuilder: FormBuilder,
@@ -39,9 +46,10 @@ export class EventComponent implements OnInit {
     private imageservice: ImageService,
     private SpinnerService: NgxSpinnerService) { }
 
-    ngOnInit(): void {
+  ngOnInit(): void {
       this.role = sessionStorage.getItem('role');
-      this.userConnect=sessionStorage.getItem('UserConnect')
+      this.userConnect=sessionStorage.getItem('UserConnect');
+      //this.currentDate = formatDate(this.today, 'dd-MM-yyyy', 'en-US');
       this.getLisEvents();
       (this.addFormEvent = this.formBuilder.group({
         NameEvent: [null, Validators.required],
@@ -76,12 +84,7 @@ export class EventComponent implements OnInit {
     this.EventService.getAllEvents().subscribe((res: any) => {
       console.log(res);
       this.events = res
-      this.events.forEach(element => {
-        this.DateBeginEvent = element.DateBeginEvent.substring(0, 10);
-        element.DateBeginInsc.substring(0, 10);
-        this.DateEndEvent = element.DateEndEvent.substring(0, 10);
-        element.DateEndInsc.substring(0, 10);
-      });
+     // this.minDate = this.currentEvent.DateBeginEvent;
       this.SpinnerService.hide();
     });
   }
@@ -92,8 +95,21 @@ export class EventComponent implements OnInit {
   get UpdatEventControls() {
     return this.updateFormEvent.controls;
   }
+  validateDates(sDate: string, eDate: string){
+    this.isValidDate = true;
+    if((sDate == null || eDate ==null)){
+      this.error={isError:true,errorMessage:'Start date and end date are required.'};
+      this.isValidDate = false;
+    }
 
-  AjouterEvent() {
+    if((sDate != null && eDate !=null) && (eDate) < (sDate)){
+      this.error={isError:true,errorMessage:'End date should be grater then start date.'};
+      this.isValidDate = false;
+    }
+    return this.isValidDate;
+  }
+ 
+  AddEvent() {
     this.minDate= {year: 1900, month: 1, day: 1};
     this.maxDate= {year: 2100, month: 1, day: 1};
     const data = {
@@ -135,11 +151,12 @@ export class EventComponent implements OnInit {
       this.currentEvent.NameEvent = res.NameEvent;
       this.currentEvent.Description = res.Description;
       this.currentEvent.lieu = res.lieu;
-      this.currentEvent.DateBeginEvent = res.DateBeginEvent.substring(0, 10);
-      this.currentEvent.DateEndEvent = res.DateEndEvent.substring(0, 10);
+      this.currentEvent.DateBeginEvent = res.DateBeginEvent;
+      this.currentEvent.DateEndEvent = res.DateEndEvent;
       this.currentEvent.NumberMember = res.NumberMember;
-      this.currentEvent.DateBeginInsc = res.DateBeginInsc.substring(0, 10);
-      this.currentEvent.DateEndInsc = res.DateEndInsc.substring(0, 10);
+      this.currentEvent.DateBeginInsc = res.DateBeginInsc;
+      this.currentEvent.DateEndInsc = res.DateEndInsc;
+    
       this.updateFormEvent.setValue({
         NameEvent: this.currentEvent.NameEvent,
         Description: this.currentEvent.Description,
@@ -187,7 +204,6 @@ export class EventComponent implements OnInit {
       })
       
     }
-
 
   DeleteEvent(_id) {
     Swal.fire({
@@ -240,7 +256,7 @@ export class EventComponent implements OnInit {
       cancelButtonText: 'Annuler',
     }).then((result) => {
       if (result.value) {
-        this.EventService.PublishEvent(id, 'oui').subscribe((res) => {
+        this.EventService.PublishEvent(id,'Yes').subscribe((res) => {
           console.log("test1", result.value)
           // this.selectedValue=null;
           this.ngOnInit();
