@@ -3,7 +3,6 @@
 }
 .styleInfoEvent{
     display: flex;
-    justify-content: space-around;
     flex-direction: row;
 }
 .IconE{
@@ -22,6 +21,7 @@
     padding: 10px;
     border-radius: 5px;
     color:#ff4d4d  ;
+    
   }
 .IconToAcceptParticipant{
     
@@ -37,11 +37,15 @@
   .listeParticipantsflex{
       display: flex;
       flex-direction: row;
-      justify-content: space-between;
+      
+      
   }
   .mailParticipant{
     margin-top: 10px;
   }
   .IconUserParticipant{
     margin-top: 5px;
+  }
+  .marginLeftIcon{
+    margin-left: 70px;
   }

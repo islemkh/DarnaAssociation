@@ -19,7 +19,8 @@ export class DetailsEventsComponent implements OnInit {
   DateBeginInsc;
   DateEndInsc;
   role: string;
-  participants=[{emailP:String,etat:String}];
+  parValide=[];
+  participants=[];
   constructor(
     private router: Router,
     private route: ActivatedRoute,
@@ -31,10 +32,11 @@ export class DetailsEventsComponent implements OnInit {
 
   ngOnInit(): void {
     this.role = sessionStorage.getItem('role');
-
+    this.participants=[]
+    this.parValide=[]
     this.idEvent = this.route.snapshot.paramMap.get('idEvent');
     this.getEventByid(this.idEvent);
-    
+    console.log(this.parValide)
   }
   getEventByid(id) {
     this.SpinnerService.show();
@@ -44,11 +46,22 @@ export class DetailsEventsComponent implements OnInit {
       this.DateEndEvent = res.DateEndEvent.substring(0, 10);
       this.DateBeginInsc = res.DateBeginInsc.substring(0, 10);
       this.DateEndInsc = res.DateEndInsc.substring(0, 10); */
-      this.participants.push({"emailP":res.participants.emailP,"etat":res.participants.etat})
-      console.log(this.participants)
+      res.participants.forEach(p => {
+        if(p.etat !=='refusé')
+      {this.participants.push({"emailP":p.emailP,"etat":p.etat})}
+      });
+      res.participants.forEach(p => {
+        if(p.etat ==='valide')
+      {this.parValide.push({"emailP":p.emailP,"etat":p.etat})}
+      });
+      console.log("part test21",this.participants)
       this.SpinnerService.hide();
+     
     });
+  
   }
+
+
 
 validerParticipant(id,emailP){
 this.EventService.ValiderP(id,emailP).subscribe((res: EventModel) => {
@@ -58,7 +71,7 @@ this.EventService.ValiderP(id,emailP).subscribe((res: EventModel) => {
     '',
     'success'
   );
-  this.getEventByid(id);
+ this.ngOnInit();
 }
 refuserParticipant(id,emailP){
   Swal.fire({
@@ -80,8 +93,7 @@ refuserParticipant(id,emailP){
         'Ce participant a été refusé avec succés',
         'success'
       );
-      this.getEventByid(id);
-
+      this.ngOnInit();
     }
   });
 }
