@@ -13,9 +13,9 @@
                 <h6>
                   <i class="flaticon-location-pointer IconE"></i>{{ currentEvent.lieu }}
                 </h6>
-                <h6><i class="fas fa-hourglass-start IconE"></i> {{ DateBeginEvent }}
+                <h6><i class="fas fa-hourglass-start IconE"></i> {{ currentEvent.DateBeginEvent  | date: 'dd/MM/yyyy' }}
                 </h6>
-                <h6><i class="fas fa-hourglass-end IconE"></i> {{ DateEndEvent }}
+                <h6><i class="fas fa-hourglass-end IconE"></i> {{ currentEvent.DateEndEvent  | date: 'dd/MM/yyyy'}}
                 </h6>
               </div>
             </div>
@@ -36,10 +36,10 @@
             </p>
             <br />
             <p>
-              Date d debut de l'inscription des membres : {{ DateBeginInsc }}
+              Date d debut de l'inscription des membres : {{ currentEvent.DateBeginInsc | date: 'dd/MM/yyyy' }}
             </p>
             <br />
-            <p>Date d debut de l'inscription des membres : {{ DateEndInsc }}</p>
+            <p>Date d debut de l'inscription des membres : {{ currentEvent.DateEndInsc | date: 'dd/MM/yyyy'}}</p>
           </div>
           <div class="imgEvent">
             <img src="http://localhost:8080/api/getfile/{{ currentEvent.photo }}" alt="event picture" width="728px" />

@@ -7,7 +7,8 @@ import {
     ParticipateEvent,
     ValidateParticipate,
     NoValidateParticipate,
-    PublishEvent
+    PublishEvent,
+    ArchiveEvent
 } from '../Controllers/event-controller'
 
 const routes_event = (app) => {
@@ -25,13 +26,20 @@ const routes_event = (app) => {
 
     app.route('/api/UpdateEvent/:id')
         .put(UpdateEvent)
+
     app.route('/api/ParticipateEvent/:id')
         .put(ParticipateEvent)
+
     app.route('/api/validerParticipant/:id')
         .put(ValidateParticipate)
+
         app.route('/api/NovaliderParticipant/:id')
         .put(NoValidateParticipate)
+
     app.route('/api/PublishEvent/:id')
         .put(PublishEvent)
+
+  /*   app.route('/api/ArchiveEvent/:id')
+        .put(ArchiveEvent) */
 }
 export default routes_event;

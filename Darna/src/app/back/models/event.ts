@@ -11,4 +11,5 @@ export class EventModel {
   photo;
   participants;
   publish;
+ // archive;
 }

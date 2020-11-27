@@ -35,6 +35,10 @@ export class EventService {
   PublishEvent(id, value) {
     return this.http.put(host + '/api/PublishEvent/' + id, { publish: value });
   }
+/*   ArchiveEvent(id, val) {
+    return this.http.put(host + '/api/ArchiveEvent/' + id, { archive: val });
+  } */
+
   ValiderP(id, email) {
     return this.http.put(host + '/api/validerParticipant/' + id,{email});
   }
