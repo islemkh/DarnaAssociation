@@ -73,23 +73,31 @@
             <h1>Participants</h1>
           </div>
           <div class="job_overview_header jb_cover" style="background-color: white">
-            <div class="jp_listing_overview_list_main_wrapper jb_cover" *ngFor="let p of currentEvent.participants">
-              <div *ngIf="p.etat != 'refusé'" >
-                <div class="jp_listing_list_icon IconUserParticipant">
-              <div  class="jp_listing_list_icon_cont_wrapper listeParticipantsflex" >
-                <div class="mailParticipant" *ngIf="(p.etat==='valide' && role === 'member') || role === 'admin'">                
+            <div class="jp_listing_overview_list_main_wrapper jb_cover row" *ngIf=" role === 'admin'" >
+              
+              <div class="jp_listing_list_icon_cont_wrapper listeParticipantsflex " *ngFor="let p of participants" >
+                <div class="mailParticipant col-md-7">                
                   <div class="styleInfoEvent">  
-                  <i class="fas fa-user IconE">{{p.emailP}}</i>
+                  <i class="fas fa-user IconE"></i>
+                  <h6>{{p.emailP}}</h6>
                 </div>  
                 </div>
-                <a role="button1" *ngIf="p.etat==='non valide' && role === 'admin'" (click)="validerParticipant(currentEvent._id,p.emailP)">
+                <div class="col-md-7 marginLeftIcon">
+                  <a role="button1" *ngIf="p.etat==='non valide' && role === 'admin'" (click)="validerParticipant(currentEvent._id,p.emailP)">
                     <i class="fa fa-check fa-lg IconToAcceptParticipant"></i>
                   </a>
                   <a role="button2" *ngIf="p.etat==='non valide' && role === 'admin'" (click)="refuserParticipant(currentEvent._id,p.emailP)">
                     <i class="fas fa-trash-alt fa-lg IconTorefuserParticipant"> </i>
-                  </a>    
-              </div>
+                  </a>
+                </div>
             </div>
+            </div>
+            <div class="jp_listing_overview_list_main_wrapper jb_cover"  *ngIf=" role === 'member'">
+              <div  class="jp_listing_list_icon_cont_wrapper listeParticipantsflex" *ngFor="let pv of parValide">
+                <div class="styleInfoEvent mailParticipant ">  
+                  <i class="fas fa-user IconE"></i>
+                  <h6>{{pv.emailP}}</h6>
+                </div> 
               </div>
             </div>
           </div>
