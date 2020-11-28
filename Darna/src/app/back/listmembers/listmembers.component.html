@@ -38,9 +38,9 @@
               *ngFor="let member of members| searchMember: memberValue | paginate: { itemsPerPage: 8, currentPage: pm } ">
               <div class="card">
                 <div class="company_main_wrapper">
-                  <div class="company_img_wrapper">
+                  <div class="company_img_wrapper"> 
                     <div class="image">
-                      <img class="img-fluid" src="http://localhost:8080/api/getfile/{{
+                      <img class="img-fluid" width="208" height="206" src="http://localhost:8080/api/getfile/{{
                           member?.photo
                         }}" alt="image member" />
                     </div>
@@ -82,8 +82,13 @@
         <p style="color: white">Please Wait.</p>
       </ngx-spinner>
       <ng-template #AddMember>
+        <div class="modal-header">
+          <h4 class="modal-title pull-left">Ajouter membre</h4>
+          <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
         <div class="modal-body text-center">
-          <h3>Ajouter membre</h3>
           <form [formGroup]="addForm" (ngSubmit)="AddNewMember()">
             <div class="login_form_wrapper signup_wrapper">
               <div class="form-group icon_form comments_form">
@@ -172,7 +177,7 @@
                 (change)="recoverFile($event); AddNewMember()" />
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary annuler" (click)="modalRef.hide()">
+              <button type="button" class="btn btn-secondary annuler" (click)="ResetFormAdd()">
                 Annuler
               </button>
               <button type="submit" class="btn btn-primary save">

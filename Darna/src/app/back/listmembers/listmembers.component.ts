@@ -102,13 +102,14 @@ export class ListmembersComponent implements OnInit {
       if (result.value) {
         this.listMemberService.deleteMember(_id).subscribe((res: any) => {
           this.members = res;
-          this.ngOnInit();
         });
         Swal.fire(
           'Supprimé',
           'Ce Member a été supprimé avec succés',
           'success'
         );
+        this.ngOnInit();
+
       }
     });
   }
@@ -182,5 +183,9 @@ export class ListmembersComponent implements OnInit {
           console.log(error);
         }
       );
+  }
+  ResetFormAdd(){
+    this.addForm.reset();
+    this.modalRef.hide();
   }
 }

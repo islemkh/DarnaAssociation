@@ -4,30 +4,42 @@
   </div>
   <div class="container">
     <div class="row" style="margin-left: -30%">
-      <div class="col-lg-3 col-md-12 col-sm-12 col-12 d-none d-sm-none d-md-none d-lg-block d-xl-block"></div>
+      <div class="col-lg-3 col-md-12 col-sm-12 col-12 d-none d-sm-none d-md-none d-lg-block d-xl-block">
+        
+      </div>
       <div class="col-lg-9 col-md-12 col-sm-12 col-12">
         <div class="job_listing_left_side jb_cover">
           <div class="filter-area jb_cover" style="background-color: white">
             <div class="list-grid">
               <ul class="nav nav-tabs">
-                <li class="nav-item"></li>
                 <li class="nav-item" *ngIf="role === 'admin'">
                   <button type="button" class="btn btn-primary addbtn" (click)="openModal(AddNewEvent)">
                     <i class="fas fa-plus"> </i>Nouveau événement
                   </button>
                 </li>
+                <li class="nav-item"></li>
+                <li class="nav-item">
+                  <div class="showpro" *ngIf="role === 'admin'">
+                   <p>Liste des événements</p>
+                  </div>
+              </li>
               </ul>
+              <div *ngIf="role != 'admin'" class="showpro" >
+                <h3 style="color:#8293dc">Liste des événements</h3>
+              </div>
+           
             </div>
-            <div *ngIf="role != 'admin'" class="showpro" style="margin-right:33%;">
-              <h3>Liste des événements</h3>
-            </div>
-            <div class="showpro" *ngIf="role === 'admin'">
-              <p>Liste des événements</p>
-            </div>
+          
+            <form class="form-inline test" style="margin-left: 70%;">
+              <input class="form-control form-control-sm mr-3 w-70" type="text" placeholder="Recherche événement"
+                aria-label="Search"   [(ngModel)]="eventValue" name="eventValue" >
+              <i class="fas fa-search icon-s" aria-hidden="true"></i>
+            </form>        
+         
           </div>
           <div class="tab-content btc_shop_index_content_tabs_main jb_cover">
             <div id="list" class="tab-pane active">
-              <div class="row" *ngFor="let el of events   | paginate: { itemsPerPage: 3, currentPage: pm } "
+              <div class="row" *ngFor="let el of events |searchEvent: eventValue  | paginate: { itemsPerPage: 3, currentPage: pm } "
                 style="background-color: white">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-12" *ngIf="role === 'admin' || role === 'member'">
                   <div class="job_listing_left_fullwidth jb_cover">
@@ -78,7 +90,7 @@
                               data-target="#myModal051">Modifier</a>
                           </li>
 
-                          <li *ngIf="role === 'member' " style="margin-top:3%;float:left">
+                          <li *ngIf="role === 'member'" style="margin-top:3%;float:left">
                             <a role="button5" (click)="participate(el._id);" data-toggle="modal"
                               data-target="#myModal051">Participer</a>
                           </li>
@@ -118,7 +130,7 @@
                         <br />
                         <ul>
                           <li>
-                            <i class="fa fa-calendar"></i>&nbsp;{{ el.DateBeginEvent }} / {{ el.DateEndEvent }}
+                            <i class="fa fa-calendar"></i>&nbsp;{{ el.DateBeginEvent | date: 'dd/MM/yyyy' }} / {{ el.DateEndEvent | date: 'dd/MM/yyyy'}}
                           </li>
                           <li>
                             <i class="flaticon-location-pointer"></i>&nbsp;{{ el.lieu}}
@@ -155,13 +167,17 @@
 <div style="float: right">
   <pagination-controls (pageChange)="pm = $event"></pagination-controls>
 </div>
-<ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="default" type="ball-spin-clockwise">
-  <p style="color: white">S'il vous plaît, attendez.</p>
-</ngx-spinner>
+
+
 <!-- Add event  -->
 <ng-template #AddNewEvent>
+  <div class="modal-header">
+    <h5 class="modal-title pull-left">Ajouter un nouveau événement</h5>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
   <div class="modal-body text-center">
-    <h3>Ajouter Event</h3>
     <form [formGroup]="addFormEvent" (ngSubmit)="AddEvent()">
       <div class="login_form_wrapper signup_wrapper">
         <div class="form-group icon_form comments_form">
@@ -192,7 +208,7 @@
         <div class="row">
           <div class="form-group icon_form comments_form col-md-6">
             <label>Date debut Evenement</label>
-            <input type="date" class="form-control require" formControlName="DateBeginEvent" [min]="minDate"  title="Date debut event" 
+            <input type="date"  class="form-control require" formControlName="DateBeginEvent" [max]="maxDate"  title="Date debut event" 
               [ngClass]="{'is-invalid': submitted && AddEventControls.DateBeginEvent.errors}"    />
             <div *ngIf="submitted && AddEventControls.DateBeginEvent.errors" class="invalid-feedback">
               <div *ngIf="AddEventControls.DateBeginEvent.errors.required">
@@ -202,7 +218,7 @@
           </div>
           <div class="form-group icon_form comments_form col-md-6">
             <label>Date Fin Evenement</label>
-            <input type="date" class="form-control require" formControlName="DateEndEvent" title="Date fin event"
+            <input type="date" class="form-control require" [min]="minDate"  formControlName="DateEndEvent" title="Date fin event"
               [ngClass]="{
                 'is-invalid': submitted && AddEventControls.DateEndEvent.errors
               }" required />
@@ -239,7 +255,7 @@
         <div class="row">
           <div class="form-group icon_form comments_form col-md-6">
             <label>Date debut inscription</label>
-            <input type="date" class="form-control require" formControlName="DateBeginInsc" [ngClass]="{
+            <input type="date" class="form-control require" [max]="maxDateIn" formControlName="DateBeginInsc" [ngClass]="{
                 'is-invalid': submitted && AddEventControls.DateBeginInsc.errors
               }" required />
             <div *ngIf="submitted && AddEventControls.DateBeginInsc.errors" class="invalid-feedback">
@@ -251,7 +267,7 @@
           <div class="form-group icon_form comments_form col-md-6">
             <label>Date Fin inscription</label>
             <input type="date" class="form-control require" formControlName="DateEndInsc"
-              title="Date Fin d'inscription membre" [ngClass]="{
+              title="Date Fin d'inscription membre" [min]="minDateIn" [ngClass]="{
                   'is-invalid': submitted && AddEventControls.DateEndInsc.errors
                 }" required />
             <div *ngIf="submitted && AddEventControls.DateEndInsc.errors" class="invalid-feedback">
@@ -263,7 +279,7 @@
         </div>
 
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary annuler" (click)="modalRef.hide()">
+          <button type="button" class="btn btn-secondary annuler" (click)="ResetForm()">
             Annuler
           </button>
           <button type="submit" class="btn btn-primary save">
@@ -277,8 +293,13 @@
 
 <!-- modifier event  -->
 <ng-template #updateEvent>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Modifier un événement</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
   <div class="modal-body text-center">
-    <h3>Modifier evenement</h3>
     <form [formGroup]="updateFormEvent" (ngSubmit)="EditEvent()">
       <div class="login_form_wrapper signup_wrapper">
         <div class="form-group icon_form comments_form">
@@ -333,7 +354,7 @@
           </div>
           <div class="form-group icon_form comments_form col">
             <label>Date fin Evenement</label>
-            <input type="date" class="form-control require" formControlName="DateEndEvent"
+            <input type="date" class="form-control require" formControlName="DateEndEvent" 
               title="Date de fin de l'événement" [ngClass]="{
                   'is-invalid':
                     submitted && UpdatEventControls.DateEndEvent.errors
@@ -362,7 +383,7 @@
         <div class="row">
           <div class="form-group icon_form comments_form col">
             <label>Date debut inscription</label>
-            <input type="date" class="form-control require" formControlName="DateBeginInsc"
+            <input type="date" class="form-control require" formControlName="DateBeginInsc" 
               placeholder="Date de debut de l'inscription*" [ngClass]="{
                   'is-invalid':
                     submitted && UpdatEventControls.DateBeginInsc.errors
@@ -376,7 +397,7 @@
 
           <div class="form-group icon_form comments_form col">
             <label>Date fin inscription</label>
-            <input type="date" class="form-control require" formControlName="DateEndInsc"
+            <input type="date" class="form-control require" formControlName="DateEndInsc" 
               placeholder="Date de la fin de l'inscription*" [ngClass]="{
                   'is-invalid':
                     submitted && UpdatEventControls.DateEndInsc.errors
