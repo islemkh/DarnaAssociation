@@ -19,6 +19,10 @@ export class EventComponent implements OnInit {
   events: EventModel[];
   minDate=null;
   maxDate = null ;
+  minDateIn= null;
+  maxDateIn= null;
+ 
+
   BeginDate=null;
   EndDate=null;
   photo;
@@ -38,6 +42,7 @@ export class EventComponent implements OnInit {
   today= new Date();
   error:any={isError:false,errorMessage:''};
   isValidDate:any;
+  eventValue;
   constructor(  
      private router: Router,
     private formBuilder: FormBuilder,
@@ -71,6 +76,21 @@ export class EventComponent implements OnInit {
         DateBeginInsc: [null, [Validators.required]],
         DateEndInsc: [null, [Validators.required]]
       }))
+      this.addFormEvent.get("DateBeginEvent").valueChanges.subscribe(valueChanges => {
+        this.minDate = valueChanges
+      })
+      this.addFormEvent.get("DateEndEvent").valueChanges.subscribe(valueChanges => {
+        this.maxDate = valueChanges
+      })
+      this.addFormEvent.get("DateBeginInsc").valueChanges.subscribe(valueChanges => {
+        this.minDateIn = valueChanges
+      })
+      this.addFormEvent.get("DateEndInsc").valueChanges.subscribe(valueChanges => {
+        this.maxDateIn = valueChanges      
+      })
+ 
+   
+   
   }
   openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template);
@@ -110,8 +130,6 @@ export class EventComponent implements OnInit {
   }
  
   AddEvent() {
-    this.minDate= {year: 1900, month: 1, day: 1};
-    this.maxDate= {year: 2100, month: 1, day: 1};
     const data = {
       NameEvent: this.addFormEvent.value.NameEvent,
       Description: this.addFormEvent.value.Description,
@@ -123,10 +141,6 @@ export class EventComponent implements OnInit {
       DateEndInsc: this.addFormEvent.value.DateEndInsc,
       photo: this.filesToUpload[0].name,
     };
-/*     this.minDate = this.DateBeginEvent;
-    console.log(' this.minDate: ',  this.minDate);
-    this.maxDate = this.DateEndEvent;
-    console.log('this.maxDate : ', this.maxDate ); */
     this.submitted = true;
 
     // stop here if form is invalid
@@ -139,10 +153,11 @@ export class EventComponent implements OnInit {
         .subscribe((rest) => {
           console.log(rest);
             Swal.fire('Event ajouté avec succès!', '', 'success');
+            this.modalRef.hide();       
             this.getLisEvents();
-            this.modalRef.hide();
-          
+
         });
+
     });
   }
   getEventByid(id) {
@@ -266,12 +281,9 @@ export class EventComponent implements OnInit {
       }
     });
   }
-
-  ChangeDateDebut(event){
-    this.minDate = event;
-  }
-  ChangeDateFin(event){
-    this.maxDate = event;
+  ResetForm(){
+    this.addFormEvent.reset();
+    this.modalRef.hide()
   }
   
 }

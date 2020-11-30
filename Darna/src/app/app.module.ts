@@ -21,6 +21,7 @@ import { SearchMemberPipe } from './back/pipes/search-member.pipe';
 import { EventComponent } from './back/event/event.component';
 import { DetailsEventsComponent } from './back/event/details-events/details-events.component';
 import {  NgbDatepickerModule } from '@ng-bootstrap/ng-bootstrap';
+import { SearchEventPipe } from './back/pipes/search-event.pipe';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import {  NgbDatepickerModule } from '@ng-bootstrap/ng-bootstrap';
     SearchMemberPipe,
     EventComponent,
     DetailsEventsComponent,
+    SearchEventPipe,
   ],
   imports: [
     BrowserModule,
