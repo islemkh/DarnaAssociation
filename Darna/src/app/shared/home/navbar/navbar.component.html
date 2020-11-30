@@ -1,16 +1,10 @@
-<div
-  class="cp_navi_main_wrapper index_2_top_header index_3_top_header jb_cover"
->
-  <div
-    class="cp_navi_main_wrapper index_2_top_header index_3_top_header jb_cover"
-  >
+<div class="cp_navi_main_wrapper index_2_top_header index_3_top_header jb_cover">
+  <div class="cp_navi_main_wrapper index_2_top_header index_3_top_header jb_cover">
+    <header class="mobail_menu d-block d-sm-block d-md-block d-lg-none d-xl-none">
+    </header>
     <div class="cp_logo_wrapper index_2_logo">
       <a routerLink="/">
-        <img
-          src="../../../../assets/images/darnalogo.png"
-          width="160px"
-          alt="logo"
-        />
+        <img src="../../../../assets/images/darnalogo.png" width="160px" alt="logo" />
       </a>
     </div>
     <!--index_3_logo mobile menu area start -->
@@ -19,17 +13,11 @@
       <div class="posting_job">
         <ul>
           <li>
-            <div
-              class="jb_search_btn_wrapper index_2_search d-none d-sm-none d-md-none d-lg-block d-xl-block"
-            >
+            <div class="jb_search_btn_wrapper index_2_search d-none d-sm-none d-md-none d-lg-block d-xl-block">
               <!-- extra nav -->
               <div class="extra-nav">
                 <div class="extra-cell">
-                  <button
-                    id="quik-search-btn"
-                    type="button"
-                    class="site-button radius-xl"
-                  >
+                  <button id="quik-search-btn" type="button" class="site-button radius-xl">
                     <i class="fas fa-search"></i>
                   </button>
                 </div>
@@ -38,16 +26,8 @@
               <!-- Quik search -->
               <div class="dez-quik-search bg-primary-dark">
                 <form action="#">
-                  <input
-                    name="search"
-                    value=""
-                    type="text"
-                    class="form-control"
-                    placeholder="Type to search..."
-                  />
-                  <span id="quik-search-remove"
-                    ><i class="fas fa-times"></i
-                  ></span>
+                  <input name="search" value="" type="text" class="form-control" placeholder="Type to search..." />
+                  <span id="quik-search-remove"><i class="fas fa-times"></i></span>
                 </form>
               </div>
             </div>
@@ -65,50 +45,35 @@
         </ul>
       </div>
 
-      <div
-        class="mainmenu green_main_menu blue_main_menu d-xl-block d-lg-block d-md-none d-sm-none d-none"
-      >
+      <div class="mainmenu green_main_menu blue_main_menu d-xl-block d-lg-block d-md-none d-sm-none d-none">
         <ul class="main_nav_ul menu_2_ul">
           <li class="has-mega gc_main_navigation">
-            <a
-              routerLink="/"
-              class="gc_main_navigation active_class active_class2 active_class3"
-              >Accueil</a
-            >
+            <a routerLink="/" class="gc_main_navigation active_class active_class2 active_class3">Accueil</a>
           </li>
-          <li
-            *ngIf="!isLoggedIn || role === 'member'"
-            class="has-mega gc_main_navigation"
-          >
+          <li *ngIf="!isLoggedIn || role === 'member'" class="has-mega gc_main_navigation">
             <a href="#" class="gc_main_navigation">Qui Somme Nous ?</a>
           </li>
-          <li
-            *ngIf="!isLoggedIn || role === 'member'"
-            class="has-mega gc_main_navigation kv_sub_menu green_sub_menu blue_sub_menu"
-          >
-            <a href="#" class="gc_main_navigation"> Nous aider</a>
+          <li *ngIf="role === 'member'" class="has-mega gc_main_navigation kv_sub_menu green_sub_menu blue_sub_menu">
+            <a routerLink="/Event" class="gc_main_navigation"> Nos Actions</a>
           </li>
-          <li class="has-mega gc_main_navigation">
-            <a href="#" class="gc_main_navigation">News</a>
+          <li *ngIf="role != 'member' && role != 'admin'"
+            class="has-mega gc_main_navigation kv_sub_menu green_sub_menu blue_sub_menu">
+            <a routerLink="/Event" class="gc_main_navigation"> Nos Actions</a>
           </li>
-
-          <li>
-            <a href="contact_us.html" class="gc_main_navigation">contact</a>
+              
+          <li *ngIf="role === 'admin'" class="has-mega gc_main_navigation kv_sub_menu green_sub_menu blue_sub_menu">
+            <a routerLink="/Event" class="gc_main_navigation">Nos Actions</a>
           </li>
-          <li
-            *ngIf="role === 'admin'"
-            class="has-mega gc_main_navigation kv_sub_menu green_sub_menu blue_sub_menu"
-          >
+          <li *ngIf="role === 'admin'" class="has-mega gc_main_navigation kv_sub_menu green_sub_menu blue_sub_menu">
             <a routerLink="/listmembers" class="gc_main_navigation"> Membres</a>
           </li>
-          <li
-            *ngIf="role === 'admin'"
-            class="has-mega gc_main_navigation kv_sub_menu green_sub_menu blue_sub_menu"
-          >
+          <li *ngIf="role === 'admin'" class="has-mega gc_main_navigation kv_sub_menu green_sub_menu blue_sub_menu">
             <a routerLink="/listeDemandes" class="gc_main_navigation">
-              Demandes</a
-            >
+              Demandes</a>
           </li>
+          <li>
+            <a routerLink="/contact" class="gc_main_navigation"> Contact</a>   
+                 </li>
         </ul>
       </div>
       <!-- mainmenu end -->

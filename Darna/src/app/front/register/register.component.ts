@@ -63,7 +63,7 @@ export class RegisterComponent implements OnInit {
   get f() {
     return this.InscriptionForm.controls;
   }
-  recuperFile(file) {
+  recoverFile(file) {
     this.filesToUpload = file.target.files as Array<File>;
     this.photo = file.target.files[0].photo;
   }

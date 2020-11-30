@@ -20,7 +20,7 @@ export class DetailsmembreComponent implements OnInit {
     private route: ActivatedRoute,
     private listMemberService: ListMemberService,
     private SpinnerService: NgxSpinnerService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.id_Member = this.route.snapshot.paramMap.get('idMember');
@@ -35,27 +35,52 @@ export class DetailsmembreComponent implements OnInit {
       this.SpinnerService.hide();
     });
   }
-  bannirMember(id) {
-    Swal.fire({
-      title: 'êtes-vous sûr?',
-      text: 'Vous ne pourrez plus récuperer cela!',
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Oui, banni-le!',
-      cancelButtonText: 'Annuler',
-    }).then((result) => {
-      if (result.value) {
-        this.listMemberService.bannirMember(id, 'banni').subscribe((res) => {
-          // this.selectedValue=null;
-          this.ngOnInit();
-        });
-
-        Swal.fire('Supprimé', 'Ce Member a été banni avec succés', 'success');
-      }
-    });
-  }
+  updateEtatMember(id) {
+    if(this.currentMember.statut=="actif") {
+     
+     Swal.fire({
+       title: 'êtes-vous sûr?',
+       text: 'Vous ne pourrez plus récuperer cela!',
+       icon: 'warning',
+       showCancelButton: true,
+       confirmButtonColor: '#3085d6',
+       cancelButtonColor: '#d33',
+       confirmButtonText: 'Oui, banni-le!',
+       cancelButtonText: 'Annuler',
+     }).then((result) => {
+       if (result.value) {
+         this.listMemberService.updateEtatMember(id, 'banni').subscribe((res) => {
+           // this.selectedValue=null;
+           this.ngOnInit();
+         });
+ 
+         Swal.fire('Supprimé', 'Ce Member a été banni avec succés', 'success');
+       }
+     });
+   } 
+    else if(this.currentMember.statut=="banni") {
+ 
+     Swal.fire({
+       title: 'êtes-vous sûr?',
+       text: 'Vous ne pourrez plus récuperer cela!',
+       icon: 'warning',
+       showCancelButton: true,
+       confirmButtonColor: '#3085d6',
+       cancelButtonColor: '#d33',
+       confirmButtonText: 'Oui, Activer-le!',
+       cancelButtonText: 'Annuler',
+     }).then((result) => {
+       if (result.value) {
+         this.listMemberService.updateEtatMember(id, 'actif').subscribe((res) => {
+           // this.selectedValue=null;
+           this.ngOnInit();
+         });
+ 
+         Swal.fire( 'Supprimé', 'Ce Member a été activé avec succés', 'success');
+       }
+     });
+    }
+   }
   open() {
     this.router.navigate(['/listmembers']);
   }

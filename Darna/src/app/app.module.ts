@@ -18,6 +18,12 @@ import { DetailsmembreComponent } from './back/listmembers/detailsmembre/details
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { SearchMemberPipe } from './back/pipes/search-member.pipe';
+import { EventComponent } from './back/event/event.component';
+import { DetailsEventsComponent } from './back/event/details-events/details-events.component';
+import {  NgbDatepickerModule } from '@ng-bootstrap/ng-bootstrap';
+import { SearchEventPipe } from './back/pipes/search-event.pipe';
+import { ContactFormComponent } from './front/contact-form/contact-form.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,18 +33,19 @@ import { SearchMemberPipe } from './back/pipes/search-member.pipe';
     ContainerComponent,
     LoginComponent,
     RegisterComponent,
-
     ListeDemandeComponent,
-
     ListmembersComponent,
-
     DetailsmembreComponent,
-
     SearchMemberPipe,
+    EventComponent,
+    DetailsEventsComponent,
+    SearchEventPipe,
+    ContactFormComponent,
   ],
   imports: [
     BrowserModule,
     ReactiveFormsModule,
+    NgbDatepickerModule,
     FormsModule,
     AppRoutingModule,
     HttpClientModule,
@@ -51,4 +58,4 @@ import { SearchMemberPipe } from './back/pipes/search-member.pipe';
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
-export class AppModule {}
+export class AppModule { }

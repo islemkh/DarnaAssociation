@@ -3,19 +3,11 @@ import { TemplateRef } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
-<<<<<<< HEAD
-import { ListMemberService } from '../service/list-Member.service';
+import { ListMemberService } from '../service/list-Member.service'
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
-import { ImageService } from 'src/app/front/services/image.service';
-import { NgxSpinnerService } from 'ngx-spinner';
-import { Member } from '../models/member';
-=======
-import {ListMemberService} from '../service/list-Member.service'
-import {BsModalRef, BsModalService} from 'ngx-bootstrap/modal';
 import { NgxSpinnerService } from "ngx-spinner";
-import {Member} from '../models/member'
+import { Member } from '../models/member'
 import { ImageService } from '../../front/services/image.service';
->>>>>>> 64d7ee0713440bb46d350700731896977dde61fc
 
 @Component({
   selector: 'app-listmembers',
@@ -42,7 +34,7 @@ export class ListmembersComponent implements OnInit {
     private modalService: BsModalService,
     private imageservice: ImageService,
     private SpinnerService: NgxSpinnerService
-  ) {}
+  ) { }
   openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template);
   }
@@ -90,10 +82,10 @@ export class ListmembersComponent implements OnInit {
     });
   }
 
-  get f() {
+  get AddFormControls() {
     return this.addForm.controls;
   }
-  get f1() {
+  get UpdateFormControls() {
     return this.updateForm.controls;
   }
   DeleteMember(_id) {
@@ -110,22 +102,23 @@ export class ListmembersComponent implements OnInit {
       if (result.value) {
         this.listMemberService.deleteMember(_id).subscribe((res: any) => {
           this.members = res;
-          this.ngOnInit();
         });
         Swal.fire(
           'Supprimé',
           'Ce Member a été supprimé avec succés',
           'success'
         );
+        this.ngOnInit();
+
       }
     });
   }
-  recuperFile(file) {
+  recoverFile(file) {
     this.filesToUpload = file.target.files as Array<File>;
     this.photo = file.target.files[0].photo;
   }
 
-  AjouterMember() {
+  AddNewMember() {
     const data = {
       NomPrenom: this.addForm.value.NomPrenom,
       Email: this.addForm.value.Email,
@@ -136,12 +129,10 @@ export class ListmembersComponent implements OnInit {
       photo: this.filesToUpload[0].name,
     };
     this.submitted = true;
-
     // stop here if form is invalid
     if (this.addForm.invalid) {
       return;
     }
-
     this.listMemberService.AddMember(data).subscribe((res) => {
       this.imageservice
         .pushFileToStorage(this.filesToUpload[0])
@@ -156,6 +147,7 @@ export class ListmembersComponent implements OnInit {
           } else {
             Swal.fire('Membre ajouté avec succès!', '', 'success');
             this.getListMembers();
+            this.addForm.reset();
             this.modalRef.hide();
           }
         });
@@ -177,7 +169,7 @@ export class ListmembersComponent implements OnInit {
     });
   }
 
-  ModifierMember() {
+  EditMember() {
     this.listMemberService
       .updateMember(this.currentMember._id, this.updateForm.value)
       .subscribe(
@@ -191,5 +183,9 @@ export class ListmembersComponent implements OnInit {
           console.log(error);
         }
       );
+  }
+  ResetFormAdd(){
+    this.addForm.reset();
+    this.modalRef.hide();
   }
 }

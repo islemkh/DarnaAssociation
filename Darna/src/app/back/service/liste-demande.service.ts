@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpRequest } from '@angular/common/http';
+import { host } from 'src/app/host';
 
-const host = 'http://localhost:8080';
+
 
 @Injectable({
   providedIn: 'root',
 })
 export class ListeDemandeService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
   getListeDemand() {
     return this.http.get(host + '/api/listeDemandes');
   }

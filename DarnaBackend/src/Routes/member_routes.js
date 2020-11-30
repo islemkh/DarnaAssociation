@@ -5,8 +5,7 @@ import {
     getAllMember,
     deleteMember,
     UpdateMember,
-    BannirMember
-
+    updateEtatMember
 } from '../Controllers/member_controller'
 
 const routes_member = (app) => {
@@ -24,8 +23,8 @@ const routes_member = (app) => {
 
     app.route('/api/UpdateMember/:id')
         .put(UpdateMember)
-    app.route('/api/bannirmember/:id')
-        .put(BannirMember)
+    app.route('/api/updateEtatMember/:id')
+        .put(updateEtatMember)  
     //public routes
     app.route('/api/login')
         .post(loginmember)

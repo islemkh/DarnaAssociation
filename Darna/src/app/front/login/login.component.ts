@@ -13,6 +13,7 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   submitted = false;
   role;
+  connectedUser;
   token: string;
   jwt: string;
   statut: string;
@@ -20,27 +21,18 @@ export class LoginComponent implements OnInit {
     private formBuilder: FormBuilder,
     private router: Router,
     private loginservice: LoginService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
       Email: [''],
       Password: [''],
     });
-<<<<<<< HEAD
-    let isLoggedIn = this.loginservice.isLoggedIn();
-
-    if (isLoggedIn) {
-      this.router.navigate(['/listeDemandes']);
-    }
-=======
     // let isLoggedIn= this.loginservice.isLoggedIn();
 
     // if (isLoggedIn) {
     //   this.router.navigate(['/listeDemandes']);
     // }
-
->>>>>>> 64d7ee0713440bb46d350700731896977dde61fc
   }
   get f() {
     return this.loginForm.controls;
@@ -52,7 +44,6 @@ export class LoginComponent implements OnInit {
     if (this.loginForm.invalid) {
       return;
     }
-
     // display form values on success
     alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.loginForm.value, null, 4));
     this.router.navigate(['/']);
@@ -93,6 +84,8 @@ export class LoginComponent implements OnInit {
           }
           if (this.role === 'member') {
             this.router.navigate(['/']);
+            this.connectedUser = res.body.user.Email;
+            sessionStorage.setItem('UserConnect', this.connectedUser);
             console.log("hello member , you're connected");
           }
         }

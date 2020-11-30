@@ -44,7 +44,7 @@ body, html {
     transition: all 0.5s;
 }
 a {
-	color: #ff3366;
+	color: #875cff;
 	text-decoration: none;
 	-webkit-transition: all 0.5s;
     -o-transition: all 0.5s;
@@ -55,7 +55,7 @@ a {
 a:hover, a:focus {
 	text-decoration: none;
 	outline: none;
-	color:#ff3366;
+	color:#875cff;
 	-webkit-transition: all 0.5s;
     -o-transition: all 0.5s;
     -ms-transition: all 0.5s;
@@ -140,7 +140,7 @@ a:hover {
     position: absolute;
     height: 50%;
     width: 100%;
-    background-color: #ff3366;	
+    background-color: #875cff;	
     -webkit-transition: .7s all ease;
     -o-transition: .7s all ease;
     transition: .7s all ease;
@@ -247,7 +247,7 @@ a:hover {
   transform: scale(1);
   transition: transform .35s ease-out;
   z-index: 1011;
-  border:1px solid #ff3366;
+  border:1px solid #875cff;
 }
 @supports not (mix-blend-mode: multiply) {
   .cursor {
@@ -332,7 +332,7 @@ a:hover {
 .header_btn li:last-child a{
   width:140px;
   height:50px;
-  background:#ff3366;
+  background:#875cff;
   float:left;
   text-align:center;
   cursor:pointer;
@@ -360,7 +360,7 @@ a:hover {
 	left: 0;
 	width: 100%;
 	height: 100%;
-	border: 1px solid #ff3366;
+	border: 1px solid #875cff;
 	z-index: -1;
 	border-radius: inherit;
 	opacity: 0;
@@ -373,7 +373,7 @@ a:hover {
 }
 .header_btn li:last-child a:hover{
 	background-color:transparent;
-	color: #ff3366;
+	color: #875cff;
 	   -webkit-transition: all 0.6s;
     -o-transition: all 0.6s;
     -ms-transition: all 0.6s;
@@ -418,7 +418,7 @@ a:hover {
     transition: all 0.6s;
 }
 .header_btn li:first-child a i{
-	color:#ff3366;
+	color:#875cff;
 	 -moz-transition: all 0.6s;
     transition: all 0.6s;
 }
@@ -429,8 +429,8 @@ a:hover {
 	left: 0;
 	width: 100%;
 	height: 100%;
-	border:1px solid #ff3366;
-	background:#ff3366;
+	border:1px solid #875cff;
+	background:#875cff;
 	z-index: -1;
 	border-radius: inherit;
 	opacity: 0;
@@ -531,7 +531,7 @@ a:hover {
     display: inline-block;
 }
 .site-button{
-    color: #ff3366;
+    color: #875cff;
     display: inline-block;
     outline: none;
     cursor: pointer;
@@ -552,7 +552,7 @@ a:hover {
 .site-button:focus,
 .active > .site-button {
     background-color: transparent;
-    color: #ff3366;
+    color: #875cff;
 }
 .cp_logo_wrapper{
 	float:left;
@@ -607,7 +607,7 @@ a:hover {
     padding: 40px 23px 39px 23px;
 }
 .mainmenu ul li a i{
-	color: #ff3366;
+	color: #875cff;
     margin-right: 10px;
     font-size: 7px;
     position: relative;
@@ -625,7 +625,7 @@ a:hover {
 .mainmenu ul li .gc_main_navigation:before, .mainmenu ul li.active > .gc_main_navigation:before {
 	position: absolute;
     content: '';
-    background: #ff3366;
+    background: #875cff;
     width: 0;
     height: 3px;
     left: 0px;
@@ -649,12 +649,12 @@ a:hover {
 }
 .active_class{
 	position:relative;
-	color:#ff3366 !important;
+	color:#875cff !important;
 }
 .active_class:before {
 	position: absolute;
     content: '';
-    background: #ff3366;
+    background: #875cff;
     width: 60px !important;
     height: 3px;
     left: 0px;
@@ -689,7 +689,7 @@ a:hover {
 .mainmenu ul li:hover .gc_main_navigation,
  .mainmenu ul li.active > .gc_main_navigation {
     opacity: 1;
-	color:#ff3366 !important;
+	color:#875cff !important;
 }
 .mainmenu ul li:hover .gc_main_navigation:before,
  .mainmenu ul li.active > .gc_main_navigation:before {
@@ -737,7 +737,7 @@ a:hover {
     opacity: 0;
 	border-radius:0;
 	border:1px solid #e2e2e2;
-	border-top:3px solid #ff3366;
+	border-top:3px solid #875cff;
 	background:#fff;
     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
     visibility: hidden;
@@ -927,7 +927,7 @@ a:hover {
 	background:#fff;
 	border:1px solid #e2e2e2;
 	border-right:0;
-	border-top:2px solid #ff3366;
+	border-top:2px solid #875cff;
 	-ms-box-shadow: 0 4px 15px rgba(0,0,0,0.05);
     -moz-box-shadow: 0 4px 15px rgba(0,0,0,0.05);
     -webkit-box-shadow: 0 4px 15px rgba(0,0,0,0.05);
@@ -966,7 +966,7 @@ a:hover {
 }
 .jen_tabs_conent_list li a:hover{
 	color:#fff;
-	background:#ff3366;
+	background:#875cff;
 }
 .jen_tabs_conent_list li a:hover i{
 	color:#fff;
@@ -1018,11 +1018,11 @@ a:hover {
     padding-bottom: 20px;
 }
 .active{
-	color:#ff3366 !important;
+	color:#875cff !important;
 }
 .parent a:hover{
 	color:#fff;
-	background:#ff3366;
+	background:#875cff;
 }
 .parent a:hover i{
 	color:#fff;
@@ -1030,7 +1030,7 @@ a:hover {
 .jen_tabs_conent_list h1{
 	font-size:16px;
 	text-transform:capitalize;
-	color:#ff3366;
+	color:#875cff;
 	font-weight:400;
 	border:0;
 	padding:30px;
@@ -1111,7 +1111,7 @@ a:hover {
 }
 .open_job_text p{
 	font-size:14px;
-	color:#ff3366;
+	color:#875cff;
 }
 .candidate_width{
 	float:left;
@@ -1121,7 +1121,7 @@ a:hover {
 	text-transform:capitalize;
 	font-weight:400;
 	font-size:16px;
-	color:#ff3366 !important;
+	color:#875cff !important;
 	padding-top:10px;
 }
 /***----jb banner wrapper css----***/
@@ -1223,7 +1223,7 @@ a:hover {
 	z-index:1;
     left: 20px;
 	font-size:16px;
-	color:#ff3366;
+	color:#875cff;
 }
 .select_box_2{
 	width:55%;
@@ -1271,7 +1271,7 @@ a:hover {
 .search_btn  a{
   width:180px;
   height:50px;
-  background:#ff3366;
+  background:#875cff;
   float:left;
   text-align:center;
   cursor:pointer;
@@ -1298,7 +1298,7 @@ a:hover {
 	left: 0;
 	width: 100%;
 	height: 100%;
-	border: 1px solid #ff3366;
+	border: 1px solid #875cff;
 	border-radius: inherit;
 	opacity: 0;
 	-webkit-transform: scale3d(0.6, 0.6, 1);
@@ -1310,7 +1310,7 @@ a:hover {
 }
 .search_btn a:hover{
 	background-color:transparent;
-	color: #ff3366;
+	color: #875cff;
 	   -webkit-transition: all 0.6s;
     -o-transition: all 0.6s;
     -ms-transition: all 0.6s;
@@ -1342,13 +1342,13 @@ a:hover {
 }
 .jb_btm_keyword li i {
     padding-right: 5px;
-    color: #ff3366;
+    color: #875cff;
 }
 .jb_btm_keyword li a{
 	color:#797979;
 }
 .jb_btm_keyword li a:hover {
-   color:#ff3366;
+   color:#875cff;
 }
 /***----- job banner list css-----***/
 .jb_banner_list{
@@ -1377,7 +1377,7 @@ a:hover {
 	padding-bottom:15px;
 }
 .jb_top_jobs_category:hover  h3 a{
-	 color: #ff3366;
+	 color: #875cff;
 }
 .jb_top_jobs_category:hover{
 	margin-top:-10px;
@@ -1456,8 +1456,8 @@ a:hover {
     position: absolute;
 }
 .jb_browse_category:hover {
-    background: #ff3366;
-    border: 1px solid #ff3366;
+    background: #875cff;
+    border: 1px solid #875cff;
 		-webkit-transition: all 0.6s;
     -o-transition: all 0.6s;
     -ms-transition: all 0.6s;
@@ -1502,7 +1502,7 @@ a:hover {
     transition: all 0.6s;
 }
 .jb_browse_category i:before {
-    color: #ff3366;
+    color: #875cff;
     font-size: 28px;
 	float:left; width:100%;
 	padding-bottom:10px;
@@ -1552,7 +1552,7 @@ a:hover {
 	padding-bottom:20px;
 }
 .left_jb_jeading p{
-	color:#ff3366;
+	color:#875cff;
 }
 .grow_next_text p{
 	margin-bottom:30px;
@@ -1651,9 +1651,9 @@ a:hover {
 	color:#222;
 }
 .apply_btn a:hover{
-	background:#ff3366;
+	background:#875cff;
 	color:#fff;
-	border:1px solid #ff3366;
+	border:1px solid #875cff;
 }
 .apply_job_popup .modal-dialog {
     top: 10%;
@@ -1672,7 +1672,7 @@ a:hover {
     width: 30px;
     height: 30px;
     line-height: 30px;
-    background: #ff3366;
+    background: #875cff;
    	-webkit-border-radius: 100px; 
   -moz-border-radius: 100px; 
    border-radius: 100px; 
@@ -1763,7 +1763,7 @@ a:hover {
 	width:180px;
 	height:40px !important;
 	line-height:40px;
-	background: #ff3366;
+	background: #875cff;
     color: #fff;
 	-webkit-border-radius: 50px; 
   -moz-border-radius: 50px; 
@@ -1798,11 +1798,11 @@ a:hover {
 	display:inline-block;
 }
 .se_all_job a{
-	color:#ff3366;
+	color:#875cff;
 	text-transform:capitalize;
 }
 .se_all_job a i{
-	color:#ff3366;
+	color:#875cff;
 	margin-left:3px;
 }
 /****-----counter wrapper css------*****/
@@ -2003,9 +2003,9 @@ a:hover {
     transition: all 0.5s;
 }
 .top_company_slider_wrapper  .owl-theme .owl-nav .owl-next:hover, .top_company_slider_wrapper .owl-theme .owl-nav .owl-prev:hover{
-	background:#ff3366;
+	background:#875cff;
 	color:#fff;
-	border:1px solid #ff3366;
+	border:1px solid #875cff;
 	-webkit-transition: all 0.5s;
     -o-transition: all 0.5s;
     -ms-transition: all 0.5s;
@@ -2034,7 +2034,7 @@ a:hover {
 	float: left;
     width: 100px;
     text-align: center;
-    background: #ff3366;
+    background: #875cff;
     position: absolute;
     top: -100px;
     transform: rotate(-33deg);
@@ -2095,7 +2095,7 @@ a:hover {
 	display:inline-block;
 	height:35px;
 	line-height:35px;
-	background:#ff3366;
+	background:#875cff;
 	color:#fff;
 	font-size:14px;
 	text-transform:capitalize;
@@ -2231,9 +2231,9 @@ a:hover {
     left: 8px;
 }
 .pricing_box_wrapper:hover .price_btn{
-	background:#ff3366;
+	background:#875cff;
 	color:#fff;
-	border:1px solid #ff3366;
+	border:1px solid #875cff;
 	-webkit-transition: all .5s;
 	-moz-transition: all .5s;
 	-ms-transition: all .5s;
@@ -2325,9 +2325,9 @@ a:hover {
 	font-size:24px;
 }
 .rivew_testimonial_slider .owl-theme .owl-nav .owl-prev:hover, .rivew_testimonial_slider .owl-theme .owl-nav .owl-next:hover{
-	background: #ff3366;
+	background: #875cff;
     color: #fff;
-    border: 1px solid #ff3366;
+    border: 1px solid #875cff;
 	-webkit-transition: all 0.5s;
     -o-transition: all 0.5s;
     -ms-transition: all 0.5s;
@@ -2372,7 +2372,7 @@ a:hover {
 	font-weight:400 !important;
 	padding:0 !important;
 	font-size:16px !important;
-	color:#ff3366 !important;
+	color:#875cff !important;
 }
 .jb_saying_content_wrapper p{
 	float:left;
@@ -2501,7 +2501,7 @@ a:hover {
 }
 .app_btn .ss_playstore span i:before{
     font-size: 22px;
-    color: #ff3366;
+    color: #875cff;
     -webkit-transition: all 0.5s;
     -o-transition: all 0.5s;
     -ms-transition: all 0.5s;
@@ -2648,7 +2648,7 @@ a:hover {
     border-bottom: 1px solid #e2e2e2;
 }
 #accordion .card_pagee a{
-    color: #ff3366; 
+    color: #875cff; 
     background-color: #fff;
     display: block;
     padding: 10px 3px;
@@ -2658,7 +2658,7 @@ a:hover {
     border-bottom: 1px solid #e2e2e2;
 }
 #accordion .card_pagee a:after{
-	color:#ff3366;
+	color:#875cff;
 }
 #accordion .card_pagee a.collapsed:after {
 	 color: #333; 
@@ -2701,7 +2701,7 @@ a:hover {
 }
 .footer_first_contact li i:before {
     float: left;
-    color: #ff3366;
+    color: #875cff;
 	font-size:26px;
 	width:20px;
     line-height: 40px;
@@ -2731,7 +2731,7 @@ a:hover {
 	padding-bottom:35px;
 }
 .footer ul li a:hover{
-	color:#ff3366;
+	color:#875cff;
 }
 .icon_list_news{
 	margin-top:20px;
@@ -2752,7 +2752,7 @@ a:hover {
 	border-radius:100px;
 }
 .icon_list_news li a:hover{
-	background:#ff3366;
+	background:#875cff;
 }
 .icon_list_news li a i{
 	color:#cccccc;
@@ -2772,7 +2772,7 @@ a:hover {
 	font-size: 6px;
     position: relative;
     top: -2px;
-	color:#ff3366;
+	color:#875cff;
 }
 .copyright_left{
 	padding-left:10px;
@@ -2789,7 +2789,7 @@ a:hover {
 	 color: rgba(255, 255, 255, 0.45);
 }
 .copyright_left a:hover{
-	color:#ff3366;
+	color:#875cff;
 }
 .copyright_left{
 	padding-top:30px;
@@ -2972,7 +2972,7 @@ a:hover {
 }
 .about_slider_wrapper .owl-theme .owl-dots .owl-dot.active span, 
 .about_slider_wrapper .owl-theme .owl-dots .owl-dot:hover span  {
-	background:#ff3366;
+	background:#875cff;
 	-webkit-transition: all 0.5s;
     -o-transition: all 0.5s;
     -ms-transition: all 0.5s;
@@ -3004,7 +3004,7 @@ a:hover {
 	text-transform:capitalize;
 }
 .about_text_wrapper h5 span {
-    color: #ff3366;
+    color: #875cff;
 }
 /***----job agency wrapper css-----****/
 .job_agency_wrapper{
@@ -3083,9 +3083,9 @@ a:hover {
 	font-size:24px;
 }
 .team_slider_wrapper .owl-theme .owl-nav .owl-prev:hover, .team_slider_wrapper .owl-theme .owl-nav .owl-next:hover{
-	background: #ff3366;
+	background: #875cff;
     color: #fff;
-    border: 1px solid #ff3366;
+    border: 1px solid #875cff;
 	-webkit-transition: all 0.5s;
     -o-transition: all 0.5s;
     -ms-transition: all 0.5s;
@@ -3093,7 +3093,7 @@ a:hover {
     transition: all 0.5s;
 }
 .team_slider_img_box{
-	background:#ff3366;
+	background:#875cff;
 	height:195px;
 	overflow:hidden;
 }
@@ -3121,7 +3121,7 @@ a:hover {
 }
 .team_slider_content p{
 	text-transform:capitalize;
-	color:#ff3366;
+	color:#875cff;
 }
 .team_slider_content h2 a{
 	font-size:20px;
@@ -3134,7 +3134,7 @@ a:hover {
     transition: all 0.5s;
 }
 .team_slider_content:hover h2 a{
-	color:#ff3366;
+	color:#875cff;
 		-webkit-transition: all 0.5s;
     -o-transition: all 0.5s;
     -ms-transition: all 0.5s;
@@ -3160,7 +3160,7 @@ a:hover {
 }
 .job_filter_sidebar_heading{
 	padding:18px 25px;
-	background:#ff3366;
+	background:#875cff;
 }
 .job_filter_sidebar_heading h1{
 	color:#fff;
@@ -3184,7 +3184,7 @@ a:hover {
 	float:right;
 }
 .job_field input[type="checkbox"] + label:before {
-  border: 1px solid #ff3366;
+  border: 1px solid #875cff;
   content: "\00a0";
   display: inline-block;
   font: 16px/1em sans-serif;
@@ -3202,7 +3202,7 @@ a:hover {
     color: #fff;
     content: "\2713";
     font-weight: 900;
-    background: #ff3366;
+    background: #875cff;
 }
 .job_field input[type="checkbox"]:checked + label:after {
   font-weight: 900;
@@ -3219,7 +3219,7 @@ a:hover {
 .seeMore a{
 	padding-top:10px;
 	text-transform:capitalize;
-	color:#ff3366;
+	color:#875cff;
 }
 .price-range .range {
     display: block;
@@ -3241,7 +3241,7 @@ a:hover {
   -moz-border-radius: 100%; 
    border-radius: 100%; 
     cursor: pointer;
-    border: 2px solid #ff3366;
+    border: 2px solid #875cff;
     margin-top: -2px;
 }
 .price-range .ui-widget-content .ui-state-default:focus {
@@ -3249,7 +3249,7 @@ a:hover {
 }
 .price-range .ui-widget-content .ui-state-default:last-child {
     background: #fff;
-   border: 2px solid #ff3366;
+   border: 2px solid #875cff;
 }
 .price-range .ui-widget-content {
     background: #ebebeb;
@@ -3342,7 +3342,7 @@ a:hover {
 }
 .list-grid .nav-tabs .nav-item.show .nav-link, .list-grid .nav-tabs .nav-link.active{
 	color: #fff;
-    background-color: #ff3366;
+    background-color: #875cff;
     border-color:transparent;
 }
 .list-grid .nav-tabs .nav-item.show .nav-link i, .list-grid .nav-tabs .nav-link.active i{
@@ -3358,7 +3358,7 @@ a:hover {
 .filter-area .showpro p {
     margin: 0;
 	text-transform:capitalize;
-	color:#ff3366;
+	color:#875cff;
 }
 .filter-area .nice-select{
 	border:1px solid #e2e2e2;
@@ -3402,7 +3402,7 @@ a:hover {
 	line-height:20px;
 }
 .job_listing_left_fullwidth:hover .jp_job_post_right_cont h4 a{
-	color:#ff3366;
+	color:#875cff;
 }
 .jp_job_post_right_cont li{
 	margin-left:20px;
@@ -3414,7 +3414,7 @@ a:hover {
 	width:100%;
 }
 .jp_job_post_right_cont li i{
-	color:#ff3366;
+	color:#875cff;
 	float:left;
 	line-height:30px;
 }
@@ -3460,8 +3460,8 @@ a:hover {
     left: 0;
     width: 100%;
     height: 100%;
-    border: 1px solid #ff3366;
-    background: #ff3366;
+    border: 1px solid #875cff;
+    background: #875cff;
     z-index: -1;
     border-radius: inherit;
     opacity: 0;
@@ -3527,7 +3527,7 @@ a:hover {
 .jp_job_post_right_btn_wrapper li:last-child a{
 	width: 100px;
     height: 35px;
-    background: #ff3366;
+    background: #875cff;
     float: left;
     text-align: center;
     cursor: pointer;
@@ -3555,7 +3555,7 @@ a:hover {
     left: 0;
     width: 100%;
     height: 100%;
-    border: 1px solid #ff3366;
+    border: 1px solid #875cff;
     z-index: -1;
     border-radius: inherit;
     opacity: 0;
@@ -3568,7 +3568,7 @@ a:hover {
 }
 .jp_job_post_right_btn_wrapper li:last-child a:hover {
     background-color: transparent;
-    color: #ff3366;
+    color: #875cff;
     -webkit-transition: all 0.6s;
     -o-transition: all 0.6s;
     -ms-transition: all 0.6s;
@@ -3579,7 +3579,7 @@ a:hover {
 	width:35px;
 	height:35px;
 	line-height:35px;
-	color:#ff3366;
+	color:#875cff;
 	float:left;
 	font-size:16px;
 	text-align:center;
@@ -3588,8 +3588,8 @@ a:hover {
 }
 .change.job_adds_right a{
   color:#fff;
-  background:#ff3366;
-  border:1px solid #ff3366;
+  background:#875cff;
+  border:1px solid #875cff;
 }
 .index2_adds_right a{
 	color:#57ac60;
@@ -3628,15 +3628,15 @@ a:hover {
    font-size:16px;
 }
 .blog_pagination_section ul li a:hover{
-    background: #ff3366;
+    background: #875cff;
     color: #fff;
-    border: 1px solid #ff3366;
+    border: 1px solid #875cff;
 }
 .blog_pagination_section .next:hover i:before, .blog_pagination_section .prev:hover i:before {
 	color:#fff;
 } 
 .blog_pagination_section .third_pagger a {
-    background: #ff3366;
+    background: #875cff;
     color: #fff;
 }
 /***-----job single wrapper css-----***/
@@ -3660,7 +3660,7 @@ a:hover {
 }
 .jb_job_overview_img p{
 	font-size:16px;
-	color:#ff3366;
+	color:#875cff;
 }
 .job_single_lists li{
 	float:left;
@@ -3790,14 +3790,14 @@ a:hover {
 }
 .jb_keyword_key_wrapper li i{
 	padding-right:8px;
-	color:#ff3366;
+	color:#875cff;
 	font-size:14px;
 }
 .jb_keyword_key_wrapper li a{
 	color:#797979;
 }
 .jb_keyword_key_wrapper li a:hover{
-	color:#ff3366;
+	color:#875cff;
 }
 .jb_listing_single_overview{
 	border:1px solid #e2e2e2;
@@ -3819,7 +3819,7 @@ a:hover {
 	margin-left:30px;
 }
 .jp_job_des li i {
-	color:#ff3366;
+	color:#875cff;
 }
 .jp_job_des li:first-child{
 	margin-left:0;
@@ -3838,7 +3838,7 @@ a:hover {
     transition: all 0.5s;
 }
 .jp_job_des li a:hover{
-	color:#ff3366;
+	color:#875cff;
 	-webkit-transition: all 0.5s;
     -o-transition: all 0.5s;
     -ms-transition: all 0.5s;
@@ -3906,8 +3906,8 @@ a:hover {
 	color:#797979;
 }
 .jp_listing_left_bottom_sidebar_social_wrapper li a:hover{
-	background:#ff3366; 
-	border:1px solid #ff3366;
+	background:#875cff; 
+	border:1px solid #875cff;
 }
 .jp_listing_left_bottom_sidebar_social_wrapper li a:hover i{
 	color:#fff;
@@ -3977,9 +3977,9 @@ a:hover {
 	font-size:16px;
 }
 .related_product_job .owl-theme .owl-nav .owl-prev:hover, .related_product_job .owl-theme .owl-nav .owl-next:hover{
-	background: #ff3366;
+	background: #875cff;
     color: #fff;
-    border: 1px solid #ff3366;
+    border: 1px solid #875cff;
 	-webkit-transition: all 0.5s;
     -o-transition: all 0.5s;
     -ms-transition: all 0.5s;
@@ -4054,10 +4054,10 @@ a:hover {
 	font-size:16px;
 }
 .web_single_btn li:last-child a:hover{
-	color:#ff3366;
+	color:#875cff;
 }
 .web_single_btn li:last-child a::before{
-	border:1px solid #ff3366;
+	border:1px solid #875cff;
 	background:#fff;
 }
 .webstrot_tech_detail .job_overview_header{
@@ -4079,7 +4079,7 @@ a:hover {
 }
 .prs_video_sec_icon_wrapper li i:before{
     float: left;
-   color:#ff3366;
+   color:#875cff;
 	font-size:50px;
 	position:relative;
 }
@@ -4120,7 +4120,7 @@ a:hover {
 	border:1px solid #e9e9e9;
 	border-left:0;
 	background:#ffffff;
-	color:#ff3366;
+	color:#875cff;
 	font-size:14px;
 }
 .jp_blog_right_search_wrapper input{
@@ -4133,7 +4133,7 @@ a:hover {
 }
 .blog_category_link li i {
     padding-right: 5px;
-    color: #ff3366;
+    color: #875cff;
 }
 .blog_category_link li{
 	margin-bottom:12px;
@@ -4144,7 +4144,7 @@ a:hover {
 	text-transform:capitalize;
 }
 .blog_category_link li a span, .blog_category_link li a:hover, .jp_rightside_career_img_cont h4 a:hover{
-	color:#ff3366;
+	color:#875cff;
 }
 .jp_rightside_career_img{
 	float:left;
@@ -4231,7 +4231,7 @@ a:hover {
 }
 .jp_spotlight_slider_cont_Wrapper p a{
 	font-size:16px;
-	color:#ff3366;
+	color:#875cff;
 	padding:10px 0;
 	float:left;
 }
@@ -4239,7 +4239,7 @@ a:hover {
 	float:left;
 }
 .jp_spotlight_slider_cont_Wrapper li i{
-	color:#ff3366;
+	color:#875cff;
 }
 .jp_spotlight_slider_cont_Wrapper li:first-child{
 	margin-left:0;
@@ -4269,7 +4269,7 @@ a:hover {
 }
 .jp_first_blog_post_cont_wrapper p span{
 	text-transform:uppercase;
-	color:#ff3366;
+	color:#875cff;
 }
 .jp_first_blog_post_main_wrapper{
 	margin-bottom:40px;
@@ -4283,7 +4283,7 @@ a:hover {
 	padding-bottom:20px;
 }
 .jp_first_blog_post_main_wrapper:hover .jp_first_blog_post_cont_wrapper h3 a{
-	color:#ff3366;
+	color:#875cff;
 	-webkit-transition: all 0.5s;
 	-o-transition: all 0.5s;
 	-ms-transition: all 0.5s;
@@ -4315,7 +4315,7 @@ a:hover {
 	color:#797979;
 }
 .jp_blog_bottom_right_cont p a i:hover{
-	color:#ff3366;
+	color:#875cff;
 }
 .jp_blog_bottom_right_cont p a span{
 	position:absolute;
@@ -4324,7 +4324,7 @@ a:hover {
 	line-height:15px;
 	border-radius:50px;
 	color:#fff;
-	background:#ff3366;
+	background:#875cff;
 	top: 1px;
     right: -6px;
 	text-align:center;
@@ -4356,7 +4356,7 @@ a:hover {
 	color:#797979;
 }
 .jp_blog_bottom_right_cont li a:hover{
-	background:#ff3366; 
+	background:#875cff; 
 	color:#ffffff;
 	-webkit-transition: all 0.5s;
 	-o-transition: all 0.5s;
@@ -4418,7 +4418,7 @@ a:hover {
     transition: all 0.5s;
 }
 .jp_first_blog_post_slider .owl-theme .owl-nav .owl-prev:hover, .jp_first_blog_post_slider  .owl-theme .owl-nav .owl-next:hover{
-	color:#ff3366;
+	color:#875cff;
 	-webkit-transition: all 0.5s;
     -o-transition: all 0.5s;
     -ms-transition: all 0.5s;
@@ -4482,7 +4482,7 @@ a:hover {
 }
 .jp_blog_single_client_cont h3{
 	font-size:20px;
-	color:#ff3366;
+	color:#875cff;
 	text-transform:capitalize;
 	padding-bottom:10px;
 }
@@ -4533,7 +4533,7 @@ a:hover {
 }
 .author_detail  .publish_date{
 	font-size:14px;
-	color: #ff3366;
+	color: #875cff;
 	margin-left:10px;
 }
 .author_content a{
@@ -4565,7 +4565,7 @@ a:hover {
 .comments_form .form-control:focus, .comments_form .form-control:hover{
 	color: #111;
 	background-color: transparent;
-	border: 1px solid #ff3366 !important;
+	border: 1px solid #875cff !important;
 	-webkit-transition: all 0.3s ease 0s;
    -moz-transition: all 0.3s ease 0s;
    -o-transition: all 0.3s ease 0s;
@@ -4581,7 +4581,7 @@ a:hover {
     position:absolute;
 	top:17px;
 	right:22px;
-	color:#ff3366;
+	color:#875cff;
 }
 .contact_icon_section{
 	padding:90px 0;
@@ -4600,7 +4600,7 @@ a:hover {
 .contact_main h4{
 	font-size: 20px;
 	margin-top:30px;
-	color:#ff3366;
+	color:#875cff;
     margin-bottom: 30px;
 	text-transform:capitalize;
 }
@@ -4614,7 +4614,7 @@ a:hover {
 	color:#797979;
 }
 .contact_main p a:hover{
-	color:#ff3366;
+	color:#875cff;
 }
 .contact_rotate{
 	position:relative;
@@ -4622,7 +4622,7 @@ a:hover {
 	padding:50px 0;
 	background: -moz-linear-gradient(45deg, rgba(209,72,127,1) 20%, rgba(248,54,106,1) 100%);
     background: -webkit-linear-gradient(45deg, rgba(209,72,127,1) 20%, rgba(248,54,106,1) 100%);
-	background: linear-gradient(45deg, rgba(209,72,127,1) 20%, rgba(248,54,106,1) 100%);
+	background: linear-gradient(45deg, rgb(131 148 220) 20%, rgb(29 206 200) 100%);
 }
 .contact_rotate i{
 	display: inline-block;
@@ -4683,7 +4683,7 @@ a:hover {
 .tb_es_btn_wrapper  button{
     width: 170px;
     height: 45px;
-    background: #ff3366;
+    background: #875cff;
     float: left;
     text-align: center;
     cursor: pointer;
@@ -4700,8 +4700,8 @@ a:hover {
 }
 .tb_es_btn_wrapper  button:hover {
     background-color: transparent;
-    color: #ff3366;
-	border: 1px solid  #ff3366;
+    color: #875cff;
+	border: 1px solid  #875cff;
     -webkit-transition: all 0.6s;
     -o-transition: all 0.6s;
     -ms-transition: all 0.6s;
@@ -4786,7 +4786,7 @@ a:hover {
 .jp_regis_center_tag_wrapper {
     width: 70px;
     height: 70px;
-    background: #ff3366;
+    background: #875cff;
     position: absolute;
     right: -36px;
     top: 46%;
@@ -4844,7 +4844,7 @@ a:hover {
   transform: rotate(45deg);
 }
 .login_remember_box .forget_password{
-	color:#ff3366;
+	color:#875cff;
 	font-size:16px;
 	text-decoration:underline;
 }
@@ -4859,7 +4859,7 @@ a:hover {
     position: absolute;
     top: 17px;
     right: 22px;
-    color: #ff3366;
+    color: #875cff;
 }
 .check_box_anchr {
     color: ##002398 !important;
@@ -4868,7 +4868,7 @@ a:hover {
 	font-size:16px;
 }
 .dont_have_account p a{
-	color:#ff3366;
+	color:#875cff;
 }
 .login_btn{
 	text-align:center;
@@ -6571,7 +6571,7 @@ width:100%;
 	font-size:18px;
 }
 .btn-raised{
-	background:#ff3366;
+	background:#875cff;
 	box-shadow: 0 0 0 0 rgba(235, 49, 90, 0.22);
 }
 .btn#my-btn {
@@ -6605,7 +6605,7 @@ background:#fff;
   cursor:pointer;
 }
 .chat-box-header {
-  background: #ff3366;
+  background: #875cff;
     height: 60px;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
@@ -6677,7 +6677,7 @@ background:#fff;
     box-shadow: none;
     border: none;
     border-radius: 50%;
-    color: #ff3366;
+    color: #875cff;
     width: 35px;
     height: 35px;
     font-size: 18px;
@@ -6696,7 +6696,7 @@ background:#fff;
 	background-color: #F5F5F5;
 }
 .chat-logs::-webkit-scrollbar-thumb{
-	background-color: #ff3366;
+	background-color: #875cff;
 }
 @media only screen and (max-width: 500px) {
    .chat-logs {
@@ -6740,7 +6740,7 @@ background:#fff;
 .chat-msg.self > .cm-msg-text {  
   float:right;
   margin-right:10px;
-  background: #ff3366;
+  background: #875cff;
   color:#fff;
   position:relative;
   z-index:10;
@@ -6810,7 +6810,7 @@ background:#fff;
 .jb_register_red_or{
 	width: 70px;
     height: 70px;
-    background: #ff3366;
+    background: #875cff;
 	left:auto;
     position: absolute;
 	right:-35px;

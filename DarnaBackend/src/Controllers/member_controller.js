@@ -16,7 +16,7 @@ export const addNewMember = (req, res) => {
     else {
       req.body["role"] = "member";
       req.body["statut"] = "actif";
-      req.body["Create_date"] = Date.now();;
+      req.body["Create_date"] = Date.now();
 
       let newUser = new User(req.body);
       var password = bcrypt.hashSync(req.body.Password, 10);
@@ -30,14 +30,15 @@ export const addNewMember = (req, res) => {
           })
         }
       })
-    }})
+    }
+  })
 };
 export const getAllMember = (req, res) => {
   User.find({}, (err, user) => {
     if (err) {
       res.send(err);
     }
-    console.log("this is res liste member")
+
     // console.log(res)
     res.json(user);
   });
@@ -54,7 +55,7 @@ export const getMember = (req, res) => {
       });
     }
     res.status(200).send(user);
-    console.log(user);
+    // console.log(user);
   })
     .catch((err) => {
       return res.status(500).send({
@@ -91,17 +92,23 @@ export const UpdateMember = (req, res) => {
   }
   )
 }
-export const BannirMember = (req, res) => {
+export const updateEtatMember = (req, res) => {
   const id = req.params.id;
   const ObjectId = require('mongodb').ObjectID;
   User.findOne({ '_id': ObjectId(id) })
     .then((user) => {
       if (user.statut == "actif") {
         user.statut = "banni"
-
         user.save()
         res.send({ message: "member banni" });
-      } else {
+      } 
+      else if(user.statut == "banni"){
+        user.statut = "actif"
+        user.save()
+        res.send({ message: "member actif" });
+      }
+      
+      else {
         res.send({ message: "error canno't make this action" });
 
       }

@@ -1,0 +1,52 @@
+.company_details_wrapper{
+    background-image: url(../../../../assets/images/e2.jpg);
+}
+.styleInfoEvent{
+    display: flex;
+    flex-direction: row;
+}
+.styleInfoEvent h6{
+  margin-right: 10%;
+  margin-left: 8%;
+}
+.IconE{
+    border-radius: 5px;
+    color:hsl(278, 61%, 57%)  ;
+  }
+  .cover{
+    background-color: #f1efff;
+  }
+ 
+  .IconTorefuserParticipant:hover{
+    background-color: #ff4d4d;
+    color: white;
+  }
+  .IconTorefuserParticipant{
+    padding: 10px;
+    border-radius: 5px;
+    color:#ff4d4d  ;
+    
+  }
+.IconToAcceptParticipant{
+      color:#80ffd4;
+      padding: 10px;
+      border-radius: 5px;
+      
+  }
+.IconToAcceptParticipant:hover{
+      background-color: #80ffd4;
+      color: white;
+  }
+  .listeParticipantsflex{
+      display: flex;
+      flex-direction: row;
+  }
+  .mailParticipant{
+    margin-top: 10px;
+  }
+  .IconUserParticipant{
+    margin-top: 5px;
+  }
+  .marginLeftIcon{
+    margin-left: 70px;
+  }

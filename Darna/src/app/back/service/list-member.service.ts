@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpRequest } from '@angular/common/http';
+import { host } from 'src/app/host';
 
-const host = 'http://localhost:8080';
 @Injectable({
   providedIn: 'root',
 })
 export class ListMemberService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
   getAllmembers() {
     return this.http.get(host + '/api/ListMember');
   }
@@ -23,7 +23,7 @@ export class ListMemberService {
   updateMember(id, updateform) {
     return this.http.put(host + '/api/UpdateMember/' + id, updateform);
   }
-  bannirMember(id, value) {
-    return this.http.put(host + '/api/bannirmember/' + id, { statut: value });
+  updateEtatMember(id, value) {
+    return this.http.put(host + '/api/updateEtatMember/' + id, { statut: value });
   }
 }
