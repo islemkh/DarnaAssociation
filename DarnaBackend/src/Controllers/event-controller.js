@@ -127,8 +127,8 @@ export const PublishEvent = (req, res) => {
   Event.findOne({ '_id': ObjectId(id) })
     .then((event) => {
       console.log(event.publish)
-      if (event.publish == "non") {
-        event.publish = "oui"
+      if (event.publish == "No") {
+        event.publish = "Yes"
         console.log(' event.publish : ', event.publish);
         event.save()
         res.send({ message: "event publier" });
