@@ -22,6 +22,7 @@ import { EventComponent } from './back/event/event.component';
 import { DetailsEventsComponent } from './back/event/details-events/details-events.component';
 import {  NgbDatepickerModule } from '@ng-bootstrap/ng-bootstrap';
 import { SearchEventPipe } from './back/pipes/search-event.pipe';
+import { ContactFormComponent } from './front/contact-form/contact-form.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { SearchEventPipe } from './back/pipes/search-event.pipe';
     EventComponent,
     DetailsEventsComponent,
     SearchEventPipe,
+    ContactFormComponent,
   ],
   imports: [
     BrowserModule,
