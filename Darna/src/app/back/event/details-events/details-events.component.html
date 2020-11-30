@@ -83,22 +83,21 @@
                 </div>  
                 </div>
                 <div class="col-md-7 marginLeftIcon">
-                <a role="button1" *ngIf="p.etat==='non valide' && role === 'admin'" (click)="validerParticipant(currentEvent._id,p.emailP)">
+                  <a role="button1" *ngIf="p.etat==='non valide' && role === 'admin'" (click)="validerParticipant(currentEvent._id,p.emailP)">
                     <i class="fa fa-check fa-lg IconToAcceptParticipant"></i>
                   </a>
                   <a role="button2" *ngIf="p.etat==='non valide' && role === 'admin'" (click)="refuserParticipant(currentEvent._id,p.emailP)">
                     <i class="fas fa-trash-alt fa-lg IconTorefuserParticipant"> </i>
-                  </a>    
-              </div>
+                  </a>
+                </div>
             </div>
-          </div>
-          <div class="jp_listing_overview_list_main_wrapper jb_cover"  *ngIf=" role === 'member'">
-            <div  class="jp_listing_list_icon_cont_wrapper listeParticipantsflex" *ngFor="let pv of parValide">
-              <div class="styleInfoEvent mailParticipant ">  
-                <i class="fas fa-user IconE"></i>
-                <h6>{{pv.emailP}}</h6>
-              </div> 
             </div>
+            <div class="jp_listing_overview_list_main_wrapper jb_cover"  *ngIf=" role === 'member'">
+              <div  class="jp_listing_list_icon_cont_wrapper listeParticipantsflex" *ngFor="let pv of parValide">
+                <div class="styleInfoEvent mailParticipant ">  
+                  <i class="fas fa-user IconE"></i>
+                  <h6>{{pv.emailP}}</h6>
+                </div> 
               </div>
             </div>
           </div>

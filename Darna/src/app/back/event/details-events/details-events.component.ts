@@ -19,8 +19,8 @@ export class DetailsEventsComponent implements OnInit {
   DateBeginInsc;
   DateEndInsc;
   role: string;
-  parValide = [];
-  participants = [];
+  parValide=[];
+  participants=[];
   constructor(
     private router: Router,
     private route: ActivatedRoute,
@@ -34,52 +34,65 @@ export class DetailsEventsComponent implements OnInit {
     this.role = sessionStorage.getItem('role');
     this.idEvent = this.route.snapshot.paramMap.get('idEvent');
     this.getEventByid(this.idEvent);
+    console.log(this.parValide)
   }
   getEventByid(id) {
     this.SpinnerService.show();
     this.EventService.getEvent(id).subscribe((res: EventModel) => {
       this.currentEvent = res;
-      res.participants.forEach((p) => {
-        if (p.etat !== 'refusé') {
-          this.participants.push({ emailP: p.emailP, etat: p.etat });
-        }
+     /*  this.DateBeginEvent = res.DateBeginEvent.substring(0, 10);
+      this.DateEndEvent = res.DateEndEvent.substring(0, 10);
+      this.DateBeginInsc = res.DateBeginInsc.substring(0, 10);
+      this.DateEndInsc = res.DateEndInsc.substring(0, 10); */
+      res.participants.forEach(p => {
+        if(p.etat !=='refusé')
+      {this.participants.push({"emailP":p.emailP,"etat":p.etat})}
       });
-      res.participants.forEach((p) => {
-        if (p.etat === 'valide') {
-          this.parValide.push({ emailP: p.emailP, etat: p.etat });
-        }
+      res.participants.forEach(p => {
+        if(p.etat ==='valide')
+      {this.parValide.push({"emailP":p.emailP,"etat":p.etat})}
       });
-      console.log('part test21', this.participants);
+      console.log("part test21",this.participants)
       this.SpinnerService.hide();
+     
     });
+  
   }
-  validerParticipant(id, emailP) {
-    this.EventService.ValiderP(id, emailP).subscribe((res: EventModel) => {});
-    Swal.fire('Participant a été validé avec succés!', '', 'success');
-    this.ngOnInit();
-  }
-  refuserParticipant(id, emailP) {
-    Swal.fire({
-      title: 'êtes-vous sûr?',
-      text: 'Vous ne pourrez plus récuperer cela!',
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Oui, refuser-le!',
-      cancelButtonText: 'Annuler',
-    }).then((result) => {
-      if (result.value) {
-        this.EventService.NoValiderP(id, emailP).subscribe((res: any) => {
-          //  this.ngOnInit();
-        });
-        Swal.fire(
-          'Refusé',
-          'Ce participant a été refusé avec succés',
-          'success'
-        );
-        this.ngOnInit();
-      }
-    });
-  }
+
+
+
+validerParticipant(id,emailP){
+this.EventService.ValiderP(id,emailP).subscribe((res: EventModel) => {
+  });
+  Swal.fire(
+    "Participant a été validé avec succés!",
+    '',
+    'success'
+  );
+ this.ngOnInit();
+}
+refuserParticipant(id,emailP){
+  Swal.fire({
+    title: 'êtes-vous sûr?',
+    text: 'Vous ne pourrez plus récuperer cela!',
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Oui, refuser-le!',
+    cancelButtonText: 'Annuler',
+  }).then((result) => {
+    if (result.value) {
+      this.EventService.NoValiderP(id,emailP).subscribe((res: any) => {
+      //  this.ngOnInit();
+      });
+      Swal.fire(
+        'Refusé',
+        'Ce participant a été refusé avec succés',
+        'success'
+      );
+      this.ngOnInit();
+    }
+  });
+}
 }
