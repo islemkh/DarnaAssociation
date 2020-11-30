@@ -3,8 +3,11 @@
 }
 .styleInfoEvent{
     display: flex;
-    justify-content: space-around;
     flex-direction: row;
+}
+.styleInfoEvent h6{
+  margin-right: 10%;
+  margin-left: 8%;
 }
 .IconE{
     border-radius: 5px;
@@ -24,7 +27,6 @@
     color:#ff4d4d  ;
   }
 .IconToAcceptParticipant{
-    
       color:#80ffd4;
       padding: 10px;
       border-radius: 5px;
@@ -37,11 +39,13 @@
   .listeParticipantsflex{
       display: flex;
       flex-direction: row;
-      justify-content: space-between;
   }
   .mailParticipant{
     margin-top: 10px;
   }
   .IconUserParticipant{
     margin-top: 5px;
+  }
+  .marginLeftIcon{
+    margin-left: 70px;
   }

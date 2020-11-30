@@ -31,8 +31,6 @@ export class EventComponent implements OnInit {
   filesToUpload: Array<File>;
   submitted = false;
   currentEvent: EventModel;
-  DateBeginEvent;
-  DateEndEvent;
   role: string;
   pm;
   etat = false;
@@ -88,9 +86,6 @@ export class EventComponent implements OnInit {
       this.addFormEvent.get("DateEndInsc").valueChanges.subscribe(valueChanges => {
         this.maxDateIn = valueChanges      
       })
- 
-   
-   
   }
   openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template);
@@ -171,16 +166,16 @@ export class EventComponent implements OnInit {
       this.currentEvent.NumberMember = res.NumberMember;
       this.currentEvent.DateBeginInsc = res.DateBeginInsc;
       this.currentEvent.DateEndInsc = res.DateEndInsc;
-    
+      console.log(this.currentEvent.publish)
       this.updateFormEvent.setValue({
         NameEvent: this.currentEvent.NameEvent,
         Description: this.currentEvent.Description,
         lieu: this.currentEvent.lieu,
-        DateBeginEvent: this.currentEvent.DateBeginEvent,
-        DateEndEvent: this.currentEvent.DateEndEvent,
+        DateBeginEvent: this.currentEvent.DateBeginEvent.substring(0, 10),
+        DateEndEvent: this.currentEvent.DateEndEvent.substring(0, 10),
         NumberMember: this.currentEvent.NumberMember,
-        DateBeginInsc: this.currentEvent.DateBeginInsc,
-        DateEndInsc: this.currentEvent.DateEndInsc
+        DateBeginInsc: this.currentEvent.DateBeginInsc.substring(0, 10),
+        DateEndInsc: this.currentEvent.DateEndInsc.substring(0, 10)
       });
     });
   }
@@ -261,26 +256,31 @@ export class EventComponent implements OnInit {
       );
   }
   Publish(id) {
-    Swal.fire({
-      title: 'êtes-vous sûr pour publier cette événement?',
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Oui, Publier-le!',
-      cancelButtonText: 'Annuler',
-    }).then((result) => {
-      if (result.value) {
-        this.EventService.PublishEvent(id,'Yes').subscribe((res) => {
-          console.log("test1", result.value)
-          // this.selectedValue=null;
-          this.ngOnInit();
+    this.EventService.getEvent(id).subscribe((res: EventModel) => {
+      this.currentEvent=res;
+        if(this.currentEvent.publish === "Yes"){
+          Swal.fire('Déja Publié', ':)', 'error');
+        }
+       if(this.currentEvent.publish === "No"){
+        Swal.fire({
+          title: 'êtes-vous sûr pour publié cette événement?',
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Oui, Publier-le!',
+          cancelButtonText: 'Annuler',
+        }).then((result) => { 
+          if (result.value) {
+            this.EventService.PublishEvent(id,'Yes').subscribe((res: EventModel) => {
+            });
+            Swal.fire('Publier', 'événement publié', 'success');
+            this.getLisEvents()
+          }
         });
-
-        Swal.fire('Publier', 'publier avec succés', 'success');
       }
-    });
-  }
+      })}
+    
   ResetForm(){
     this.addFormEvent.reset();
     this.modalRef.hide()

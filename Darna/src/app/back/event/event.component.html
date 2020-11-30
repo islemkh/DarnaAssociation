@@ -75,7 +75,7 @@
                           </li>
                           <li *ngIf="role === 'admin'">
                             <a role="button2" (click)="Publish(el._id)">
-                              Publier
+                              Publié
                             </a>
                           </li>
                           <ul></ul>
@@ -92,7 +92,7 @@
 
                           <li *ngIf="role === 'member'" style="margin-top:3%;float:left">
                             <a role="button5" (click)="participate(el._id);" data-toggle="modal"
-                              data-target="#myModal051">Participer</a>
+                              data-target="#myModal051">Participé</a>
                           </li>
                           <li *ngIf="role === 'member'" style="margin-top:3%;">
                             <a routerLink="/detailsEvent/{{el._id }}" data-toggle="modal"
@@ -113,7 +113,7 @@
                   </div>
                 </div>
                 <div class="col-lg-12 col-md-12 col-sm-12 col-12"
-                  *ngIf="el.publish === 'oui' && role != 'admin' && role != 'member'">
+                  *ngIf="el.publish === 'Yes' && role != 'admin' && role != 'member'">
                   <div class="job_listing_left_fullwidth jb_cover">
                     <div class="row">
                       <div class="col" style="margin-left: 10%" class="bgSizeContain">

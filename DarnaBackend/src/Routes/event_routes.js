@@ -8,7 +8,7 @@ import {
     ValidateParticipate,
     NoValidateParticipate,
     PublishEvent,
-    ArchiveEvent
+    
 } from '../Controllers/event-controller'
 
 const routes_event = (app) => {
@@ -39,7 +39,5 @@ const routes_event = (app) => {
     app.route('/api/PublishEvent/:id')
         .put(PublishEvent)
 
-  /*   app.route('/api/ArchiveEvent/:id')
-        .put(ArchiveEvent) */
 }
 export default routes_event;
