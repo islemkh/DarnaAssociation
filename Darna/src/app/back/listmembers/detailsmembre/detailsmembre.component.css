@@ -1,0 +1,63 @@
+.marginLeftDetailsMember{
+  padding-left: 25%;
+  padding-top:8%;
+  line-height: 3em;
+}
+.jp_blog_single_client_img{
+  padding-top: 25%;
+}
+.IconToBannirMember{
+  padding: 10px;
+  border-radius: 5px;
+  color:#ff4d4d  ;
+}
+.IconToBannirMember:hover{
+  background-color: #ff4d4d;
+  color: white;
+}
+
+.jp_blog_single_client_img img{
+  height: 80%;
+  width: 230%;
+  border-radius: 65%;
+}
+.icondetails{
+display: flex;
+flex-direction: row;
+align-items: center;
+margin-bottom: 2%;
+
+}
+.iconDMclass{
+  margin-right: 2%;
+}
+.detailsMember{
+  margin-top:4% ;
+}
+.detailsMember i {
+  color: #a54dff;
+}
+
+.form-btn {
+  font-family: Poppins-Medium;
+  font-size: 15px;
+  color: #fff;
+  line-height: 1.2;
+  text-transform: uppercase;
+
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 20px;
+  width: 100%;
+  height: 50px;
+  border-radius: 25px;
+  background-color: turquoise;
+  outline: none;
+  border: 0px;
+  cursor: pointer;
+}
