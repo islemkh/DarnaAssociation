@@ -4622,7 +4622,7 @@ a:hover {
 	padding:50px 0;
 	background: -moz-linear-gradient(45deg, rgba(209,72,127,1) 20%, rgba(248,54,106,1) 100%);
     background: -webkit-linear-gradient(45deg, rgba(209,72,127,1) 20%, rgba(248,54,106,1) 100%);
-	background: linear-gradient(45deg, rgba(209,72,127,1) 20%, rgba(248,54,106,1) 100%);
+	background: linear-gradient(45deg, rgb(131 148 220) 20%, rgb(29 206 200) 100%);
 }
 .contact_rotate i{
 	display: inline-block;

@@ -26,14 +26,14 @@ export class ListMemberService {
   updateMember(id, updateform) {
     return this.http.put(host + '/api/UpdateMember/' + id, updateform);
   }
-  bannirMember(id, value) {
-    return this.http.put(host + '/api/bannirmember/' + id, { statut: value });
+  updateEtatMember(id, value) {
+    return this.http.put(host + '/api/updateEtatMember/' + id, { statut: value });
   }
   // archiverMember(id,value){
   //   return this.http.put(host + '/api/archivermember/' + id, { statut: value });
   // }
-  renouvelerMember(id,value){
-    return this.http.put(host + '/api/activermember/' + id, { statut: value });
+  renewMember(id,currentYear){
+    return this.http.put(host + '/api/RenewMember/' + id,{currentYear});
   }
 
 }

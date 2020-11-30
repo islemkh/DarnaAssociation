@@ -131,7 +131,7 @@ export const UpdateMember = (req, res) => {
   }
   )
 }
-export const BannirMember = (req, res) => {
+export const updateEtatMember = (req, res) => {
   const id = req.params.id;
   const ObjectId = require('mongodb').ObjectID;
   User.findOne({ '_id': ObjectId(id) })
@@ -140,37 +140,31 @@ export const BannirMember = (req, res) => {
         user.statut = "banni"
         user.save()
         res.send({ message: "member banni" });
-      } else {
-        res.send({ message: "error canno't make this action" });
-
-      }
-    })
-
-}
-export const ArchivateMember = (req, res) => {
-  const id = req.params.id;
-  const ObjectId = require('mongodb').ObjectID;
-  User.findOne({ '_id': ObjectId(id) })
-    .then((user) => {
-      if (user.statut == "actif" || user.statut == "banni") {
-        user.statut = "archivé"
-        user.save()
-        res.send({ message: "member archived" });
-      } else {
-        res.send({ message: "error canno't make this action" });
-
-      }
-    })
-}
-export const ActivateMember = (req, res) => {
-  const id = req.params.id;
-  const ObjectId = require('mongodb').ObjectID;
-  User.findOne({ '_id': ObjectId(id) })
-    .then((user) => {
-      if (user.statut == "archivé" || user.statut == "banni") {
+      } 
+      else if(user.statut == "banni"){
         user.statut = "actif"
         user.save()
-        res.send({ message: "member activated" });
+        res.send({ message: "member actif" });
+      }
+      
+      else {
+        res.send({ message: "error canno't make this action" });
+
+      }
+    })
+
+}
+
+export const RenewMember = (req, res) => {
+  const id = req.params.id;
+
+  const ObjectId = require('mongodb').ObjectID;
+  User.findOne({ '_id': ObjectId(id) })
+    .then((user) => {
+      if (user.Create_date !== req.body.currentYear ) {
+        user.Create_date = currentYear
+        user.save()
+        res.send({ message: "member renouvelé" });
       } else {
         res.send({ message: "error canno't make this action" });
 

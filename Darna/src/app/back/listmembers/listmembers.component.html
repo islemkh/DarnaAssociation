@@ -48,7 +48,7 @@
               *ngFor="let member of members| searchMember: memberValue | paginate: { itemsPerPage: 8, currentPage: pm } ">
 
               <div class="card">
-                <i   *ngIf="member?.statut==='archivé'" class="fa fa-unlock IconrenouvMember" aria-hidden="true" title="renouveler ce membre" (click)="renouvelerMember(member._id)"></i>
+                <i  *ngIf="currentYear !== member.Create_date" class="fa fa-unlock IconrenouvMember" aria-hidden="true" title="renouveler ce membre" (click)="renouvelerMember(member._id)"></i>
                 <div class="company_main_wrapper">
                   <div class="company_img_wrapper">
 

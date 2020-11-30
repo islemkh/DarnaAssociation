@@ -23,6 +23,7 @@ import { DetailsEventsComponent } from './back/event/details-events/details-even
 import {  NgbDatepickerModule } from '@ng-bootstrap/ng-bootstrap';
 import {MatSelectModule} from '@angular/material/select';
 import { SearchEventPipe } from './back/pipes/search-event.pipe';
+import { ContactFormComponent } from './front/contact-form/contact-form.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { SearchEventPipe } from './back/pipes/search-event.pipe';
     EventComponent,
     DetailsEventsComponent,
     SearchEventPipe,
+    ContactFormComponent,
   ],
   imports: [
     BrowserModule,

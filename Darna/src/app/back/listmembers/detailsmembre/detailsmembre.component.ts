@@ -58,48 +58,52 @@ export class DetailsmembreComponent implements OnInit {
           }
     });
   }
-  bannirMember(id) {
-    Swal.fire({
-      title: 'êtes-vous sûr?',
-      text: 'Vous ne pourrez plus récuperer cela!',
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Oui, banni-le!',
-      cancelButtonText: 'Annuler',
-    }).then((result) => {
-      if (result.value) {
-        this.listMemberService.bannirMember(id, 'banni').subscribe((res) => {
-          // this.selectedValue=null;
-          this.ngOnInit();
-        });
-
-        Swal.fire('Supprimé', 'Ce Member a été banni avec succés', 'success');
-      }
-    });
-  }
-  // ArchiverMember(id) {
-  //   Swal.fire({
-  //     title: 'êtes-vous sûr?',
-  //     text: 'Vous ne pourrez plus récuperer cela!',
-  //     icon: 'warning',
-  //     showCancelButton: true,
-  //     confirmButtonColor: '#3085d6',
-  //     cancelButtonColor: '#d33',
-  //     confirmButtonText: 'Oui, archive-le!',
-  //     cancelButtonText: 'Annuler',
-  //   }).then((result) => {
-  //     if (result.value) {
-  //       this.listMemberService.archiverMember(id, 'archivé').subscribe((res) => {
-  //         // this.selectedValue=null;
-  //         this.ngOnInit();
-  //       });
-
-  //       Swal.fire('Archivé', 'Ce Member a été archivé avec succés', 'success');
-  //     }
-  //   });
-  // }
+  updateEtatMember(id) {
+    if(this.currentMember.statut=="actif") {
+     
+     Swal.fire({
+       title: 'êtes-vous sûr?',
+       text: 'Vous ne pourrez plus récuperer cela!',
+       icon: 'warning',
+       showCancelButton: true,
+       confirmButtonColor: '#3085d6',
+       cancelButtonColor: '#d33',
+       confirmButtonText: 'Oui, banni-le!',
+       cancelButtonText: 'Annuler',
+     }).then((result) => {
+       if (result.value) {
+         this.listMemberService.updateEtatMember(id, 'banni').subscribe((res) => {
+           // this.selectedValue=null;
+           this.ngOnInit();
+         });
+ 
+         Swal.fire('Supprimé', 'Ce Member a été banni avec succés', 'success');
+       }
+     });
+   } 
+    else if(this.currentMember.statut=="banni") {
+ 
+     Swal.fire({
+       title: 'êtes-vous sûr?',
+       text: 'Vous ne pourrez plus récuperer cela!',
+       icon: 'warning',
+       showCancelButton: true,
+       confirmButtonColor: '#3085d6',
+       cancelButtonColor: '#d33',
+       confirmButtonText: 'Oui, Activer-le!',
+       cancelButtonText: 'Annuler',
+     }).then((result) => {
+       if (result.value) {
+         this.listMemberService.updateEtatMember(id, 'actif').subscribe((res) => {
+           // this.selectedValue=null;
+           this.ngOnInit();
+         });
+ 
+         Swal.fire( 'Supprimé', 'Ce Member a été activé avec succés', 'success');
+       }
+     });
+    }
+   }
   open() {
     this.router.navigate(['/listmembers']);
   }

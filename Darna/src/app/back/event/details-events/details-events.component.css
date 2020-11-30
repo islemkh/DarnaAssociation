@@ -9,6 +9,10 @@
 margin-right: 10%;
 margin-left: 8%;
 }
+.styleInfoEvent h6{
+  margin-right: 10%;
+  margin-left: 8%;
+}
 .IconE{
   border-radius: 5px;
   color:hsl(278, 61%, 57%)  ;
@@ -31,21 +35,27 @@ margin-left: 8%;
     padding: 10px;
     border-radius: 5px;
     
-}
+  }
+.IconToAcceptParticipant{
+      color:#80ffd4;
+      padding: 10px;
+      border-radius: 5px;
+      
+  }
 .IconToAcceptParticipant:hover{
-    background-color: #80ffd4;
-    color: white;
-}
-.listeParticipantsflex{
-    display: flex;
-    flex-direction: row;
-}
-.mailParticipant{
-  margin-top: 10px;
-}
-.IconUserParticipant{
-  margin-top: 5px;
-}
-.marginLeftIcon{
-  margin-left: 70px;
-}
+      background-color: #80ffd4;
+      color: white;
+  }
+  .listeParticipantsflex{
+      display: flex;
+      flex-direction: row;
+  }
+  .mailParticipant{
+    margin-top: 10px;
+  }
+  .IconUserParticipant{
+    margin-top: 5px;
+  }
+  .marginLeftIcon{
+    margin-left: 70px;
+  }

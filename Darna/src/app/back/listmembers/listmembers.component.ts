@@ -107,12 +107,12 @@ export class ListmembersComponent implements OnInit {
     }
   }
   getmembersbyYear() {
-    this.SpinnerService.show();
+    // this.SpinnerService.show();
     this.listMemberService.getmembers(this.currentYear).subscribe((res: any) => {
       // this.members = res.filter((t) => t.role === 'member' &&t.Create_date.toString() !== this.currentYear.toString());
       this.members = res.filter((t) => t.role === 'member');
       //  this.archiv=true;
-      this.SpinnerService.hide();
+      // this.SpinnerService.hide();
 
     });
 
@@ -154,12 +154,10 @@ export class ListmembersComponent implements OnInit {
   AddNewMember() {
 
     this.submitted = true;
-
     // stop here if form is invalid
     if (this.addForm.invalid) {
       return;
     }
-
     //  const data = {
     //     photo: this.filesToUpload[0].name,
     //   };
@@ -255,12 +253,11 @@ export class ListmembersComponent implements OnInit {
       cancelButtonText: 'Annuler',
     }).then((result) => {
       if (result.value) {
-        this.listMemberService.renouvelerMember(id, 'actif').subscribe((res) => {
-          // this.selectedValue=null;
+        this.listMemberService.renewMember(id,this.currentYear).subscribe((res) => {
+          Swal.fire('Renouvelé', 'Ce membre a été renouvelé avec succés', 'success');
           this.ngOnInit();
         });
 
-        Swal.fire('Activé', 'Ce Member a été activé avec succés', 'success');
       }
     });
   }

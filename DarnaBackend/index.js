@@ -5,6 +5,7 @@ import routes_demand from './src/Routes/demand_routes';
 import routes_member from './src/Routes/member_routes';
 import routes_image from './src/Routes/image_routes';
 import routes_event from './src/Routes/event_routes';
+import routes_contact from './src/Routes/contact_routes';
 
 
 const app = express();
@@ -54,6 +55,8 @@ routes_demand(app)
 routes_member(app)
 routes_image(app)
 routes_event(app)
+routes_contact(app)
+
 //app.use(express.static(__dirname + '../../views'));
 global.__basedir = __dirname;
 

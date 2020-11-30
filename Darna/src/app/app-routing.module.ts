@@ -10,6 +10,7 @@ import { ListmembersComponent } from './back/listmembers/listmembers.component';
 import { DetailsmembreComponent } from './back/listmembers/detailsmembre/detailsmembre.component';
 import { EventComponent } from './back/event/event.component'
 import { DetailsEventsComponent } from './back/event/details-events/details-events.component'
+import { ContactFormComponent } from './front/contact-form/contact-form.component';
 
 const routes: Routes = [
   {
@@ -41,12 +42,18 @@ const routes: Routes = [
         path: 'detailsEvent/:idEvent',
         component: DetailsEventsComponent,
       },
+      { path: 'contact', 
+      component:  ContactFormComponent 
+    },
+
     ],
   },
 
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
+
 ];
+
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

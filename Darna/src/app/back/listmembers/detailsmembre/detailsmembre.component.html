@@ -10,11 +10,13 @@
   <div class="jp_blog_single_client_cont marginLeftDetailsMember">
 
     <h1> {{currentMember?.NomPrenom}}
-
       <i *ngIf="currentMember?.statut==='actif'" class="fa fa-ban fa-sm IconToBannirMember"
-        (click)="bannirMember(currentMember._id)" title="bannir ce membre">
-      </i>
-
+      (click)="updateEtatMember(currentMember._id)" title="bannir ce membre">
+    </i>
+   
+    <i *ngIf="currentMember?.statut==='banni'" class="fas fa-toggle-on IconToActifMember"
+    (click)="updateEtatMember(currentMember._id)" title="activer ce membre">
+  </i>
     </h1>
     <div class="detailsMember">
 

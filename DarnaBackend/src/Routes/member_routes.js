@@ -6,11 +6,10 @@ import {
     deleteMember,
     UpdateMember,
     BannirMember,
-    ArchivateMember,
-    ActivateMember,
+    RenewMember,
     GetMemberByYear,
-    GetMemberByYcurrentYear
-
+    GetMemberByYcurrentYear,
+    updateEtatMember
 } from '../Controllers/member_controller'
 
 const routes_member = (app) => {
@@ -28,16 +27,13 @@ const routes_member = (app) => {
 
     app.route('/api/UpdateMember/:id')
         .put(UpdateMember)
-
-    app.route('/api/bannirmember/:id')
-        .put(BannirMember)
+    app.route('/api/updateEtatMember/:id')
+        .put(updateEtatMember)  
     //public routes
     app.route('/api/login')
         .post(loginmember)
-     app.route('/api/archivermember/:id')
-     .put(ArchivateMember)
-     app.route('/api/activermember/:id')
-     .put(ActivateMember)
+     app.route('/api/RenewMember/:id')
+     .put(RenewMember)
      app.route('/api/GetMemberByYear/:Create_date')
      .get(GetMemberByYear)
     app.route('/api/currentyear')
