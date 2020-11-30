@@ -151,8 +151,12 @@
                 <label for="signup-Cpassword" class="control-label sr-only">Photo</label>
                 <!-- <input type="file" id="file-input" name="Photo" class="form-control" (change)="recoverFile($event)" />
                 <img id="file-input" name="Photo"   src="../../../assets/images/ct.png" alt="your image" /> -->
-                <input type='file' (change)="readURL($event)" value='../../../assets/images/ct.png'/>
-                <img id="blah" [src]="imageSrc || '../../../assets/images/ct.png'" alt="your image" />
+                <!-- <input type='file' (change)="readURL(this);" />
+                <img id="blah" [src]="url" alt="your image" /> -->
+                <input type='file' (change)="readURL($event)" required />
+                <img class=" imgDefault" id="file-input" [src]="imageSrc" alt="your image" />
+
+
               </div>
               <div>
                 <button class="form-btn" type="submit">S'inscrire</button>

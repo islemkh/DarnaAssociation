@@ -36,21 +36,21 @@ export const addNewDemand = (req, res) => {
 }
 // addNewUser(newuser)
 export const AccepterDemande = (req, res) => {
-  var today = Date.now();
+  // var today = Date.now();
   req.body["_id"] = new ObjectID()
   req.body["role"] = "member";
   req.body["statut"] = "actif";
- // req.body["Create_date"] = today;
+  // req.body["Create_date"] = today;
 
   let d = new Date().getFullYear();
-  let d1=d+1
-  let month=new Date().getMonth() ;
-  let day=new Date().getDate();
- // console.log(d);
- // req.body["Expired_date"]=new Date(d1, month, day); 
- req.body["Create_date"] = d ; 
- // console.log("this is expire date",req.body["Expired_date"]);
- console.log(req.body["Create_date"]);
+  let d1 = d + 1
+  // let month=new Date().getMonth() ;
+  // let day=new Date().getDate();
+  // console.log(d);
+  // req.body["Expired_date"]=new Date(d1, month, day); 
+  req.body["Create_date"] = d;
+  // console.log("this is expire date",req.body["Expired_date"]);
+  console.log(req.body["Create_date"]);
   let newUser = new User(req.body);
 
   newUser.save((err, user) => {

@@ -22,8 +22,7 @@ export class RegisterComponent implements OnInit {
   submitted = false;
   photo;
   filesToUpload: Array<File>;
-  imageSrc;
-
+  imageSrc: string = "assets/images/ct.png";
 
   constructor(
     private formBuilder: FormBuilder,
@@ -65,21 +64,20 @@ export class RegisterComponent implements OnInit {
   get f() {
     return this.InscriptionForm.controls;
   }
-  recoverFile(file) {
-
-  }
-  readURL(event): void {
+ 
+  readURL(event: any) {
     if (event.target.files && event.target.files[0]) {
-        const file = event.target.files[0];
+      var reader = new FileReader();
 
-        const reader = new FileReader();
-        reader.onload = e => this.imageSrc = reader.result;
+      reader.onload = (event: any) => {
+        this.imageSrc = event.target.result;
+      }
 
-        reader.readAsDataURL(file);
-        this.filesToUpload = event.target.files as Array<File>;
-        this.photo = event.target.files[0].photo;
+      reader.readAsDataURL(event.target.files[0]);
+      this.filesToUpload = event.target.files;
+      this.photo = event.target.files[0].photo;
     }
-}
+  }
   Inscrit() {
 
     this.submitted = true;
@@ -92,15 +90,32 @@ export class RegisterComponent implements OnInit {
     //  const data = {
     //     photo: this.filesToUpload[0].name,
     //   };
-
-    console.log(this.InscriptionForm.value);
-    this.registerservice.postdemand(this.InscriptionForm.value).subscribe((res) => {
+    let data = {}
+    if (this.filesToUpload === undefined) {
+      data = {
+        NomPrenom: this.InscriptionForm.value.NomPrenom,
+        Email: this.InscriptionForm.value.Email,
+        Tel: this.InscriptionForm.value.Tel,
+        DateNaissance: this.InscriptionForm.value.DateNaissance,
+        Job: this.InscriptionForm.value.Job,
+        Password: this.InscriptionForm.value.Password,
+        ConfirmPassword: this.InscriptionForm.value.ConfirmPassword,
+        photo: "anynoyme.png",
+      };
+    } else {
+      data = {
+        NomPrenom: this.InscriptionForm.value.NomPrenom,
+        Email: this.InscriptionForm.value.Email,
+        Tel: this.InscriptionForm.value.Tel,
+        DateNaissance: this.InscriptionForm.value.DateNaissance,
+        Job: this.InscriptionForm.value.Job,
+        Password: this.InscriptionForm.value.Password,
+        ConfirmPassword: this.InscriptionForm.value.ConfirmPassword,
+        photo: this.filesToUpload[0].name,
+      };
+    }
+    this.registerservice.postdemand(data).subscribe((res) => {
       console.log(res);
-      this.imageservice
-        .pushFileToStorage(this.filesToUpload[0])
-        .subscribe((rest) => {
-          console.log(rest);
-        });
       if (res['code'] == 505) {
         this.router.navigate(['/register']);
         Swal.fire({
@@ -111,8 +126,18 @@ export class RegisterComponent implements OnInit {
       } else {
         this.router.navigate(['/login']);
         Swal.fire('Votre demande a été envoyée avec succés!', '', 'success');
+    
+      if (this.filesToUpload != undefined) {
+        this.imageservice
+          .pushFileToStorage(this.filesToUpload[0])
+          .subscribe((rest) => {
+            // console.log(rest);
+          });
       }
+    }
+
     });
+
   }
   MustMatch(controlName: string, matchingControlName: string) {
     return (formGroup: FormGroup) => {

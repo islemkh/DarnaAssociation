@@ -38,7 +38,8 @@ export const EventSchema = new Schema({
     participants: [{ emailP: String, etat: String }],
     publish: {
         type: String
-    }
+    },
+  
 }
 
 )

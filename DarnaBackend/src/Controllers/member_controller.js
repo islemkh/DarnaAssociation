@@ -16,7 +16,9 @@ export const addNewMember = (req, res) => {
     else {
       req.body["role"] = "member";
       req.body["statut"] = "actif";
-      req.body["Create_date"] = Date.now();
+      let d = new Date().getFullYear();
+      let d1 = d + 1
+      req.body["Create_date"] = d;
 
       let newUser = new User(req.body);
       var password = bcrypt.hashSync(req.body.Password, 10);
@@ -64,39 +66,41 @@ export const getMember = (req, res) => {
     });
 };
 export const GetMemberByYear = (req, res) => {
-  let date=new Date();
-  let Create_date=date.getFullYear();
+  let date = new Date();
+  let Create_date = date.getFullYear();
   console.log(Create_date)
   const createdate = req.params.Create_date;
- console.log(createdate)
-  User.find({'Create_date':createdate}).then((user) => {
-    if(user.Create_date= createdate) {
-res.json(user)
-console.log(user)
-    }else{
+  console.log(createdate)
+  User.find({ 'Create_date': createdate }).then((user) => {
+    if (user.Create_date = createdate) {
+      res.json(user)
+      console.log(user)
+    } else {
       return res.status(404).send({
         message: "User not found with statut " + createdate,
       });
-   } })
-   
+    }
+  })
+
 
 };
 export const GetMemberByYcurrentYear = (req, res) => {
-  let date=new Date();
- let createdate = date.getFullYear();
- console.log(createdate)
-  User.find({'Create_date':createdate}).then((user) => {
-    if(user.Create_date = createdate ) {
-      user.statut="archivé";
-     // user.statut.save();
-res.json(user.statut)
-console.log(user)
-    }else{
+  let date = new Date();
+  let createdate = date.getFullYear();
+  console.log(createdate)
+  User.find({ 'Create_date': createdate }).then((user) => {
+    if (user.Create_date = createdate) {
+      user.statut = "archivé";
+      // user.statut.save();
+      res.json(user.statut)
+      console.log(user)
+    } else {
       return res.status(404).send({
         message: "User not found with statut " + createdate,
       });
-   } })
-   
+    }
+  })
+
 
 };
 
@@ -143,12 +147,12 @@ export const BannirMember = (req, res) => {
     })
 
 }
-export const ArchivateMember= (req, res) => {
+export const ArchivateMember = (req, res) => {
   const id = req.params.id;
   const ObjectId = require('mongodb').ObjectID;
   User.findOne({ '_id': ObjectId(id) })
     .then((user) => {
-      if (user.statut == "actif" || user.statut == "banni" ) {
+      if (user.statut == "actif" || user.statut == "banni") {
         user.statut = "archivé"
         user.save()
         res.send({ message: "member archived" });
@@ -158,12 +162,12 @@ export const ArchivateMember= (req, res) => {
       }
     })
 }
-export const ActivateMember=(req, res) =>{
+export const ActivateMember = (req, res) => {
   const id = req.params.id;
   const ObjectId = require('mongodb').ObjectID;
   User.findOne({ '_id': ObjectId(id) })
     .then((user) => {
-      if (user.statut == "archivé" || user.statut == "banni" ) {
+      if (user.statut == "archivé" || user.statut == "banni") {
         user.statut = "actif"
         user.save()
         res.send({ message: "member activated" });

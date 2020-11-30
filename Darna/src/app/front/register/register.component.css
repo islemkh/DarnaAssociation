@@ -1,7 +1,13 @@
 .boxmarginbt {
   margin-bottom: 20%;
 }
-
+.imgDefault{
+  width: 13%;
+  height: 13%;
+  border-radius: 80%;
+  float: right;
+  padding-bottom: 3%;
+}
 .form-btn {
   font-family: Poppins-Medium;
   font-size: 15px;

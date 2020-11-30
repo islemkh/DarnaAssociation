@@ -7,8 +7,7 @@ const Event = mongoose.model('Event', EventSchema);
    
 //Add Event
 export const addNewEvent = (req, res) => {
-  req.body["publish"] = "non";
-  console.log('req.body["publish"]: ', req.body["publish"]);
+  req.body["publish"] = "No";
   let newEvent = new Event(req.body);
   newEvent.save((err, event) => {
     if (err) {
@@ -128,8 +127,8 @@ export const PublishEvent = (req, res) => {
   Event.findOne({ '_id': ObjectId(id) })
     .then((event) => {
       console.log(event.publish)
-      if (event.publish == "non") {
-        event.publish = "oui"
+      if (event.publish == "No") {
+        event.publish = "Yes"
         console.log(' event.publish : ', event.publish);
         event.save()
         res.send({ message: "event publier" });
@@ -139,5 +138,22 @@ export const PublishEvent = (req, res) => {
     })
 
 }
+/* 
+export const ArchiveEvent = (req, res) => {
+  const id = req.params.id;
+  const ObjectId = require('mongodb').ObjectID;
+  Event.findOne({ '_id': ObjectId(id) })
+    .then((event) => {
+      console.log(event.archive)
+      if (event.archive == "No") {
+        event.archive = "Yes"
+        console.log(' archiver : ', event.archive);
+        event.save()
+        res.send({ message: "event Archiver" });
+      } else {
+        res.send({ message: "error canno't make this action" });
+      }
+    })
 
+} */
 

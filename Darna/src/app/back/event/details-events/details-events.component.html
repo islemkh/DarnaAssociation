@@ -13,9 +13,9 @@
                 <h6>
                   <i class="flaticon-location-pointer IconE"></i>{{ currentEvent.lieu }}
                 </h6>
-                <h6><i class="fas fa-hourglass-start IconE"></i> {{ DateBeginEvent }}
+                <h6><i class="fas fa-hourglass-start IconE"></i> {{ currentEvent.DateBeginEvent  | date: 'dd/MM/yyyy' }}
                 </h6>
-                <h6><i class="fas fa-hourglass-end IconE"></i> {{ DateEndEvent }}
+                <h6><i class="fas fa-hourglass-end IconE"></i> {{ currentEvent.DateEndEvent  | date: 'dd/MM/yyyy'}}
                 </h6>
               </div>
             </div>
@@ -36,17 +36,17 @@
             </p>
             <br />
             <p>
-              Date d debut de l'inscription des membres : {{ DateBeginInsc }}
+              Date début de l'inscription des membres : {{ currentEvent.DateBeginInsc | date: 'dd/MM/yyyy' }}
             </p>
             <br />
-            <p>Date d debut de l'inscription des membres : {{ DateEndInsc }}</p>
+            <p>Date fin de l'inscription des membres : {{ currentEvent.DateEndInsc | date: 'dd/MM/yyyy'}}</p>
           </div>
           <div class="imgEvent">
             <img src="http://localhost:8080/api/getfile/{{ currentEvent.photo }}" alt="event picture" width="728px" />
           </div>
 
           <div class="jp_job_res jp_listing_left_wrapper jb_cover">
-            <div class="jp_listing_left_bottom_sidebar_social_wrapper">
+            <!-- <div class="jp_listing_left_bottom_sidebar_social_wrapper">
               <ul>
                 <li>Partager :</li>
                 <li>
@@ -63,7 +63,7 @@
                   <a href="#"><i class="fab fa-google-plus-g"></i></a>
                 </li>
               </ul>
-            </div>
+            </div> -->
           </div>
         </div>
       </div>
@@ -73,15 +73,16 @@
             <h1>Participants</h1>
           </div>
           <div class="job_overview_header jb_cover" style="background-color: white">
-            <div class="jp_listing_overview_list_main_wrapper jb_cover" *ngFor="let p of currentEvent.participants">
-              <div *ngIf="p.etat != 'refusé'" >
-                <div class="jp_listing_list_icon IconUserParticipant">
-              <div  class="jp_listing_list_icon_cont_wrapper listeParticipantsflex" >
-                <div class="mailParticipant" *ngIf="(p.etat==='valide' && role === 'member') || role === 'admin'">                
+            <div class="jp_listing_overview_list_main_wrapper jb_cover row" *ngIf=" role === 'admin'" >
+              
+              <div class="jp_listing_list_icon_cont_wrapper listeParticipantsflex " *ngFor="let p of participants" >
+                <div class="mailParticipant col-md-7">                
                   <div class="styleInfoEvent">  
-                  <i class="fas fa-user IconE">{{p.emailP}}</i>
+                  <i class="fas fa-user IconE"></i>
+                  <h6>{{p.emailP}}</h6>
                 </div>  
                 </div>
+                <div class="col-md-7 marginLeftIcon">
                 <a role="button1" *ngIf="p.etat==='non valide' && role === 'admin'" (click)="validerParticipant(currentEvent._id,p.emailP)">
                     <i class="fa fa-check fa-lg IconToAcceptParticipant"></i>
                   </a>
@@ -89,6 +90,14 @@
                     <i class="fas fa-trash-alt fa-lg IconTorefuserParticipant"> </i>
                   </a>    
               </div>
+            </div>
+          </div>
+          <div class="jp_listing_overview_list_main_wrapper jb_cover"  *ngIf=" role === 'member'">
+            <div  class="jp_listing_list_icon_cont_wrapper listeParticipantsflex" *ngFor="let pv of parValide">
+              <div class="styleInfoEvent mailParticipant ">  
+                <i class="fas fa-user IconE"></i>
+                <h6>{{pv.emailP}}</h6>
+              </div> 
             </div>
               </div>
             </div>

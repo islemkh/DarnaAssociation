@@ -4,13 +4,8 @@ import { ImageService } from '../services/image.service';
 
 describe('RegisterComponent', () => {
   let CompReg: RegisterComponent;
-<<<<<<< HEAD
-  let authServiceMock: any;
-  let formBuilderMock: FormBuilder;
-=======
 	let authServiceMock: any;
 	let formBuilder: FormBuilder;
->>>>>>> 64d7ee0713440bb46d350700731896977dde61fc
   let routerMock: any;
   let registerservice: any;
   beforeEach(() => {
@@ -20,15 +15,6 @@ describe('RegisterComponent', () => {
     registerservice = {
       isLoggedIn: jest.fn(),
     };
-<<<<<<< HEAD
-
-    formBuilderMock = new FormBuilder();
-    routerMock = jest.fn();
-    CompReg = new RegisterComponent(
-      formBuilderMock,
-      authServiceMock,
-      routerMock,
-=======
     
 		formBuilder = new FormBuilder();
     routerMock = jest.fn();
@@ -36,7 +22,6 @@ describe('RegisterComponent', () => {
 			formBuilder,
 			authServiceMock,
       routerMock, 
->>>>>>> 64d7ee0713440bb46d350700731896977dde61fc
       registerservice
     );
     CompReg.ngOnInit();

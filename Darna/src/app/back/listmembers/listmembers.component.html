@@ -27,7 +27,7 @@
           </form>
           <!-- Button trigger modal -->
           <button type="button" class="btn btn-primary addbtn" (click)="openModal(AddMember)">
-            <i class="fas fa-plus"> </i> Nouveau Member
+            <i class="fas fa-plus"> </i> Nouveau Membre
           </button>
           <select name="currentYear" id="currentYear" class="form-control" [(ngModel)]="currentYear" (change)='getmembersbyYear()'>
             <option *ngFor="let year of years" [value]="year" >{{year}}</option>
@@ -40,44 +40,8 @@
 
       <div class="companies_wrapper classbottom">
         <div class="container">
-        <!--   <button (click)="toggle()" id="bt">
-            {{button2019}}
-        </button> -->
-        <!-- <div class="btn-group btn-group-toggle">
-          <label class="btn-info" ngbButtonLabel>
-            <input type="checkbox" [(ngModel)]="model.archived2" (ngModelChange)="getmembersCY2()" ngbButton> <b style="color: white">Archive {{currentYear-2}}</b>
-          </label>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-           <label class="btn-info" ngbButtonLabel>
-            <input type="checkbox" [(ngModel)]="..archived1" (ngModelChange)="getmembersCY1()" ngbButton> <b style="color: white;">Archive {{currentYear-1}}</b>
-          </label>
-        </div> -->
-        <!-- <div >
-          <select  #selectYear  class="browser-default custom-select" [(value)]="currentYear">
-            <option *ngFor="let year of years" value="year"  >{{year}}</option>
-          </select>
-        </div> -->
-        <!-- <div>
-          <select (Change)="changeValue($event)">
-            <option *ngFor="let year of years" [value]="year">{{year}}</option>
-           </select>
-        </div> -->
-
-
-
         </div>
-        <!-- <select name="selectedQuantity" id="selectedQuantity" class="form-control" [(ngModel)]="selectedQuantity">
-          <option *ngFor="let option of options" [value]="option">{{option}}</option>
-       </select>
 
-       <p>Selected Quantity : {{selectedQuantity}}</p> -->
-
-
-      <!--   <tbody *ngFor="let year of years" >
-          <td> {{ year }} </td>
-        <td><button class="btn btn-outline-success" height="20" width="20" (click)="getSelectedYear(year)">Edit</button></td>
-        </tbody>
- -->
           <div class="row" >
 
             <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12"
@@ -109,7 +73,6 @@
                       <a routerLink="/detailsMember/{{ member._id }}">
                         {{ member.NomPrenom }}</a>
                     </h1>
-
                     <div style="float: right; margin-left: 6%">
                       <i class="fa fa-edit IconToEditMember" aria-hidden="true"
                         (click)="openModal(updateMember); getMemberByid(member._id)">
@@ -128,7 +91,6 @@
               </div>
             </div>
           </div>
-
           <div class="counter_jbbb2 jb_cover">
             <img src="../../../../assets/images/line3.png" class="img-responsive" alt="img" />
           </div>
@@ -225,12 +187,11 @@
                   </div>
                 </div>
               </div>
+              <input type='file' (change)="readURL($event)" required />
+              <img class=" imgDefaultAdd" id="file-input" [src]="imageSrc" alt="your image" />
             </div>
-            <div class="form-group">
-              <label for="signup-Cpassword" class="control-label sr-only">Photo</label>
-              <input type="file" id="file-input" name="Photo" class="form-control"
-                (change)="recoverFile($event); AddNewMember()" />
-            </div>
+
+
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary annuler" (click)="modalRef.hide()">
                 Annuler

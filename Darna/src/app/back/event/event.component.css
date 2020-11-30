@@ -254,3 +254,23 @@ button.w3-button {
   display: flex;
   flex-direction: row;
 }
+
+.test2:focus:not([readonly]) {
+  border-bottom: 1px solid #ce93d8;
+  box-shadow: 0 1px 0 0 #ce93d8;
+}
+.test input[type=text] {
+  border: 1px solid #a9e4f1;
+}
+
+.icon-s{
+  color: #1dcec8;
+}
+.imgEventDefault{
+  width: 17%;
+  height: 12%;
+  border-radius: 10%;
+  float: right;
+  margin-bottom: 3%;
+  margin-right: 5%;
+}

@@ -12,7 +12,14 @@
   text-align: center;
   height: 486px;
 }
-
+.imgDefaultAdd{
+  width: 7%;
+  height: 7%;
+  border-radius: 80%;
+  float: right;
+  margin-bottom: 3%;
+  margin-right: 5%;
+}
 #menu-accordeon {
   padding: 0;
   margin: 0;
