@@ -17,6 +17,8 @@ export class LoginComponent implements OnInit {
   token: string;
   jwt: string;
   statut: string;
+  currentYear:Number;
+  Create_date ;
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
@@ -24,6 +26,7 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.currentYear = (new Date()).getFullYear();
     this.loginForm = this.formBuilder.group({
       Email: [''],
       Password: [''],
@@ -71,14 +74,14 @@ export class LoginComponent implements OnInit {
         console.log(this.role);
         this.loginservice.saveToken(this.token, this.role);
         this.statut = res.body.user.statut;
-
-        if (this.statut === 'archivé') {
+        this.Create_date = res.body.user.Create_date ;
+        if (this.Create_date != this.currentYear) {
           Swal.fire({
             icon: 'error',
             title: 'oops...',
-            text: 'vous etes archivé',
+            text: 'Votre abonnement est epuisé',
           });
-          this.router.navigate['/'];
+          this.router.navigate['/login'];
         } else if (this.statut === 'banni') {
           Swal.fire({
             icon: 'error',
