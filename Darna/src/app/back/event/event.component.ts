@@ -33,6 +33,8 @@ export class EventComponent implements OnInit {
   currentEvent: EventModel;
   role: string;
   pm;
+  years = [];
+  currentYear;
   etat = false;
   alreadyParti = false;
   userConnect: string;
@@ -52,8 +54,11 @@ export class EventComponent implements OnInit {
   ngOnInit(): void {
     this.role = sessionStorage.getItem('role');
     this.userConnect = sessionStorage.getItem('UserConnect');
+    this.currentYear = (new Date()).getFullYear();
     //this.currentDate = formatDate(this.today, 'dd-MM-yyyy', 'en-US');
-    this.getLisEvents();
+    //this.getLisEvents();
+    this. getYears()
+    this.getLisEventsbByYear() ;
     (this.addFormEvent = this.formBuilder.group({
       NameEvent: [null, Validators.required],
       Description: [null, [Validators.required]],
@@ -84,7 +89,7 @@ export class EventComponent implements OnInit {
         this.minDateIn = valueChanges
       })
       this.addFormEvent.get("DateEndInsc").valueChanges.subscribe(valueChanges => {
-        this.maxDateIn = valueChanges      
+        this.maxDateIn = valueChanges
       })
   }
   openModal(template: TemplateRef<any>) {
@@ -103,11 +108,28 @@ export class EventComponent implements OnInit {
       this.photo = event.target.files[0].photo;
     }
   }
+  getYears() {
+
+    for (let y = 2014; y <= this.currentYear; y++) {
+
+      this.years.push(y)
+
+    }
+  }
+  getLisEventsbByYear() {
+    this.SpinnerService.show();
+    this.EventService.getEventbyYear(this.currentYear).subscribe((res: any) => {
+      console.log(res);
+      this.events = res
+      // this.minDate = this.currentEvent.DateBeginEvent;
+      this.SpinnerService.hide();
+    });
+  }
   getLisEvents() {
     this.SpinnerService.show();
     this.EventService.getAllEvents().subscribe((res: any) => {
       console.log(res);
-      this.events = res
+     // this.events = res
       // this.minDate = this.currentEvent.DateBeginEvent;
       this.SpinnerService.hide();
     });
@@ -295,7 +317,7 @@ export class EventComponent implements OnInit {
           cancelButtonColor: '#d33',
           confirmButtonText: 'Oui, Publier-le!',
           cancelButtonText: 'Annuler',
-        }).then((result) => { 
+        }).then((result) => {
           if (result.value) {
             this.EventService.PublishEvent(id,'Yes').subscribe((res: EventModel) => {
             });
@@ -305,7 +327,7 @@ export class EventComponent implements OnInit {
         });
       }
       })}
-    
+
   ResetForm(){
     this.addFormEvent.reset();
     this. imageSrc = "assets/images/eventDefault.jpg";

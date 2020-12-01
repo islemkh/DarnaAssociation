@@ -37,6 +37,12 @@
             </form>
 
           </div>
+          <div>
+            <select name="currentYear" id="currentYear" class="form-control" [(ngModel)]="currentYear" (change)='getLisEventsbByYear()'>
+              <option *ngFor="let year of years" [value]="year" >{{year}}</option>
+              Année: {{currentYear}}
+          </select>
+        </div>
           <div class="tab-content btc_shop_index_content_tabs_main jb_cover">
             <div id="list" class="tab-pane active">
               <div class="row"

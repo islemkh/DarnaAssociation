@@ -17,6 +17,9 @@ export class EventService {
   getEvent(id) {
     return this.http.get(host + '/api/detailsEvent/' + id);
   }
+  getEventbyYear(Create_date) {
+    return this.http.get(host + '/api/GetEventByYear/' +Create_date);
+  }
   //Add Event
   AddNewEvent(obj) {
     return this.http.post(host + '/api/AddEvent', obj);

@@ -157,12 +157,14 @@ export const updateEtatMember = (req, res) => {
 
 export const RenewMember = (req, res) => {
   const id = req.params.id;
-
+  let date = new Date();
+  let Create_date = date.getFullYear();
+  console.log(Create_date)
   const ObjectId = require('mongodb').ObjectID;
   User.findOne({ '_id': ObjectId(id) })
     .then((user) => {
-      if (user.Create_date !== req.body.currentYear ) {
-        user.Create_date = currentYear
+      if (user.Create_date !== Create_date ) {
+        user.Create_date = Create_date
         user.save()
         res.send({ message: "member renouvelé" });
       } else {

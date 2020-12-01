@@ -8,6 +8,7 @@ import {
     ValidateParticipate,
     NoValidateParticipate,
     PublishEvent,
+    GetEventByYear
     
 } from '../Controllers/event-controller'
 
@@ -38,6 +39,7 @@ const routes_event = (app) => {
 
     app.route('/api/PublishEvent/:id')
         .put(PublishEvent)
-
+    app.route('/api/GetEventByYear/:Create_date')     
+    .get(GetEventByYear)
 }
 export default routes_event;

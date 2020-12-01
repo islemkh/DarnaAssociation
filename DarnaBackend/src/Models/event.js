@@ -39,6 +39,10 @@ export const EventSchema = new Schema({
     publish: {
         type: String
     },
+    Create_date: {
+        type: Number
+        //default: Date.now
+    },
   
 }
 

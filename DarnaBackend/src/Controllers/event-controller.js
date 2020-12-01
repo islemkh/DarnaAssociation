@@ -8,6 +8,8 @@ const Event = mongoose.model('Event', EventSchema);
 //Add Event
 export const addNewEvent = (req, res) => {
   req.body["publish"] = "No";
+  let d = new Date().getFullYear();
+  req.body["Create_date"] = d;
   let newEvent = new Event(req.body);
   newEvent.save((err, event) => {
     if (err) {
@@ -29,6 +31,25 @@ export const getAllEvents = (req, res) => {
     // console.log(res)
     res.json(event);
   });
+};
+export const GetEventByYear = (req, res) => {
+  let date = new Date();
+  let Create_date = date.getFullYear();
+  console.log(Create_date)
+  const createdate = req.params.Create_date;
+  console.log(createdate)
+  Event.find({ 'Create_date': createdate }).then((event) => {
+    if (event.Create_date = createdate) {
+      res.json(event)
+      console.log(event)
+    } else {
+      return res.status(404).send({
+        message: "User not found with statut " + createdate,
+      });
+    }
+  })
+
+
 };
 export const ParticipateEvent = (req, res) => {
   const id = req.params.id;

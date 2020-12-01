@@ -32,8 +32,8 @@ export class ListMemberService {
   // archiverMember(id,value){
   //   return this.http.put(host + '/api/archivermember/' + id, { statut: value });
   // }
-  renewMember(id,currentYear){
-    return this.http.put(host + '/api/RenewMember/' + id,{currentYear});
+  renewMember(id,Create_date){
+    return this.http.put(host + '/api/RenewMember/' + id,{Create_date});
   }
 
 }

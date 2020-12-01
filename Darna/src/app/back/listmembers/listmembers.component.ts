@@ -8,6 +8,7 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { NgxSpinnerService } from "ngx-spinner";
 import { Member } from '../models/member'
 import { ImageService } from '../../front/services/image.service';
+import { conditionallyCreateMapObjectLiteral } from '@angular/compiler/src/render3/view/util';
 
 @Component({
   selector: 'app-listmembers',
@@ -26,15 +27,16 @@ export class ListmembersComponent implements OnInit {
   filesToUpload: Array<File>;
   photo;
   pm;
+  Create_date;
   memberValue;
   // archiver: Boolean;
   // archiv:Boolean= false;
   currentYear;
   imageSrc: string = "assets/images/ct.png";
   years = [];
-
+  currentYearr;
   // membersarchived: Member[];
-
+  renouv:Boolean=false
 
   constructor(
     private router: Router,
@@ -51,6 +53,7 @@ export class ListmembersComponent implements OnInit {
   ngOnInit(): void {
 
     this.currentYear = (new Date()).getFullYear();
+    this.currentYearr = (new Date()).getFullYear();
     this.getYears();
     this.getmembersbyYear();
 
@@ -91,6 +94,7 @@ export class ListmembersComponent implements OnInit {
     for (let y = 2014; y <= this.currentYear; y++) {
 
       this.years.push(y)
+
     }
   }
   readURL(event: any) {
@@ -111,6 +115,11 @@ export class ListmembersComponent implements OnInit {
     this.listMemberService.getmembers(this.currentYear).subscribe((res: any) => {
       // this.members = res.filter((t) => t.role === 'member' &&t.Create_date.toString() !== this.currentYear.toString());
       this.members = res.filter((t) => t.role === 'member');
+      console.log( this.members)
+   /*    if (this.members['Create_date']!== this.currentYear){
+        this.renouv =false;
+        console.log(this.renouv)
+      }*/
       //  this.archiv=true;
       // this.SpinnerService.hide();
 
@@ -249,11 +258,11 @@ export class ListmembersComponent implements OnInit {
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
-      confirmButtonText: 'Oui, actif-le!',
+      confirmButtonText: 'Oui, Revouveler !',
       cancelButtonText: 'Annuler',
     }).then((result) => {
       if (result.value) {
-        this.listMemberService.renewMember(id,this.currentYear).subscribe((res) => {
+        this.listMemberService.renewMember(id,this.Create_date).subscribe((res) => {
           Swal.fire('Renouvelé', 'Ce membre a été renouvelé avec succés', 'success');
           this.ngOnInit();
         });
