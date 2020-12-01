@@ -9,7 +9,7 @@ import {
     NoValidateParticipate,
     PublishEvent,
     GetEventByYear
-    
+
 } from '../Controllers/event-controller'
 
 const routes_event = (app) => {

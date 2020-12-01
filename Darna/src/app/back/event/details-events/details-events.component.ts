@@ -5,6 +5,7 @@ import { EventModel } from '../../models/event';
 import Swal from 'sweetalert2';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { Router } from '@angular/router';
+import { textSpanIsEmpty } from 'typescript';
 @Component({
   selector: 'app-details-events',
   templateUrl: './details-events.component.html',
@@ -71,7 +72,7 @@ export class DetailsEventsComponent implements OnInit {
     }).then((result) => {
       if (result.value) {
         this.EventService.NoValiderP(id, emailP).subscribe((res: any) => {
-          //  this.ngOnInit();
+        
         });
         Swal.fire(
           'Refusé',
@@ -80,6 +81,7 @@ export class DetailsEventsComponent implements OnInit {
         );
         this.ngOnInit();
       }
+      
     });
   }
 }

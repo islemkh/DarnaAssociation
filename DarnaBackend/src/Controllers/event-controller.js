@@ -89,8 +89,7 @@ export const NoValidateParticipate = (req, res) => {
         if(element.emailP==req.body.email)
         {
           (element.set({"etat":"refusé"}))
-          event.save();}
-          
+          event.save();}  
       });
     })
 };

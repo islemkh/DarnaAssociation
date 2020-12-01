@@ -240,17 +240,31 @@ export class EventComponent implements OnInit {
 
   participate(id) {
     this.EventService.getEvent(id).subscribe((res: EventModel) => {
-      let part = false
+      let part="";
       this.currentEvent = res;
+      let tabP=[]
+      res.participants.forEach((p) => {
+       
+          tabP.push (p.emailP );
+        
+      });
       this.userConnect = sessionStorage.getItem('UserConnect');
-      console.log('this.userConnect: ', this.currentEvent);
-      for (let i = 0; i < this.currentEvent.participants.length; i++) {
-        if (this.currentEvent.participants[i].emailP === this.userConnect) {
-          part = true;
-          break
+      if(tabP.length!=0)
+      {console.log('this emna', tabP);
+      for(let i=0;i<tabP.length;i++){
+        console.log('this emna', );
+        if (tabP[i] === this.userConnect) {
+          part = "true";
+          console.log('this.dkallelboukle ');
+        break 
         }
+        else{part="false"
+        console.log('this.userConnect77777 ', tabP);
       }
-      if (part === false) {
+      
+      } 
+       
+      if (part === "false") {
         this.EventService.Participate(id, this.userConnect).subscribe((res) => {
 
         })
@@ -261,7 +275,7 @@ export class EventComponent implements OnInit {
         );
         this.getLisEventsbByYear()
       }
-      else {
+      else if(part ==="true") {
         Swal.fire(
           'Deja participer',
           'Vous avez déja participé à cet évènement',
@@ -269,6 +283,19 @@ export class EventComponent implements OnInit {
         );
         this.getLisEventsbByYear()
       }
+
+    }
+     else{
+      this.EventService.Participate(id, this.userConnect).subscribe((res) => {
+
+      })
+      Swal.fire(
+        'participer',
+        'Vous avez participé à cet évènement avec succes',
+        'success'
+      );
+      this.getLisEventsbByYear()
+     } 
     })
 
   }
