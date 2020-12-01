@@ -75,14 +75,8 @@ export class LoginComponent implements OnInit {
         this.loginservice.saveToken(this.token, this.role);
         this.statut = res.body.user.statut;
         this.Create_date = res.body.user.Create_date ;
-        if (this.Create_date != this.currentYear) {
-          Swal.fire({
-            icon: 'error',
-            title: 'oops...',
-            text: 'Votre abonnement est epuisé',
-          });
-          this.router.navigate['/login'];
-        } else if (this.statut === 'banni') {
+
+        if (this.statut === 'banni') {
           Swal.fire({
             icon: 'error',
             title: 'oops...',
@@ -93,7 +87,14 @@ export class LoginComponent implements OnInit {
           if (this.role === 'admin') {
             this.router.navigate(['/listeDemandes']);
           }
-          if (this.role === 'member') {
+         else if (this.role === 'member' && this.Create_date != this.currentYear) {
+          Swal.fire({
+            icon: 'error',
+            title: 'oops...',
+            text: 'Votre abonnement est epuisé',
+          });
+          this.router.navigate['/login'];
+          }else  {
             this.router.navigate(['/']);
             this.connectedUser = res.body.user.Email;
             sessionStorage.setItem('UserConnect', this.connectedUser);

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Router } from '@angular/router';
-import { host } from 'src/app/host';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -13,7 +13,7 @@ export class LoginService {
   role;
   constructor(private http: HttpClient, private router: Router) { }
   login(data) {
-    return this.http.post(host + '/api/login', data, {
+    return this.http.post(environment.host + '/api/login', data, {
       observe: 'response',
     });
   }

@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpEvent, HttpRequest } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { host } from '../../../app/host'
+import { environment } from '../../../environments/environment';
+
 
 @Injectable({
   providedIn: 'root',
@@ -13,7 +14,7 @@ export class ImageService {
     formdata.append('file', file);
     const req = new HttpRequest(
       'POST',
-      host + '/api/uploadFile',
+      environment.host + '/api/uploadFile',
       formdata,
       {
         reportProgress: true,
@@ -23,6 +24,6 @@ export class ImageService {
     return this.http.request(req);
   }
   getFile(): Observable<any> {
-    return this.http.get(host + '/api/getfile/' + name);
+    return this.http.get(environment.host + '/api/getfile/' + name);
   }
 }
