@@ -17,7 +17,6 @@ export const addNewMember = (req, res) => {
       req.body["role"] = "member";
       req.body["statut"] = "actif";
       let d = new Date().getFullYear();
-      let d1 = d + 1
       req.body["Create_date"] = d;
 
       let newUser = new User(req.body);
@@ -74,25 +73,6 @@ export const GetMemberByYear = (req, res) => {
   User.find({ 'Create_date': createdate }).then((user) => {
     if (user.Create_date = createdate) {
       res.json(user)
-      console.log(user)
-    } else {
-      return res.status(404).send({
-        message: "User not found with statut " + createdate,
-      });
-    }
-  })
-
-
-};
-export const GetMemberByYcurrentYear = (req, res) => {
-  let date = new Date();
-  let createdate = date.getFullYear();
-  console.log(createdate)
-  User.find({ 'Create_date': createdate }).then((user) => {
-    if (user.Create_date = createdate) {
-      user.statut = "archivé";
-      // user.statut.save();
-      res.json(user.statut)
       console.log(user)
     } else {
       return res.status(404).send({

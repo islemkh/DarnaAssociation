@@ -125,15 +125,14 @@ export class EventComponent implements OnInit {
       this.SpinnerService.hide();
     });
   }
-  getLisEvents() {
+/*   getLisEvents() {
     this.SpinnerService.show();
     this.EventService.getAllEvents().subscribe((res: any) => {
       console.log(res);
-     // this.events = res
-      // this.minDate = this.currentEvent.DateBeginEvent;
+      this.events = res
       this.SpinnerService.hide();
     });
-  }
+  } */
 
   get AddEventControls() {
     return this.addFormEvent.controls;
@@ -197,7 +196,7 @@ export class EventComponent implements OnInit {
         });
       }
       this.ResetForm()
-      this.getLisEvents();
+      this. getLisEventsbByYear();
 
 
     });
@@ -248,7 +247,7 @@ export class EventComponent implements OnInit {
           'Vous avez participé à cet évènement avec succes',
           'success'
         );
-        this.getLisEvents()
+        this.getLisEventsbByYear()
       }
       else {
         Swal.fire(
@@ -256,7 +255,7 @@ export class EventComponent implements OnInit {
           'Vous avez déja participé à cet évènement',
           'error'
         );
-        this.getLisEvents()
+        this.getLisEventsbByYear()
       }
     })
 
@@ -294,7 +293,7 @@ export class EventComponent implements OnInit {
         (response) => {
           console.log(response);
           Swal.fire('Cet événement a été modifié avec succés', '', 'success');
-          this.getLisEvents();
+          this. getLisEventsbByYear();
           this.modalRef.hide();
         },
         (error) => {
@@ -322,7 +321,7 @@ export class EventComponent implements OnInit {
             this.EventService.PublishEvent(id,'Yes').subscribe((res: EventModel) => {
             });
             Swal.fire('Publier', 'événement publié', 'success');
-            this.getLisEvents()
+            this.getLisEventsbByYear()
           }
         });
       }

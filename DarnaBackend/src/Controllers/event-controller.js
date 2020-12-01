@@ -22,16 +22,16 @@ export const addNewEvent = (req, res) => {
   })
 }
 
-export const getAllEvents = (req, res) => {
+/* export const getAllEvents = (req, res) => {
   Event.find({}, (err, event) => {
     if (err) {
       res.send(err);
     }
     console.log("this is res liste event")
-    // console.log(res)
+ 
     res.json(event);
   });
-};
+}; */
 export const GetEventByYear = (req, res) => {
   let date = new Date();
   let Create_date = date.getFullYear();

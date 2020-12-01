@@ -16,8 +16,8 @@ const routes_event = (app) => {
     app.route('/api/AddEvent')
         .post(addNewEvent)
 
-    app.route('/api/GetAllEvents')
-        .get(getAllEvents)
+/*     app.route('/api/GetAllEvents')
+        .get(getAllEvents) */
 
     app.route('/api/detailsEvent/:id')
         .get(getEvent)

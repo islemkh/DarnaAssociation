@@ -36,7 +36,6 @@ const routes_member = (app) => {
      .put(RenewMember)
      app.route('/api/GetMemberByYear/:Create_date')
      .get(GetMemberByYear)
-    app.route('/api/currentyear')
-    .put(GetMemberByYcurrentYear)
+
 }
 export default routes_member;
