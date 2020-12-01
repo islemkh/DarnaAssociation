@@ -39,6 +39,7 @@ export class EventComponent implements OnInit {
   alreadyParti = false;
   userConnect: string;
   currentDate = '';
+  tabPubEvent;
   today = new Date();
   error: any = { isError: false, errorMessage: '' };
   isValidDate: any;
@@ -57,6 +58,7 @@ export class EventComponent implements OnInit {
     this.currentYear = (new Date()).getFullYear();
     //this.currentDate = formatDate(this.today, 'dd-MM-yyyy', 'en-US');
     //this.getLisEvents();
+    this.tabPubEvent=[]
     this. getYears()
     this.getLisEventsbByYear() ;
     (this.addFormEvent = this.formBuilder.group({
@@ -121,6 +123,15 @@ export class EventComponent implements OnInit {
     this.EventService.getEventbyYear(this.currentYear).subscribe((res: any) => {
       console.log(res);
       this.events = res
+      res.forEach(e => {
+        console.log("hetha element",e);
+        if(e.publish==="Yes"){
+          this.tabPubEvent.push(e)
+        }
+        
+      });
+      console.log("test ttttt",this.tabPubEvent)
+      
       // this.minDate = this.currentEvent.DateBeginEvent;
       this.SpinnerService.hide();
     });
@@ -201,6 +212,7 @@ export class EventComponent implements OnInit {
 
     });
   }
+  
   getEventByid(id) {
     this.EventService.getEvent(id).subscribe((res: EventModel) => {
       this.currentEvent = res;

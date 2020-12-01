@@ -274,3 +274,47 @@ button.w3-button {
   margin-bottom: 3%;
   margin-right: 5%;
 }
+.styleInfoEvent{
+  display: flex;
+  flex-direction: row;
+}
+.IconToDeleteDemande:hover {
+  background-color: #ff4d4d;
+  color: white;
+}
+
+.IconToDeleteDemande {
+  padding: 10px;
+  border-radius: 5px;
+  color: #ff4d4d;
+}
+.IconToAcceptDemande {
+  color: #80ffd4;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.IconToAcceptDemande:hover {
+  background-color: #80ffd4;
+  color: white;
+}
+
+.IconToEit {
+  color: #8e08fc;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.IconToEit:hover {
+  background-color: #c7baf4;
+  color: white;
+}
+.inline li { 
+  display:inline; 
+}
+.inline{
+  margin-left: 28%;
+}
+.btn{
+  color:white;
+}
