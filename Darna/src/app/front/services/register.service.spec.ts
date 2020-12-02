@@ -7,4 +7,7 @@ describe('RegisterService', () => {
   beforeEach(() => {
     service = new RegisterService(http as any);
   });
+  xit('should be created', () => {
+    expect(service).toBeTruthy();
+  });
 });

@@ -30,12 +30,12 @@ export class RegisterComponent implements OnInit {
     private registerservice: RegisterService,
     private imageservice: ImageService
   ) {
-    /*   let isLoggedIn= this.registerservice.isLoggedIn();
+     let isLoggedIn= this.registerservice.isLoggedIn();
     console.log('isLoggedIn: ', isLoggedIn);
 
     if (isLoggedIn) {
       this.router.navigate(['/listeDemandes']);
-    }  */
+    }  
   }
 
   ngOnInit(): void {
