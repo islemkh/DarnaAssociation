@@ -12,7 +12,7 @@ import { formatDate } from '@angular/common';
 @Component({
   selector: 'app-event',
   templateUrl: './event.component.html',
-  styleUrls: ['./event.component.css']
+  styleUrls: ['./event.component.css'],
 })
 export class EventComponent implements OnInit {
   modalRef: BsModalRef;
@@ -24,7 +24,7 @@ export class EventComponent implements OnInit {
   BeginDate = null;
   EndDate = null;
   photo;
-  imageSrc: string = "assets/images/eventDefault.jpg";
+  imageSrc: string = 'assets/images/eventDefault.jpg';
 
   addFormEvent: FormGroup;
   updateFormEvent: FormGroup;
@@ -50,17 +50,17 @@ export class EventComponent implements OnInit {
     private EventService: EventService,
     private modalService: BsModalService,
     private imageservice: ImageService,
-    private SpinnerService: NgxSpinnerService) { }
+    private SpinnerService: NgxSpinnerService
+  ) { }
 
   ngOnInit(): void {
     this.role = sessionStorage.getItem('role');
     this.userConnect = sessionStorage.getItem('UserConnect');
-    this.currentYear = (new Date()).getFullYear();
-    //this.currentDate = formatDate(this.today, 'dd-MM-yyyy', 'en-US');
-    //this.getLisEvents();
-    this.tabPubEvent=[]
-    this. getYears()
-    this.getLisEventsbByYear() ;
+    this.currentYear = new Date().getFullYear();
+
+    this.tabPubEvent = [];
+    this.getYears();
+    this.getLisEventsbByYear();
     (this.addFormEvent = this.formBuilder.group({
       NameEvent: [null, Validators.required],
       Description: [null, [Validators.required]],
@@ -69,7 +69,7 @@ export class EventComponent implements OnInit {
       DateBeginEvent: [null, Validators.required],
       DateEndEvent: [null, Validators.required],
       DateBeginInsc: [null, [Validators.required]],
-      DateEndInsc: [null, [Validators.required]]
+      DateEndInsc: [null, [Validators.required]],
     })),
       (this.updateFormEvent = this.formBuilder.group({
         NameEvent: [null, Validators.required],
@@ -79,20 +79,28 @@ export class EventComponent implements OnInit {
         DateBeginEvent: [null, Validators.required],
         DateEndEvent: [null, Validators.required],
         DateBeginInsc: [null, [Validators.required]],
-        DateEndInsc: [null, [Validators.required]]
-      }))
-      this.addFormEvent.get("DateBeginEvent").valueChanges.subscribe(valueChanges => {
-        this.minDate = valueChanges
-      })
-      this.addFormEvent.get("DateEndEvent").valueChanges.subscribe(valueChanges => {
-        this.maxDate = valueChanges
-      })
-      this.addFormEvent.get("DateBeginInsc").valueChanges.subscribe(valueChanges => {
-        this.minDateIn = valueChanges
-      })
-      this.addFormEvent.get("DateEndInsc").valueChanges.subscribe(valueChanges => {
-        this.maxDateIn = valueChanges
-      })
+        DateEndInsc: [null, [Validators.required]],
+      }));
+    this.addFormEvent
+      .get('DateBeginEvent')
+      .valueChanges.subscribe((valueChanges) => {
+        this.minDate = valueChanges;
+      });
+    this.addFormEvent
+      .get('DateEndEvent')
+      .valueChanges.subscribe((valueChanges) => {
+        this.maxDate = valueChanges;
+      });
+    this.addFormEvent
+      .get('DateBeginInsc')
+      .valueChanges.subscribe((valueChanges) => {
+        this.minDateIn = valueChanges;
+      });
+    this.addFormEvent
+      .get('DateEndInsc')
+      .valueChanges.subscribe((valueChanges) => {
+        this.maxDateIn = valueChanges;
+      });
   }
   openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template);
@@ -103,7 +111,7 @@ export class EventComponent implements OnInit {
 
       reader.onload = (event: any) => {
         this.imageSrc = event.target.result;
-      }
+      };
 
       reader.readAsDataURL(event.target.files[0]);
       this.filesToUpload = event.target.files;
@@ -111,39 +119,23 @@ export class EventComponent implements OnInit {
     }
   }
   getYears() {
-
     for (let y = 2014; y <= this.currentYear; y++) {
-
-      this.years.push(y)
-
+      this.years.push(y);
     }
   }
   getLisEventsbByYear() {
     this.SpinnerService.show();
     this.EventService.getEventbyYear(this.currentYear).subscribe((res: any) => {
       console.log(res);
-      this.events = res
-      res.forEach(e => {
-        console.log("hetha element",e);
-        if(e.publish==="Yes"){
-          this.tabPubEvent.push(e)
+      this.events = res;
+      res.forEach((e) => {
+        if (e.publish === 'Yes') {
+          this.tabPubEvent.push(e);
         }
-        
       });
-      console.log("test ttttt",this.tabPubEvent)
-      
-      // this.minDate = this.currentEvent.DateBeginEvent;
       this.SpinnerService.hide();
     });
   }
-/*   getLisEvents() {
-    this.SpinnerService.show();
-    this.EventService.getAllEvents().subscribe((res: any) => {
-      console.log(res);
-      this.events = res
-      this.SpinnerService.hide();
-    });
-  } */
 
   get AddEventControls() {
     return this.addFormEvent.controls;
@@ -151,27 +143,18 @@ export class EventComponent implements OnInit {
   get UpdatEventControls() {
     return this.updateFormEvent.controls;
   }
-  validateDates(sDate: string, eDate: string) {
-    this.isValidDate = true;
-    if ((sDate == null || eDate == null)) {
-      this.error = { isError: true, errorMessage: 'Start date and end date are required.' };
-      this.isValidDate = false;
-    }
-
-    if ((sDate != null && eDate != null) && (eDate) < (sDate)) {
-      this.error = { isError: true, errorMessage: 'End date should be grater then start date.' };
-      this.isValidDate = false;
-    }
-    return this.isValidDate;
+  ResetForm() {
+    this.addFormEvent.reset();
+    this.imageSrc = 'assets/images/eventDefault.jpg';
+    this.modalRef.hide();
   }
-
   AddEvent() {
     this.submitted = true;
     // stop here if form is invalid
     if (this.addFormEvent.invalid) {
       return;
     }
-    let data = {}
+    let data = {};
     if (this.filesToUpload === undefined) {
       data = {
         NameEvent: this.addFormEvent.value.NameEvent,
@@ -182,7 +165,7 @@ export class EventComponent implements OnInit {
         NumberMember: this.addFormEvent.value.NumberMember,
         DateBeginInsc: this.addFormEvent.value.DateBeginInsc,
         DateEndInsc: this.addFormEvent.value.DateEndInsc,
-        photo: "eventDefault.jpg",
+        photo: 'eventDefault.jpg',
       };
     } else {
       data = {
@@ -200,106 +183,15 @@ export class EventComponent implements OnInit {
     this.EventService.AddNewEvent(data).subscribe((res) => {
       Swal.fire('Event ajouté avec succès!', '', 'success');
       if (this.filesToUpload != undefined) {
-      this.imageservice
-        .pushFileToStorage(this.filesToUpload[0])
-        .subscribe((rest) => {
-          console.log(rest);
-        });
+        this.imageservice
+          .pushFileToStorage(this.filesToUpload[0])
+          .subscribe((rest) => {
+            console.log(rest);
+          });
       }
-      this.ResetForm()
-      this. getLisEventsbByYear();
-
-
+      this.getLisEventsbByYear();
     });
   }
-  
-  getEventByid(id) {
-    this.EventService.getEvent(id).subscribe((res: EventModel) => {
-      this.currentEvent = res;
-      this.currentEvent.NameEvent = res.NameEvent;
-      this.currentEvent.Description = res.Description;
-      this.currentEvent.lieu = res.lieu;
-      this.currentEvent.DateBeginEvent = res.DateBeginEvent;
-      this.currentEvent.DateEndEvent = res.DateEndEvent;
-      this.currentEvent.NumberMember = res.NumberMember;
-      this.currentEvent.DateBeginInsc = res.DateBeginInsc;
-      this.currentEvent.DateEndInsc = res.DateEndInsc;
-      console.log(this.currentEvent.publish)
-      this.updateFormEvent.setValue({
-        NameEvent: this.currentEvent.NameEvent,
-        Description: this.currentEvent.Description,
-        lieu: this.currentEvent.lieu,
-        DateBeginEvent: this.currentEvent.DateBeginEvent.substring(0, 10),
-        DateEndEvent: this.currentEvent.DateEndEvent.substring(0, 10),
-        NumberMember: this.currentEvent.NumberMember,
-        DateBeginInsc: this.currentEvent.DateBeginInsc.substring(0, 10),
-        DateEndInsc: this.currentEvent.DateEndInsc.substring(0, 10)
-      });
-    });
-  }
-
-  participate(id) {
-    this.EventService.getEvent(id).subscribe((res: EventModel) => {
-      let part="";
-      this.currentEvent = res;
-      let tabP=[]
-      res.participants.forEach((p) => {
-       
-          tabP.push (p.emailP );
-        
-      });
-      this.userConnect = sessionStorage.getItem('UserConnect');
-      if(tabP.length!=0)
-      {console.log('this emna', tabP);
-      for(let i=0;i<tabP.length;i++){
-        console.log('this emna', );
-        if (tabP[i] === this.userConnect) {
-          part = "true";
-          console.log('this.dkallelboukle ');
-        break 
-        }
-        else{part="false"
-        console.log('this.userConnect77777 ', tabP);
-      }
-      
-      } 
-       
-      if (part === "false") {
-        this.EventService.Participate(id, this.userConnect).subscribe((res) => {
-
-        })
-        Swal.fire(
-          'participer',
-          'Vous avez participé à cet évènement avec succes',
-          'success'
-        );
-        this.getLisEventsbByYear()
-      }
-      else if(part ==="true") {
-        Swal.fire(
-          'Deja participer',
-          'Vous avez déja participé à cet évènement',
-          'error'
-        );
-        this.getLisEventsbByYear()
-      }
-
-    }
-     else{
-      this.EventService.Participate(id, this.userConnect).subscribe((res) => {
-
-      })
-      Swal.fire(
-        'participer',
-        'Vous avez participé à cet évènement avec succes',
-        'success'
-      );
-      this.getLisEventsbByYear()
-     } 
-    })
-
-  }
-
   DeleteEvent(_id) {
     Swal.fire({
       title: 'êtes-vous sûr?',
@@ -324,29 +216,13 @@ export class EventComponent implements OnInit {
       }
     });
   }
-
-  EditEvent() {
-    this.EventService
-      .updateEvent(this.currentEvent._id, this.updateFormEvent.value)
-      .subscribe(
-        (response) => {
-          console.log(response);
-          Swal.fire('Cet événement a été modifié avec succés', '', 'success');
-          this. getLisEventsbByYear();
-          this.modalRef.hide();
-        },
-        (error) => {
-          console.log(error);
-        }
-      );
-  }
   Publish(id) {
     this.EventService.getEvent(id).subscribe((res: EventModel) => {
-      this.currentEvent=res;
-        if(this.currentEvent.publish === "Yes"){
-          Swal.fire('Déja Publié', ':)', 'error');
-        }
-       if(this.currentEvent.publish === "No"){
+      this.currentEvent = res;
+      if (this.currentEvent.publish === 'Yes') {
+        Swal.fire('Déja Publié', ':)', 'error');
+      }
+      if (this.currentEvent.publish === 'No') {
         Swal.fire({
           title: 'êtes-vous sûr pour publié cette événement?',
           icon: 'warning',
@@ -357,19 +233,113 @@ export class EventComponent implements OnInit {
           cancelButtonText: 'Annuler',
         }).then((result) => {
           if (result.value) {
-            this.EventService.PublishEvent(id,'Yes').subscribe((res: EventModel) => {
-            });
+            this.EventService.PublishEvent(
+              id,
+              'Yes'
+            ).subscribe((res: EventModel) => { });
             Swal.fire('Publier', 'événement publié', 'success');
-            this.getLisEventsbByYear()
+            this.getLisEventsbByYear();
           }
         });
       }
-      })}
-
-  ResetForm(){
-    this.addFormEvent.reset();
-    this. imageSrc = "assets/images/eventDefault.jpg";
-    this.modalRef.hide()
+    });
   }
 
+  getEventByid(id) {
+    this.EventService.getEvent(id).subscribe((res: EventModel) => {
+      this.currentEvent = res;
+      this.currentEvent.NameEvent = res.NameEvent;
+      this.currentEvent.Description = res.Description;
+      this.currentEvent.lieu = res.lieu;
+      this.currentEvent.DateBeginEvent = res.DateBeginEvent;
+      this.currentEvent.DateEndEvent = res.DateEndEvent;
+      this.currentEvent.NumberMember = res.NumberMember;
+      this.currentEvent.DateBeginInsc = res.DateBeginInsc;
+      this.currentEvent.DateEndInsc = res.DateEndInsc;
+      console.log(this.currentEvent.publish);
+      this.updateFormEvent.setValue({
+        NameEvent: this.currentEvent.NameEvent,
+        Description: this.currentEvent.Description,
+        lieu: this.currentEvent.lieu,
+        DateBeginEvent: this.currentEvent.DateBeginEvent.substring(0, 10),
+        DateEndEvent: this.currentEvent.DateEndEvent.substring(0, 10),
+        NumberMember: this.currentEvent.NumberMember,
+        DateBeginInsc: this.currentEvent.DateBeginInsc.substring(0, 10),
+        DateEndInsc: this.currentEvent.DateEndInsc.substring(0, 10),
+      });
+    });
+  }
+
+  participate(id) {
+    this.EventService.getEvent(id).subscribe((res: EventModel) => {
+      let part = '';
+      this.currentEvent = res;
+      let tabP = [];
+      res.participants.forEach((p) => {
+        tabP.push(p.emailP);
+      });
+      this.userConnect = sessionStorage.getItem('UserConnect');
+      if (tabP.length != 0) {
+        console.log('this emna', tabP);
+        for (let i = 0; i < tabP.length; i++) {
+          console.log('this emna');
+          if (tabP[i] === this.userConnect) {
+            part = 'true';
+            break;
+          } 
+          else {
+            part = 'false';
+          }
+        }
+
+        if (part === 'false') {
+          this.EventService.Participate(
+            id,
+            this.userConnect
+          ).subscribe((res) => { });
+          Swal.fire(
+            'participer',
+            'Vous avez participé à cet évènement avec succes',
+            'success'
+          );
+          this.getLisEventsbByYear();
+        } else if (part === 'true') {
+          Swal.fire(
+            'Deja participer',
+            'Vous avez déja participé à cet évènement',
+            'error'
+          );
+          this.getLisEventsbByYear();
+        }
+      } else {
+        this.EventService.Participate(
+          id,
+          this.userConnect
+        ).subscribe((res) => { });
+        Swal.fire(
+          'participer',
+          'Vous avez participé à cet évènement avec succes',
+          'success'
+        );
+        this.getLisEventsbByYear();
+      }
+    });
+  }
+
+  EditEvent() {
+    this.EventService.updateEvent(
+      this.currentEvent._id,
+      this.updateFormEvent.value
+    ).subscribe(
+      (response) => {
+        console.log(response);
+        Swal.fire('Cet événement a été modifié avec succés', '', 'success');
+        this.getLisEventsbByYear();
+        this.modalRef.hide();
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  }
 }

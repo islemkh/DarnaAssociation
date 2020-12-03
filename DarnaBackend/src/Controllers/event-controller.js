@@ -22,22 +22,12 @@ export const addNewEvent = (req, res) => {
   })
 }
 
-/* export const getAllEvents = (req, res) => {
-  Event.find({}, (err, event) => {
-    if (err) {
-      res.send(err);
-    }
-    console.log("this is res liste event")
- 
-    res.json(event);
-  });
-}; */
 export const GetEventByYear = (req, res) => {
   let date = new Date();
   let Create_date = date.getFullYear();
   console.log(Create_date)
   const createdate = req.params.Create_date;
-  console.log(createdate)
+  
   Event.find({ 'Create_date': createdate }).then((event) => {
     if (event.Create_date = createdate) {
       res.json(event)
@@ -51,6 +41,60 @@ export const GetEventByYear = (req, res) => {
 
 
 };
+
+//supprimer Event
+export const deleteEvent = (req, res) => {
+  const id = req.params.id;
+  const ObjectId = require('mongodb').ObjectID;
+  Event.deleteOne({ '_id': ObjectId(id) })
+    .then((event) => {
+      if (!event) {
+        return res.status(404).send({
+          message: "Event not found ",
+        });
+      }
+      res.send({ message: "Event deleted successfully!" });
+    })
+};
+
+export const PublishEvent = (req, res) => {
+  const id = req.params.id;
+  const ObjectId = require('mongodb').ObjectID;
+  Event.findOne({ '_id': ObjectId(id) })
+    .then((event) => {
+      console.log(event.publish)
+      if (event.publish == "No") {
+        event.publish = "Yes"
+        console.log(' event.publish : ', event.publish);
+        event.save()
+        res.send({ message: "event publier" });
+      } else {
+        res.send({ message: "error canno't make this action" });
+      }
+    })
+
+}
+
+//affisher details d'un event
+export const getEvent = (req, res) => {
+  const id = req.params.id;
+  const ObjectId = require('mongodb').ObjectID;
+  Event.findOne({ '_id': ObjectId(id) }).then((event) => {
+    if (!event) {
+      return res.status(404).send({
+        message: "Event not found with id " + id,
+      });
+    }
+    res.status(200).send(event);
+    // console.log(event);
+  })
+    .catch((err) => {
+      return res.status(400).send({
+        message: "Error retrieving event with id " + id,
+      });
+    });
+};
+
 export const ParticipateEvent = (req, res) => {
   const id = req.params.id;
   const ObjectId = require('mongodb').ObjectID;
@@ -94,41 +138,9 @@ export const NoValidateParticipate = (req, res) => {
     })
 };
 
-//affisher details d'un event
-export const getEvent = (req, res) => {
-  const id = req.params.id;
-  const ObjectId = require('mongodb').ObjectID;
-  Event.findOne({ '_id': ObjectId(id) }).then((event) => {
-    if (!event) {
-      return res.status(404).send({
-        message: "Event not found with id " + id,
-      });
-    }
-    res.status(200).send(event);
-    // console.log(event);
-  })
-    .catch((err) => {
-      return res.status(400).send({
-        message: "Error retrieving event with id " + id,
-      });
-    });
-};
 
 
-//supprimer Event
-export const deleteEvent = (req, res) => {
-  const id = req.params.id;
-  const ObjectId = require('mongodb').ObjectID;
-  Event.deleteOne({ '_id': ObjectId(id) })
-    .then((event) => {
-      if (!event) {
-        return res.status(404).send({
-          message: "Event not found ",
-        });
-      }
-      res.send({ message: "Event deleted successfully!" });
-    })
-};
+
 //modifier Event
 export const UpdateEvent = (req, res) => {
   const id = req.params.id;
@@ -140,40 +152,3 @@ export const UpdateEvent = (req, res) => {
   }
   )
 }
-
-export const PublishEvent = (req, res) => {
-  const id = req.params.id;
-  const ObjectId = require('mongodb').ObjectID;
-  Event.findOne({ '_id': ObjectId(id) })
-    .then((event) => {
-      console.log(event.publish)
-      if (event.publish == "No") {
-        event.publish = "Yes"
-        console.log(' event.publish : ', event.publish);
-        event.save()
-        res.send({ message: "event publier" });
-      } else {
-        res.send({ message: "error canno't make this action" });
-      }
-    })
-
-}
-/* 
-export const ArchiveEvent = (req, res) => {
-  const id = req.params.id;
-  const ObjectId = require('mongodb').ObjectID;
-  Event.findOne({ '_id': ObjectId(id) })
-    .then((event) => {
-      console.log(event.archive)
-      if (event.archive == "No") {
-        event.archive = "Yes"
-        console.log(' archiver : ', event.archive);
-        event.save()
-        res.send({ message: "event Archiver" });
-      } else {
-        res.send({ message: "error canno't make this action" });
-      }
-    })
-
-} */
-

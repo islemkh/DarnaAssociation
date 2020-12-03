@@ -6,7 +6,6 @@ import { environment } from '../../../environments/environment';
 })
 
 export class EventService {
-
   constructor(private http: HttpClient) { }
   //Get all event
   getAllEvents() {
@@ -17,7 +16,7 @@ export class EventService {
     return this.http.get(environment.host + '/api/detailsEvent/' + id);
   }
   getEventbyYear(Create_date) {
-    return this.http.get(environment.host + '/api/GetEventByYear/' +Create_date);
+    return this.http.get(environment.host + '/api/GetEventByYear/' + Create_date);
   }
   //Add Event
   AddNewEvent(obj) {
@@ -37,15 +36,12 @@ export class EventService {
   PublishEvent(id, value) {
     return this.http.put(environment.host + '/api/PublishEvent/' + id, { publish: value });
   }
-/*   ArchiveEvent(id, val) {
-    return this.http.put(host + '/api/ArchiveEvent/' + id, { archive: val });
-  } */
 
   ValiderP(id, email) {
-    return this.http.put(environment.host + '/api/validerParticipant/' + id,{email});
+    return this.http.put(environment.host + '/api/validerParticipant/' + id, { email });
   }
   NoValiderP(id, email) {
-    return this.http.put(environment.host + '/api/NovaliderParticipant/' + id,{email});
+    return this.http.put(environment.host + '/api/NovaliderParticipant/' + id, { email });
   }
 }
 
