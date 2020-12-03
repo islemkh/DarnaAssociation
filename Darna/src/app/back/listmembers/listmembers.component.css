@@ -10,7 +10,7 @@
   width: 127%;
 
   text-align: center;
-  height: 486px;
+  height: auto;
 }
 .imgDefaultAdd{
   width: 7%;
@@ -177,9 +177,7 @@ button.w3-button {
 }
 
 .modal-footer {
-  margin-top: 0%;
-  margin-right: 24px;
-
+  margin: auto;
   /* text-align: center; */
   /* margin-bottom: 0; */
   /* line-height: 1.5; */

@@ -9,7 +9,7 @@
         <div class="job_listing_left_side jb_cover">
           <div class="filter-area jb_cover" style="background-color: white">
             <div class="list-grid">
-              <ul class="nav nav-tabs">
+              <ul class="nav nav-tabs">   
                 <li class="nav-item">
                   <div class="showpro" *ngIf="role === 'admin'">
                     <p>Liste des événements</p>
@@ -75,13 +75,13 @@
                       </div>
                       <div *ngIf="role === 'admin'" class="card-footer">
                         <ul class="inline">
-                          <li>
+                          <li >
                             <a role="button2" (click)="Publish(el._id)" title="publié">
                               <i class="fa fa-check fa-lg IconToAcceptDemande"></i>
                             </a>
                           </li>
                           <li>
-                            <a role="button3" (click)="DeleteEvent(el._id)" title="supprimer">
+                            <a role="button3" (click)="DeleteEvent(el._id)"  title="supprimer">
                               <i class="fas fa-trash-alt fa-lg IconToDeleteDemande">
                               </i>
                             </a>

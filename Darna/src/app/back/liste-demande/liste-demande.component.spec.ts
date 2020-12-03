@@ -1,24 +1,36 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormBuilder } from '@angular/forms';
 
 import { ListeDemandeComponent } from './liste-demande.component';
 
 describe('ListeDemandeComponent', () => {
-  let component: ListeDemandeComponent;
+  let componentDemandes: ListeDemandeComponent;
   let fixture: ComponentFixture<ListeDemandeComponent>;
-
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ListeDemandeComponent],
-    }).compileComponents();
-  }));
+  let NgxSpinnerService: any
+  let listeDemandeServiceMock: any;
+  let formBuilder: FormBuilder;
+  let routerMock: any;
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ListeDemandeComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+    listeDemandeServiceMock = {
+      getListeDemand: jest.fn(),
+      deleteDemand: jest.fn(),
+      AcceptDemande: jest.fn()
+    };
+    formBuilder = new FormBuilder();
+    routerMock = jest.fn();
 
-  xit('should create', () => {
-    expect(component).toBeTruthy();
+    componentDemandes = new ListeDemandeComponent(
+      routerMock,
+      listeDemandeServiceMock,
+      NgxSpinnerService,
+    );
+    componentDemandes.ngOnInit();
+  });
+  describe('Test: demande exist', () => {
+
+    xit('Form valid', () => {
+  
+    });
   });
 });

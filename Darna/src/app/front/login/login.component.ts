@@ -17,13 +17,19 @@ export class LoginComponent implements OnInit {
   token: string;
   jwt: string;
   statut: string;
-  currentYear:Number;
-  Create_date ;
+  currentYear: Number;
+  Create_date;
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
     private loginservice: LoginService
-  ) { }
+  ) {
+    let isLoggedIn = this.loginservice.isLoggedIn();
+
+    if (isLoggedIn) {
+      this.router.navigate(['/listeDemandes']);
+    }
+  }
 
   ngOnInit(): void {
     this.currentYear = (new Date()).getFullYear();
@@ -31,11 +37,7 @@ export class LoginComponent implements OnInit {
       Email: [''],
       Password: [''],
     });
-    // let isLoggedIn= this.loginservice.isLoggedIn();
 
-    // if (isLoggedIn) {
-    //   this.router.navigate(['/listeDemandes']);
-    // }
   }
   get f() {
     return this.loginForm.controls;
@@ -74,7 +76,7 @@ export class LoginComponent implements OnInit {
         console.log(this.role);
         this.loginservice.saveToken(this.token, this.role);
         this.statut = res.body.user.statut;
-        this.Create_date = res.body.user.Create_date ;
+        this.Create_date = res.body.user.Create_date;
 
         if (this.statut === 'banni') {
           Swal.fire({
@@ -82,19 +84,21 @@ export class LoginComponent implements OnInit {
             title: 'oops...',
             text: 'user banni',
           });
-          this.router.navigate['/login'];}
+          this.router.navigate['/login'];
+        }
         else {
           if (this.role === 'admin') {
             this.router.navigate(['/listeDemandes']);
           }
-         else if (this.role === 'member' && this.Create_date != this.currentYear) {
-          Swal.fire({
-            icon: 'error',
-            title: 'oops...',
-            text: 'Votre abonnement est epuisé',
-          });
-          this.router.navigate['/login'];
-          }else  {
+          else if (this.role === 'member' && this.Create_date != this.currentYear) {
+            Swal.fire({
+              icon: 'error',
+              title: 'oops...',
+              text: 'Votre abonnement est epuisé',
+              //votre adhésion doit être renouvelée, merci d'attendre que l'administrateur vous renouvelle
+            });
+            this.router.navigate['/login'];
+          } else {
             this.router.navigate(['/']);
             this.connectedUser = res.body.user.Email;
             sessionStorage.setItem('UserConnect', this.connectedUser);

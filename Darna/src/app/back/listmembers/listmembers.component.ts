@@ -36,7 +36,7 @@ export class ListmembersComponent implements OnInit {
   years = [];
   currentYearr;
   // membersarchived: Member[];
-  renouv:Boolean=false
+  renouv: Boolean = false
 
   constructor(
     private router: Router,
@@ -112,14 +112,14 @@ export class ListmembersComponent implements OnInit {
   }
   getmembersbyYear() {
     // this.SpinnerService.show();
-    this.listMemberService.getmembers(this.currentYear).subscribe((res: any) => {
+    this.listMemberService.getmembers(this.currentYear).subscribe((res: Member[]) => {
+      console.log(res)
       // this.members = res.filter((t) => t.role === 'member' &&t.Create_date.toString() !== this.currentYear.toString());
       this.members = res.filter((t) => t.role === 'member');
-      console.log( this.members)
-   /*    if (this.members['Create_date']!== this.currentYear){
-        this.renouv =false;
-        console.log(this.renouv)
-      }*/
+      /*    if (this.members['Create_date']!== this.currentYear){
+           this.renouv =false;
+           console.log(this.renouv)
+         }*/
       //  this.archiv=true;
       // this.SpinnerService.hide();
 
@@ -205,12 +205,12 @@ export class ListmembersComponent implements OnInit {
       } else {
         Swal.fire('Membre ajouté avec succès!', '', 'success');
         if (this.filesToUpload != undefined) {
-        this.imageservice
-          .pushFileToStorage(this.filesToUpload[0])
-          .subscribe((rest) => {
-            console.log(rest);
+          this.imageservice
+            .pushFileToStorage(this.filesToUpload[0])
+            .subscribe((rest) => {
+              console.log(rest);
 
-          });
+            });
         }
         this.getmembersbyYear();
         this.addForm.reset();
@@ -262,13 +262,19 @@ export class ListmembersComponent implements OnInit {
       cancelButtonText: 'Annuler',
     }).then((result) => {
       if (result.value) {
-        this.listMemberService.renewMember(id,this.Create_date).subscribe((res) => {
+        this.listMemberService.renewMember(id, this.Create_date).subscribe((res) => {
           Swal.fire('Renouvelé', 'Ce membre a été renouvelé avec succés', 'success');
-          this.ngOnInit();
+          this.getmembersbyYear();
         });
 
       }
     });
+  }
+  ResetFormAddMember(){
+    this.addForm.reset();
+    this.modalRef.hide();
+
+    //w 3leeh tetsakr jawha behy lezm tfasa5 aw chntlbek yfassa5 dejaa 9a3d
   }
 
 }
