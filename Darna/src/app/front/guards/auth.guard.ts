@@ -13,6 +13,7 @@ import { LoginService } from '../services/login.service';
   providedIn: 'root',
 })
 export class AuthGuard implements CanActivate {
+  navigateExample: any;
   constructor(private router: Router, private loginservice: LoginService) { }
   canActivate(
     next: ActivatedRouteSnapshot,

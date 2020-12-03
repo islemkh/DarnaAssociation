@@ -1,33 +1,32 @@
 import { RegisterComponent } from './register.component';
 import { FormBuilder } from '@angular/forms';
 import { ImageService } from '../services/image.service';
+import { RegisterService } from '../services/register.service';
+import { HttpClient } from '@angular/common/http';
 
 describe('RegisterComponent', () => {
   let CompReg: RegisterComponent;
-	let authServiceMock: any;
-	let formBuilder: FormBuilder;
+  let authServiceMock: any;
+  let formBuilder: FormBuilder;
+  let imageService:any;
   let routerMock: any;
-  let registerservice: any;
   beforeEach(() => {
+
     authServiceMock = {
       postdemand: jest.fn(),
+       isLoggedIn: jest.fn(),
     };
-    registerservice = {
-      isLoggedIn: jest.fn(),
-    };
-    
-		formBuilder = new FormBuilder();
+
+    formBuilder = new FormBuilder();
     routerMock = jest.fn();
-		CompReg = new RegisterComponent(
-			formBuilder,
-			authServiceMock,
-      routerMock, 
-      registerservice
-    );
+    CompReg = new RegisterComponent(formBuilder,routerMock, authServiceMock, imageService)
+    authServiceMock.isLoggedIn = false
     CompReg.ngOnInit();
   });
+
   describe('Test: ngOnInit', () => {
     it('initialisation  du form Inscription', () => {
+
       const RegForm = {
         NomPrenom: null,
         Email: null,
@@ -40,7 +39,7 @@ describe('RegisterComponent', () => {
       expect(CompReg.InscriptionForm.value).toEqual(RegForm);
     });
   });
-  describe('Test: Regstre Form', () => {
+  describe('Test: Registre Form', () => {
     it('should invalidate the form', () => {
       CompReg.InscriptionForm.controls.Email.setValue('');
       CompReg.InscriptionForm.controls.Password.setValue('');
@@ -77,6 +76,7 @@ describe('RegisterComponent', () => {
       const expected = jest
         .spyOn(authServiceMock, 'postdemand')
         .mockReturnValue(true);
+
       expect(authServiceMock.postdemand(formData)).toBe(true);
       expect(expected).toHaveBeenCalledWith(formData);
     });

@@ -3,11 +3,11 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { ImageService } from 'src/app/front/services/image.service';
 import { EventModel } from '../models/event';
 import Swal from 'sweetalert2';
 import { EventService } from '../service/event.service';
 import { formatDate } from '@angular/common';
-import { ImageService } from 'src/app/front/services/image.service';
 
 @Component({
   selector: 'app-event',
@@ -39,6 +39,7 @@ export class EventComponent implements OnInit {
   alreadyParti = false;
   userConnect: string;
   currentDate = '';
+  tabPubEvent;
   today = new Date();
   error: any = { isError: false, errorMessage: '' };
   isValidDate: any;
@@ -57,8 +58,9 @@ export class EventComponent implements OnInit {
     this.currentYear = (new Date()).getFullYear();
     //this.currentDate = formatDate(this.today, 'dd-MM-yyyy', 'en-US');
     //this.getLisEvents();
-    this.getYears()
-    this.getLisEventsbByYear();
+    this.tabPubEvent=[]
+    this. getYears()
+    this.getLisEventsbByYear() ;
     (this.addFormEvent = this.formBuilder.group({
       NameEvent: [null, Validators.required],
       Description: [null, [Validators.required]],
@@ -79,18 +81,18 @@ export class EventComponent implements OnInit {
         DateBeginInsc: [null, [Validators.required]],
         DateEndInsc: [null, [Validators.required]]
       }))
-    this.addFormEvent.get("DateBeginEvent").valueChanges.subscribe(valueChanges => {
-      this.minDate = valueChanges
-    })
-    this.addFormEvent.get("DateEndEvent").valueChanges.subscribe(valueChanges => {
-      this.maxDate = valueChanges
-    })
-    this.addFormEvent.get("DateBeginInsc").valueChanges.subscribe(valueChanges => {
-      this.minDateIn = valueChanges
-    })
-    this.addFormEvent.get("DateEndInsc").valueChanges.subscribe(valueChanges => {
-      this.maxDateIn = valueChanges
-    })
+      this.addFormEvent.get("DateBeginEvent").valueChanges.subscribe(valueChanges => {
+        this.minDate = valueChanges
+      })
+      this.addFormEvent.get("DateEndEvent").valueChanges.subscribe(valueChanges => {
+        this.maxDate = valueChanges
+      })
+      this.addFormEvent.get("DateBeginInsc").valueChanges.subscribe(valueChanges => {
+        this.minDateIn = valueChanges
+      })
+      this.addFormEvent.get("DateEndInsc").valueChanges.subscribe(valueChanges => {
+        this.maxDateIn = valueChanges
+      })
   }
   openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template);
@@ -121,18 +123,27 @@ export class EventComponent implements OnInit {
     this.EventService.getEventbyYear(this.currentYear).subscribe((res: any) => {
       console.log(res);
       this.events = res
+      res.forEach(e => {
+        console.log("hetha element",e);
+        if(e.publish==="Yes"){
+          this.tabPubEvent.push(e)
+        }
+        
+      });
+      console.log("test ttttt",this.tabPubEvent)
+      
       // this.minDate = this.currentEvent.DateBeginEvent;
       this.SpinnerService.hide();
     });
   }
-  /*   getLisEvents() {
-      this.SpinnerService.show();
-      this.EventService.getAllEvents().subscribe((res: any) => {
-        console.log(res);
-        this.events = res
-        this.SpinnerService.hide();
-      });
-    } */
+/*   getLisEvents() {
+    this.SpinnerService.show();
+    this.EventService.getAllEvents().subscribe((res: any) => {
+      console.log(res);
+      this.events = res
+      this.SpinnerService.hide();
+    });
+  } */
 
   get AddEventControls() {
     return this.addFormEvent.controls;
@@ -189,18 +200,19 @@ export class EventComponent implements OnInit {
     this.EventService.AddNewEvent(data).subscribe((res) => {
       Swal.fire('Event ajouté avec succès!', '', 'success');
       if (this.filesToUpload != undefined) {
-        this.imageservice
-          .pushFileToStorage(this.filesToUpload[0])
-          .subscribe((rest) => {
-            console.log(rest);
-          });
+      this.imageservice
+        .pushFileToStorage(this.filesToUpload[0])
+        .subscribe((rest) => {
+          console.log(rest);
+        });
       }
       this.ResetForm()
-      this.getLisEventsbByYear();
+      this. getLisEventsbByYear();
 
 
     });
   }
+  
   getEventByid(id) {
     this.EventService.getEvent(id).subscribe((res: EventModel) => {
       this.currentEvent = res;
@@ -320,7 +332,7 @@ export class EventComponent implements OnInit {
         (response) => {
           console.log(response);
           Swal.fire('Cet événement a été modifié avec succés', '', 'success');
-          this.getLisEventsbByYear();
+          this. getLisEventsbByYear();
           this.modalRef.hide();
         },
         (error) => {
@@ -330,11 +342,11 @@ export class EventComponent implements OnInit {
   }
   Publish(id) {
     this.EventService.getEvent(id).subscribe((res: EventModel) => {
-      this.currentEvent = res;
-      if (this.currentEvent.publish === "Yes") {
-        Swal.fire('Déja Publié', ':)', 'error');
-      }
-      if (this.currentEvent.publish === "No") {
+      this.currentEvent=res;
+        if(this.currentEvent.publish === "Yes"){
+          Swal.fire('Déja Publié', ':)', 'error');
+        }
+       if(this.currentEvent.publish === "No"){
         Swal.fire({
           title: 'êtes-vous sûr pour publié cette événement?',
           icon: 'warning',
@@ -345,19 +357,18 @@ export class EventComponent implements OnInit {
           cancelButtonText: 'Annuler',
         }).then((result) => {
           if (result.value) {
-            this.EventService.PublishEvent(id, 'Yes').subscribe((res: EventModel) => {
+            this.EventService.PublishEvent(id,'Yes').subscribe((res: EventModel) => {
             });
             Swal.fire('Publier', 'événement publié', 'success');
             this.getLisEventsbByYear()
           }
         });
       }
-    })
-  }
+      })}
 
-  ResetForm() {
+  ResetForm(){
     this.addFormEvent.reset();
-    this.imageSrc = "assets/images/eventDefault.jpg";
+    this. imageSrc = "assets/images/eventDefault.jpg";
     this.modalRef.hide()
   }
 

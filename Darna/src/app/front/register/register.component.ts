@@ -31,8 +31,6 @@ export class RegisterComponent implements OnInit {
     private imageservice: ImageService
   ) {
      let isLoggedIn= this.registerservice.isLoggedIn();
-    console.log('isLoggedIn: ', isLoggedIn);
-
     if (isLoggedIn) {
       this.router.navigate(['/listeDemandes']);
     }  
